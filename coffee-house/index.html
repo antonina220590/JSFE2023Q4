@@ -4,9 +4,71 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Coffee House</title>
 </head>
 <body>
-  
+  <header class="heade">
+    <div class="wrapper header__wrapper">
+      <a href="#" class="logo">
+        <img class="logo__img" src="./assets/header/coffee_logo.svg" width="100px" height="60px" alt="logo">
+      </a>
+      <div class="header__navigation">
+        <nav class="navigation">
+          <ul class="navigation__links">
+            <li><a href='#' class='navigation__link'>Favorite coffee</a></li>
+            <li><a href='#' class='navigation__link'>About</a></li>
+            <li><a href='#' class='navigation__link'>Mobile app</a></li>
+            <li><a href='#' class='navigation__link'>Contact us</a></li>
+          </ul>
+        </nav>
+        <a class="header__menu" href="#">Menu
+          <img class="coffee_cup" src="./assets/header/coffee-cup.svg">
+        </a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="enjoy">
+      <div class="wrapper enjoy__wrapper">
+        <div class="enjoy__content">
+          <h1 class="enjoy__title">Enjoy premium coffee at our charming cafe</h1>
+          <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
+         <div class="enjoy__button">
+          <form action="#">
+          <button class="button enjoy__btn">Menu
+            <span class="coffee_cup__enjoy" src="./assets/header/coffee-cup.svg"></span>
+          </button>
+        </form>
+        </div>
+        </div>
+      </div>
+    </section>
+    <section class="favourites">
+      <div class="wrapper favourites__wrapper">
+        <h2 class="favourite__title"> Choose your <span class="favourite__title favourite__title_italic">favorite</span> coffee </h2>
+        <div class="favourite__slider">
+          <div class="favourite__slider-button">
+            <img class="favourite__slider-button button_left" src="./assets/favourites/arrow-left.png" alt="arrow_left">
+          </div>
+          <div class="favourite__slider__wrapper">
+            <div class="slider__content">
+              <img class="slider__img" src="./assets/favourites/coffee-slider-1.png" alt="cup of cold coffee">
+              <h3 class="slider__title">S’mores Frappuccino</h3>
+              <p class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
+              <span class="slider__price">$5.00</span>
+            </div>
+          </div>
+          <div class="favourite__slider-button">
+            <img class="favourite__slider-button button_right" src="./assets/favourites/arrow-right.png" alt="arrow_left">
+          </div>
+        </div>
+        <div class="pagination__container">
+          <div class="pagination__line"></div>
+          <div class="pagination__line"></div>
+          <div class="pagination__line"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

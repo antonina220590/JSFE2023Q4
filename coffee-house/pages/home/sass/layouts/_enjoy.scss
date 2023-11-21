@@ -1,0 +1,57 @@
+.enjoy {
+  background: url(/img-hero.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: $content-width;
+  margin: auto;
+  border-radius: 40px;
+}
+
+.enjoy__content {
+  display: flex;
+  flex-direction: column;
+  width: 530px;
+  padding: 100px;
+  gap: 40px;
+}
+
+.enjoy__btn {
+  border-radius: 100px;
+  border: 1px solid $color-background-body;
+  background-color: $color-background-body;
+  cursor: pointer;
+  padding: 20px 78px;
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.enjoy__btn-text {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  transition: transform 0.4s ease-out;
+}
+
+.enjoy__btn svg {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.4s ease-in-out;
+  right: 35%;
+}
+
+.enjoy__btn:hover .enjoy__btn-text {
+  right: 10%;
+  position: relative;
+  transition: transform 0.4s ease-out;
+  transform: translate(-40%)
+}
+
+.enjoy__btn:hover svg {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}

@@ -16,6 +16,7 @@ h1 {
   font-weight: 600;
   line-height: 105%;
   color: $color-text-light;
+  margin: 0;
 }
 
 .title_italic_h1 {
@@ -88,6 +89,11 @@ p {
   font-weight: 400;
   line-height: 150%;
   color: $color-text-dark;
+  margin: 0;
+}
+
+.enjoy__text {
+  color: $color-text-light;
 }
 
 .enjoy__btn {

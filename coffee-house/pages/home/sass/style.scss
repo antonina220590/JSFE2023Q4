@@ -2,7 +2,14 @@
 @import'../../../../node_modules/normalize-scss/sass/normalize';
 @include normalize();
 
+//Abstarcts
 @import 'abstract/constants';
+
+//Layouts
+@import 'layouts/wrapper';
+
+//Components
+@import 'components/header';
 
 
 @import 'base/base';

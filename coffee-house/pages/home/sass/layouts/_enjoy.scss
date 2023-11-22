@@ -44,14 +44,16 @@
   right: 35%;
 }
 
-.enjoy__btn:hover .enjoy__btn-text {
-  right: 10%;
-  position: relative;
-  transition: transform 0.4s ease-out;
-  transform: translate(-40%)
-}
+@media (hover: hover) {
+  .enjoy__btn:hover .enjoy__btn-text {
+    right: 10%;
+    position: relative;
+    transition: transform 0.4s ease-out;
+    transform: translate(-40%)
+  }
 
-.enjoy__btn:hover svg {
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
+  .enjoy__btn:hover svg {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+  }
 }

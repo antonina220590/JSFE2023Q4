@@ -27,7 +27,7 @@
         </nav>
       </div>
       <div class="menu_cont">
-      <a class="header__menu link_typography" href="#">Menu
+      <a class="header__menu link_typography" href="../menu/index.html">Menu
         <img class="coffee_cup" src="../../assets/header/coffee-cup.svg">
       </a>
     </div>
@@ -40,7 +40,7 @@
           <h1 class="enjoy__title"> <span class="favourite__title title_italic_h1">Enjoy</span> premium coffee at our charming cafe</h1>
           <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
          <div class="enjoy__button">
-          <form action="#">
+          <form action="../menu/index.html">
           <button class="button enjoy__btn">
             <span class="enjoy__btn-text">Menu</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,24 +60,32 @@
         <h2 class="favourite__title"> Choose your <span class="favourite__title title_italic">favorite</span> coffee </h2>
         <div class="favourite__slider">
           <div class="favourite__slider-button">
-            <img class="favourite__slider-button button_left" src="../../assets/favourites/arrow-left.png" alt="arrow_left">
+            <button class="favourite__slider-btn favourite__slider-btn-prev">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          </button>
           </div>
           <div class="favourite__slider__wrapper">
             <div class="slider__content">
               <img class="slider__img" src="../../assets/favourites/coffee-slider-1.png" alt="cup of cold coffee">
               <h3 class="slider__title">S’mores Frappuccino</h3>
               <p class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
-              <span class="slider__price">$5.00</span>
+              <span class="slider__price">$5.50</span>
             </div>
           </div>
           <div class="favourite__slider-button">
-            <img class="favourite__slider-button button_right" src="../../assets/favourites/arrow-right.png" alt="arrow_left">
+            <button class="favourite__slider-btn favourite__slider-btn-next">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          </button>
           </div>
         </div>
         <div class="pagination__container">
-          <div class="pagination__line"></div>
-          <div class="pagination__line"></div>
-          <div class="pagination__line"></div>
+          <span class="pagination__line pagination__line_dark"></span>
+          <span class="pagination__line"></span>
+          <span class="pagination__line"></span>
         </div>
       </div>
     </section>

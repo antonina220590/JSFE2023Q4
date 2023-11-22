@@ -145,18 +145,25 @@ p {
 
 .footer__address {
   font-family: Inter;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 125%;
+  line-height: 150%;
   color: $color-text-light;
 }
 
 .footer__address-time {
   font-family: Inter;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 125%;
+  line-height: 150%;
   color: $color-text-light;
+}
+
+
+
+ul {
+  padding: 0;
+  margin: 0;
 }

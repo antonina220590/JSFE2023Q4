@@ -161,9 +161,26 @@ p {
   color: $color-text-light;
 }
 
-
-
 ul {
   padding: 0;
   margin: 0;
+}
+
+
+.menu__title {
+  color: $color-text-dark;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.menu-list__price {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-dark;
 }

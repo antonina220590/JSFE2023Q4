@@ -38,6 +38,16 @@
   bottom: -5px;
 }
 
+.link_typography--active {
+  pointer-events: none;
+}
+
+.link_typography--active::after{
+  opacity: 3;
+  transform: scaleX(1);
+  pointer-events: none;
+}
+
 @media (hover: hover) {
 .link_typography:hover::after {
   transform: scaleX(1);
@@ -52,7 +62,7 @@
 
 .header__navigation {
   display: flex;
-  flex: 2.02;
+  flex: 1.76;
 }
 
 .header__menu {
@@ -62,6 +72,8 @@
   gap: 8px;
   text-decoration: none;
 }
+
+
 
 
 

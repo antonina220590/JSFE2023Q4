@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../assets/favicon/cake.png">
   <link rel="stylesheet" href="./sass/style.css">
   <title>Coffee House</title>
 </head>
@@ -19,10 +20,10 @@
       <div class="header__navigation">
         <nav class="navigation">
           <ul class="navigation__links">
-            <li><a href='#' class='navigation__link link_typography'>Favorite coffee</a></li>
-            <li><a href='#' class='navigation__link link_typography'>About</a></li>
-            <li><a href='#' class='navigation__link link_typography'>Mobile app</a></li>
-            <li><a href='#' class='navigation__link link_typography'>Contact us</a></li>
+            <li><a href='#favourites' class='navigation__link link_typography'>Favorite coffee</a></li>
+            <li><a href='#about' class='navigation__link link_typography'>About</a></li>
+            <li><a href='#download' class='navigation__link link_typography'>Mobile app</a></li>
+            <li><a href='#contact' class='navigation__link link_typography'>Contact us</a></li>
           </ul>
         </nav>
       </div>
@@ -55,7 +56,7 @@
         </div>
       </div>
     </section>
-    <section class="favourites">
+    <section class="favourites" id="favourites">
       <div class="wrapper favourites__wrapper">
         <h2 class="favourite__title"> Choose your <span class="favourite__title title_italic">favorite</span> coffee </h2>
         <div class="favourite__slider">
@@ -89,7 +90,7 @@
         </div>
       </div>
     </section>
-    <section class="about">
+    <section class="about" id="about">
       <div class="wrapper about__wrapper">
         <h2 class="about__title">Resource is <span class="about__title title_italic"> the perfect and cozy place </span> where you can enjoy a variety of hot beverages, relax, catch up with friends, or get some work done.</h2>
         <div class="about__images">
@@ -112,7 +113,7 @@
         </div>
       </div>
     </section>
-    <section class="download">
+    <section class="download" id="download">
       <div class="wrapper download__wrapper">
         <div class="dowload__content_left-side">
           <h2 class="download__title"><span class="about__title title_italic">Download</span> our apps <br> to start ordering</h2>
@@ -153,7 +154,7 @@
     </section>
   </main>
   <footer>
-    <div class="wrapper footer__wrapper">
+    <div class="wrapper footer__wrapper" id="contact">
       <div class="footer__content_left-side">
         <p class="footer__text">
           Sip, Savor, Smile.

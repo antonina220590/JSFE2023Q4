@@ -20,6 +20,7 @@
   border: 1px solid $color-border-light;
   background-color: $color-background-body;
   cursor: pointer;
+  transition: transform 1s ease-out;
 }
 
 .menu__btn_circle {
@@ -41,12 +42,14 @@
   background-color: $color-background-container;
   pointer-events: none;
   color: $color-text-light;
+  transition: transform 1s ease-out;
 }
 
 @media (hover: hover) {
   .menu__btn:hover{
     background-color: $color-background-container;
     color: $color-text-light;
+    transition: transform 1s ease-out;
   }
 }
 

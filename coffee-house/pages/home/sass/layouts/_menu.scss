@@ -1,3 +1,22 @@
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper_common {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content_common {
+  flex: 1 0 auto;
+}
+.footer_container {
+  flex: 0 0 auto;
+}
+
 .menu__wrapper {
   display: flex;
   flex-direction: column;
@@ -68,6 +87,7 @@
   border: 1px solid $color-border-light;
   max-width: 310px;
   border-radius: 40px;
+  cursor: pointer;
 }
 
 .menu__img {
@@ -108,7 +128,7 @@
 }
 
 @media (hover: hover) {
-  .menu__list__img-content:hover img {
+ .menu__content:hover .menu__list__img-content img  {
     transform: scale(1);
     transition: transform 0.4s ease-out;
   }

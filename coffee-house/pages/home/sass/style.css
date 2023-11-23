@@ -547,7 +547,7 @@ template {
 .download__wrapper {
   display: flex;
   gap: 100px;
-  padding-bottom: 98px;
+  padding-bottom: 96px;
 }
 
 .dowload__content_left-side {
@@ -865,7 +865,8 @@ body {
   flex-direction: column;
   max-width: 530px;
   justify-content: center;
-  padding-top: 20px;
+  padding-left: 2px;
+  padding-top: 17px;
 }
 
 .footer_right-side__text {

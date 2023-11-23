@@ -1,0 +1,21 @@
+
+@import'../../../../node_modules/normalize-scss/sass/normalize';
+@include normalize();
+
+//Abstarcts
+@import 'abstract/constants';
+
+//Layouts
+@import 'layouts/wrapper';
+@import 'layouts/enjoy';
+@import 'layouts/favourites';
+@import 'layouts/about';
+@import 'layouts/download';
+@import 'layouts/menu';
+
+//Components
+@import 'components/header';
+@import 'components/footer';
+
+
+@import 'base/base';

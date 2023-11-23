@@ -1,0 +1,186 @@
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Inter", "Verdana", "sans-serif";
+  background-color: $color-background-body;
+}
+
+h1 {
+  font-family: Inter;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+  color: $color-text-light;
+  margin: 0;
+}
+
+.title_italic_h1 {
+  font-family: Inter;
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 105%;
+  color: $color-text-accent;
+}
+
+h2 {
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-dark;
+  margin: 0;
+}
+
+.title_italic {
+  font-family: Inter;
+  font-size: 60px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-accent;
+}
+
+h3 {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-dark;
+  margin: 0;
+}
+
+.link_typography {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: $color-text-dark;
+}
+
+.footer__text {
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-light;
+}
+
+.footer__text-title_italic {
+  font-family: Inter;
+  font-size: 60px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-accent;
+}
+
+p {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  color: $color-text-dark;
+  margin: 0;
+}
+
+.enjoy__text {
+  color: $color-text-light;
+}
+
+.enjoy__btn {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  color: $color-text-dark;
+}
+
+.slider__price {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-dark;
+}
+
+.download__available-text {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  color: $color-text-dark;
+  }
+
+.download__store-name {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: $color-text-dark;
+  }
+
+.footer_right-side__text {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-light;
+}
+
+.footer__address {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: $color-text-light;
+}
+
+.footer__address-time {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: $color-text-light;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+
+.menu__title {
+  color: $color-text-dark;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.menu-list__price {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: $color-text-dark;
+}

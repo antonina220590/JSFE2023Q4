@@ -1,0 +1,56 @@
+.download__wrapper {
+  display: flex;
+  gap: 100px;
+  padding-bottom: 98px;
+}
+
+.dowload__content_left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  max-width: 630px;
+}
+
+.download__link svg{
+  fill: $color-text-dark;
+  transition: 1s ease-in-out;
+}
+
+a {
+  text-decoration: none;
+}
+
+.download-btn__wrapper {
+  border: 1px solid $color-border-dark;
+  border-radius: 100px;
+  display: flex;
+  width: 160px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+}
+
+.download__links-container {
+  display: flex;
+  gap: 20px;
+}
+
+@media (hover: hover) {
+  .download-btn__wrapper:hover {
+    background-color: $color-background-container;
+    transition: 1s ease-in-out;
+  }
+
+  .download-btn__wrapper:hover svg {
+    fill: $color-text-light;
+    transition: 1s ease-in-out;
+  }
+
+  .download-btn__wrapper:hover p {
+    color: $color-text-light;
+    transition: 1s ease-in-out;
+  }
+}

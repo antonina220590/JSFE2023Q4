@@ -639,7 +639,7 @@ body {
   border: 1px solid #C1B6AD;
   background-color: #E1D4C9;
   cursor: pointer;
-  transition: transform 1s ease-out;
+  transition: 1s ease-out;
 }
 
 .menu__btn_circle {
@@ -661,14 +661,14 @@ body {
   background-color: #665F55;
   pointer-events: none;
   color: #E1D4C9;
-  transition: transform 1s ease-out;
+  transition: 1s ease-out;
 }
 
 @media (hover: hover) {
   .menu__btn:hover {
     background-color: #665F55;
     color: #E1D4C9;
-    transition: transform 1s ease-out;
+    transition: 1s ease-out;
   }
 }
 .menu__list {

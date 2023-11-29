@@ -64,11 +64,19 @@ body {
   transition: 1s ease-out;
 }
 
+.menu__btn_circle_active {
+  background-color: $color-background-body;
+}
+
 @media (hover: hover) {
   .menu__btn:hover{
     background-color: $color-background-container;
     color: $color-text-light;
     transition:  1s ease-out;
+  }
+
+  .menu__btn:hover .menu__btn_circle {
+    background-color: $color-background-body;
   }
 }
 

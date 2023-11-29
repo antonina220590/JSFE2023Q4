@@ -2,7 +2,23 @@
   display: flex;
   gap: 100px;
   padding-bottom: 96px;
+
+
+  @include media-middle {
+    flex-direction: column;
+    padding-top: 100px;
+    width: 688px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include media-mobile {
+    align-items:flex-start;
+    gap: 40px;
+    width: unset;
+  }
 }
+
 
 .dowload__content_left-side {
   display: flex;
@@ -10,6 +26,14 @@
   justify-content: center;
   gap: 40px;
   max-width: 630px;
+
+  @include media-tablet {
+    max-width: unset;
+  }
+  @include media-mobile {
+    max-width: 348px;
+  }
+
 }
 
 .download__link svg{
@@ -36,6 +60,23 @@ a {
 .download__links-container {
   display: flex;
   gap: 20px;
+
+  @include media-mobile {
+    flex-direction: column;
+  }
+}
+
+.dowload__content_right-side {
+  @include media-tablet {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.download__img {
+  @include media-mobile {
+    width: 348px;
+  }
 }
 
 @media (hover: hover) {

@@ -2,6 +2,10 @@
   @media(max-width: $content-width) {@content; }
 }
 
+@mixin media-middle {
+  @media(max-width: $middle-width) {@content; }
+}
+
 @mixin media-tablet {
   @media(max-width: $tablet-width) {@content; }
 }
@@ -9,3 +13,4 @@
 @mixin media-mobile {
   @media(max-width: $mobile-width) {@content; }
 }
+

@@ -328,12 +328,17 @@ template {
   max-width: 1360px;
   margin: auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 1390px) and (min-width: 769px) {
   .wrapper {
     padding: 0 40px;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 1300px) {
+  .wrapper {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 670px) {
   .wrapper {
     padding: 0 16px;
   }
@@ -353,7 +358,7 @@ template {
     max-width: 89.4%;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .enjoy {
     max-width: 92.4%;
   }
@@ -377,7 +382,7 @@ template {
     padding: 14.6% 8.8%;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .enjoy__content {
     padding: 16.8% 4.6%;
     max-width: 348px;
@@ -404,7 +409,7 @@ template {
     align-items: center;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .enjoy__btn {
     opacity: 1;
     position: static;
@@ -435,7 +440,7 @@ template {
     right: 22%;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .enjoy__btn svg {
     opacity: 1;
     position: static;
@@ -464,7 +469,7 @@ template {
 
 .favourite__slider {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .favourite__slider__wrapper {
@@ -473,6 +478,11 @@ template {
 
 .slider__img {
   width: 480px;
+}
+@media (max-width: 670px) {
+  .slider__img {
+    max-width: 348px;
+  }
 }
 
 .slider__content {
@@ -483,6 +493,11 @@ template {
   gap: 17px;
   text-align: center;
 }
+@media (max-width: 670px) {
+  .slider__content {
+    max-width: 348px;
+  }
+}
 
 .favourite__slider-button {
   display: flex;
@@ -490,10 +505,6 @@ template {
   justify-content: center;
   position: relative;
   top: 15px;
-}
-
-.favourite__slider {
-  gap: 375px;
 }
 
 .favourite__slider-btn {
@@ -508,10 +519,20 @@ template {
   cursor: pointer;
   transition: 1s ease-in-out;
 }
+@media (max-width: 670px) {
+  .favourite__slider-btn {
+    display: none;
+  }
+}
 
 .favourite__slider-btn svg {
   stroke: #665F55;
   transition: 1s ease-in-out;
+}
+@media (max-width: 670px) {
+  .favourite__slider-btn svg {
+    display: none;
+  }
 }
 
 @media (hover: hover) {
@@ -551,17 +572,75 @@ template {
   padding-top: 40px;
   padding-bottom: 100px;
 }
+@media (max-width: 1300px) {
+  .about__images {
+    padding-bottom: 0;
+  }
+}
+
+.about__images_center {
+  display: none;
+}
+@media (max-width: 1300px) {
+  .about__images_center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+@media (max-width: 670px) {
+  .about__images_center {
+    display: none;
+  }
+}
+
+.about__images_center_mobile {
+  display: none;
+}
+@media (max-width: 1300px) {
+  .about__images_center_mobile {
+    display: mone;
+  }
+}
+@media (max-width: 670px) {
+  .about__images_center_mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
 
 .about__images_lefts {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
+@media (max-width: 1300px) {
+  .about__images_lefts {
+    display: none;
+  }
+}
+@media (max-width: 670px) {
+  .about__images_lefts {
+    display: none;
+  }
+}
 
 .about__images_rights {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+@media (max-width: 1300px) {
+  .about__images_rights {
+    display: none;
+  }
+}
+@media (max-width: 670px) {
+  .about__images_rights {
+    display: none;
+  }
 }
 
 .about__img {
@@ -570,9 +649,24 @@ template {
   overflow: hidden;
   height: 590px;
 }
+@media (max-width: 1300px) {
+  .about__img {
+    max-width: 688px;
+  }
+}
+@media (max-width: 670px) {
+  .about__img {
+    max-height: unset;
+  }
+}
 
 .about__img_2 {
   max-height: 430px;
+}
+@media (max-width: 670px) {
+  .about__img_2 {
+    max-height: unset;
+  }
 }
 
 .about__img_3 {
@@ -585,6 +679,17 @@ template {
   transition: transform 0.4s ease-out;
   transform-origin: bottom;
   width: 100%;
+}
+@media (max-width: 1300px) {
+  .about__img img {
+    transform: scale(1);
+  }
+}
+@media (max-width: 670px) {
+  .about__img img {
+    transform: scale(1);
+    margin: 0;
+  }
 }
 
 .about__img_2 img {
@@ -616,6 +721,22 @@ template {
   gap: 100px;
   padding-bottom: 96px;
 }
+@media (max-width: 1300px) {
+  .download__wrapper {
+    flex-direction: column;
+    padding-top: 100px;
+    width: 688px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 670px) {
+  .download__wrapper {
+    align-items: flex-start;
+    gap: 40px;
+    width: unset;
+  }
+}
 
 .dowload__content_left-side {
   display: flex;
@@ -623,6 +744,16 @@ template {
   justify-content: center;
   gap: 40px;
   max-width: 630px;
+}
+@media (max-width: 768px) {
+  .dowload__content_left-side {
+    max-width: unset;
+  }
+}
+@media (max-width: 670px) {
+  .dowload__content_left-side {
+    max-width: 348px;
+  }
 }
 
 .download__link svg {
@@ -649,6 +780,24 @@ a {
 .download__links-container {
   display: flex;
   gap: 20px;
+}
+@media (max-width: 670px) {
+  .download__links-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .dowload__content_right-side {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .download__img {
+    width: 348px;
+  }
 }
 
 @media (hover: hover) {
@@ -815,7 +964,7 @@ body {
     align-items: center;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .header__wrapper {
     padding: 20px 16px;
   }
@@ -1070,7 +1219,7 @@ h1 {
   color: #E1D4C9;
   margin: 0;
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   h1 {
     font-size: 42px;
     line-height: 115%;
@@ -1085,7 +1234,7 @@ h1 {
   line-height: 105%;
   color: #B0907A;
 }
-@media (max-width: 380px) {
+@media (max-width: 670px) {
   .title_italic_h1 {
     font-size: 42px;
     line-height: 115%;
@@ -1101,6 +1250,12 @@ h2 {
   color: #403F3D;
   margin: 0;
 }
+@media (max-width: 670px) {
+  h2 {
+    font-size: 32px;
+    line-height: 125%;
+  }
+}
 
 .title_italic {
   font-family: Inter;
@@ -1109,6 +1264,12 @@ h2 {
   font-weight: 600;
   line-height: 125%;
   color: #B0907A;
+}
+@media (max-width: 670px) {
+  .title_italic {
+    font-size: 32px;
+    line-height: 125%;
+  }
 }
 
 h3 {

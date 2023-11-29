@@ -46,6 +46,11 @@ h2 {
   line-height: 125%;
   color: $color-text-dark;
   margin: 0;
+
+  @include media-mobile {
+    font-size: 32px;
+    line-height: 125%;
+  }
 }
 
 .title_italic {
@@ -55,6 +60,11 @@ h2 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-accent;
+  
+  @include media-mobile {
+    font-size: 32px;
+    line-height: 125%;
+  }
 }
 
 h3 {

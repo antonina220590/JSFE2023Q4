@@ -664,11 +664,18 @@ body {
   transition: 1s ease-out;
 }
 
+.menu__btn_circle_active {
+  background-color: #E1D4C9;
+}
+
 @media (hover: hover) {
   .menu__btn:hover {
     background-color: #665F55;
     color: #E1D4C9;
     transition: 1s ease-out;
+  }
+  .menu__btn:hover .menu__btn_circle {
+    background-color: #E1D4C9;
   }
 }
 .menu__list {
@@ -846,7 +853,7 @@ body {
 }
 
 .social-media__icons svg {
-  stroke: #C1B6AD;
+  stroke: #E1D4C9;
   transition: 1s ease-in-out;
 }
 
@@ -856,7 +863,7 @@ body {
     transition: 1s ease-in-out;
   }
   .social-media__icons:hover {
-    background-color: #C1B6AD;
+    background-color: #E1D4C9;
     transition: 1s ease-in-out;
   }
 }

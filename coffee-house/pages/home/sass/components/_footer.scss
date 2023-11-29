@@ -36,7 +36,7 @@
 }
 
 .social-media__icons svg {
-  stroke: $color-border-light;
+  stroke: $color-background-body;
   transition: 1s ease-in-out;
 }
 
@@ -47,7 +47,7 @@
   }
 
   .social-media__icons:hover {
-    background-color: $color-border-light;
+    background-color: $color-background-body;
     transition: 1s ease-in-out;
   }
 }

@@ -328,23 +328,60 @@ template {
   max-width: 1360px;
   margin: auto;
 }
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 380px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+}
 
 .enjoy {
   background: url(..//..//img-hero.png);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1360px;
+  max-width: 94.5%;
   margin: auto;
   border-radius: 40px;
+}
+@media (max-width: 768px) {
+  .enjoy {
+    max-width: 89.4%;
+  }
+}
+@media (max-width: 380px) {
+  .enjoy {
+    max-width: 92.4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .enjoy__wrapper {
+    padding: 0;
+  }
 }
 
 .enjoy__content {
   display: flex;
   flex-direction: column;
-  width: 530px;
+  max-width: 530px;
   padding: 100px;
   gap: 40px;
+}
+@media (max-width: 768px) {
+  .enjoy__content {
+    padding: 14.6% 8.8%;
+  }
+}
+@media (max-width: 380px) {
+  .enjoy__content {
+    padding: 16.8% 4.6%;
+    max-width: 348px;
+  }
 }
 
 .enjoy__btn {
@@ -357,6 +394,23 @@ template {
   gap: 8px;
   text-align: center;
   position: relative;
+}
+@media (max-width: 768px) {
+  .enjoy__btn {
+    opacity: 1;
+    position: static;
+    right: 20%;
+    padding: 20px 60px 20px 63px;
+    align-items: center;
+  }
+}
+@media (max-width: 380px) {
+  .enjoy__btn {
+    opacity: 1;
+    position: static;
+    align-items: center;
+    padding: 20px 63px 20px 63px;
+  }
 }
 
 .enjoy__btn-text {
@@ -373,6 +427,19 @@ template {
   position: absolute;
   transition: opacity 0.4s ease-in-out;
   right: 35%;
+}
+@media (max-width: 768px) {
+  .enjoy__btn svg {
+    opacity: 1;
+    position: static;
+    right: 22%;
+  }
+}
+@media (max-width: 380px) {
+  .enjoy__btn svg {
+    opacity: 1;
+    position: static;
+  }
 }
 
 @media (hover: hover) {
@@ -741,8 +808,17 @@ body {
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 40px;
+}
+@media (max-width: 768px) {
+  .header__wrapper {
+    align-items: center;
+  }
+}
+@media (max-width: 380px) {
+  .header__wrapper {
+    padding: 20px 16px;
+  }
 }
 
 .logo__img {
@@ -752,13 +828,21 @@ body {
 .navigation__links {
   display: flex;
   list-style: none;
-  gap: 4rem;
   margin: 0;
   padding-top: 17px;
 }
 
+.navigation__links li {
+  padding-right: 4rem;
+}
+
 .menu_cont {
   padding-top: 17px;
+}
+@media (max-width: 768px) {
+  .menu_cont {
+    display: none;
+  }
 }
 
 .link_typography {
@@ -805,6 +889,11 @@ body {
 .header__navigation {
   display: flex;
   flex: 1.76;
+}
+@media (max-width: 768px) {
+  .header__navigation {
+    display: none;
+  }
 }
 
 .header__menu {
@@ -917,6 +1006,50 @@ body {
     opacity: 1;
   }
 }
+@media (max-width: 768px) {
+  .header__hamburger_circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+    border: 1px solid #665F55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hamburger {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 8px;
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  .hamburger span,
+  .hamburger::before {
+    background-color: #665F55;
+    position: absolute;
+    left: 0;
+    border-radius: 5px;
+    height: 20%;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+  }
+  .hamburger::before {
+    content: "";
+    top: 0;
+  }
+  .hamburger span {
+    top: 100%;
+    transform: scale(1) translate(0px, -80%);
+  }
+  .hamburger_active span {
+    transform: rotate(-45deg) translate(0px, -80%);
+  }
+  .hamburger_active::before {
+    top: 70%;
+    transform: rotate(45deg) translate(0px, 80%);
+  }
+}
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -937,6 +1070,12 @@ h1 {
   color: #E1D4C9;
   margin: 0;
 }
+@media (max-width: 380px) {
+  h1 {
+    font-size: 42px;
+    line-height: 115%;
+  }
+}
 
 .title_italic_h1 {
   font-family: Inter;
@@ -945,6 +1084,12 @@ h1 {
   font-weight: 600;
   line-height: 105%;
   color: #B0907A;
+}
+@media (max-width: 380px) {
+  .title_italic_h1 {
+    font-size: 42px;
+    line-height: 115%;
+  }
 }
 
 h2 {
@@ -983,6 +1128,11 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   color: #403F3D;
+}
+@media (max-width: 926px) and (min-width: 769px) {
+  .link_typography {
+    font-size: 10px;
+  }
 }
 
 .footer__text {

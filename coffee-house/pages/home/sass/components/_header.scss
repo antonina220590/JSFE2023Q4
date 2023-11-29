@@ -1,8 +1,15 @@
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 40px;
+
+  @include media-tablet {
+    align-items: center;
+  }
+
+  @include media-mobile {
+    padding: 20px 16px;
+  }
 }
 
 .logo__img {
@@ -12,13 +19,20 @@
 .navigation__links {
   display: flex;
   list-style: none;
-  gap: 4rem;
   margin: 0;
   padding-top: 17px;
 }
 
+.navigation__links li {
+  padding-right: 4rem;
+}
+
 .menu_cont {
   padding-top: 17px;
+
+  @include media-tablet {
+    display: none;
+  }
 }
 
 .link_typography {
@@ -66,6 +80,10 @@
 .header__navigation {
   display: flex;
   flex: 1.76;
+
+  @include media-tablet {
+    display: none;
+  }
 }
 
 .header__menu {

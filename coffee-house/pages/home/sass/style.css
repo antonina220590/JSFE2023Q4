@@ -600,7 +600,7 @@ template {
 }
 @media (max-width: 1300px) {
   .about__images_center_mobile {
-    display: mone;
+    display: none;
   }
 }
 @media (max-width: 670px) {
@@ -1034,6 +1034,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
+  position: relative;
 }
 @media (max-width: 768px) {
   .header__wrapper {
@@ -1043,6 +1044,27 @@ body {
 @media (max-width: 670px) {
   .header__wrapper {
     padding: 20px 16px;
+  }
+}
+
+.navigation__container {
+  display: flex;
+  flex: 2;
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .navigation__container_active {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    gap: 30px;
+    background-color: #E1D4C9;
+    flex-direction: column;
+    top: 100px;
   }
 }
 
@@ -1057,8 +1079,27 @@ body {
   padding-top: 17px;
 }
 
+@media (max-width: 768px) {
+  .navigation__links_active {
+    flex-direction: column;
+    padding-top: 60px;
+    align-items: center;
+  }
+}
+
 .navigation__links li {
   padding-right: 4rem;
+}
+@media (max-width: 768px) {
+  .navigation__links li {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation__links_active li {
+    padding-bottom: 60px;
+  }
 }
 
 .menu_cont {
@@ -1068,6 +1109,11 @@ body {
   .menu_cont {
     display: none;
   }
+}
+
+.menu_cont_active {
+  display: flex;
+  padding-top: 11px;
 }
 
 .link_typography {
@@ -1113,11 +1159,18 @@ body {
 
 .header__navigation {
   display: flex;
-  flex: 1.76;
+  flex: 6;
 }
 @media (max-width: 768px) {
   .header__navigation {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__navigation_active {
+    display: flex;
+    flex: 0;
   }
 }
 
@@ -1127,6 +1180,18 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   text-decoration: none;
+}
+@media (max-width: 768px) {
+  .header__menu {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coffee_cup {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .footer__wrapper {
@@ -1447,10 +1512,29 @@ h3 {
   line-height: 150%;
   color: #403F3D;
 }
-@media (max-width: 926px) and (min-width: 769px) {
+@media (max-width: 948px) and (min-width: 879px) {
+  .link_typography {
+    font-size: 14px;
+  }
+}
+@media (max-width: 879px) and (min-width: 809px) {
+  .link_typography {
+    font-size: 12px;
+  }
+}
+@media (max-width: 809px) and (min-width: 768px) {
   .link_typography {
     font-size: 10px;
   }
+}
+
+.navigation__links_active li a,
+.menu_cont_active a {
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
 }
 
 .footer__text {

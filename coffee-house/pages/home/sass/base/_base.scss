@@ -85,9 +85,26 @@ h3 {
   line-height: 150%;
   color: $color-text-dark;
 
-  @media (max-width: 926px ) and (min-width: 769px) {
+  @media (max-width: 948px ) and (min-width: 879px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 879px ) and (min-width: 809px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 809px ) and (min-width: 768px) {
     font-size: 10px;
   }
+}
+
+.navigation__links_active li a,
+.menu_cont_active a {
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
 }
 
 .footer__text {

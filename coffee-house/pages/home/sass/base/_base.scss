@@ -60,7 +60,7 @@ h2 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-accent;
-  
+
   @include media-mobile {
     font-size: 32px;
     line-height: 125%;
@@ -97,6 +97,10 @@ h3 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-light;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 .footer__text-title_italic {
@@ -106,6 +110,10 @@ h3 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-accent;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 p {

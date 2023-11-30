@@ -728,6 +728,7 @@ template {
     width: 688px;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 100px;
   }
 }
 @media (max-width: 670px) {
@@ -1059,6 +1060,18 @@ body {
   display: flex;
   margin-bottom: 40px;
 }
+@media (max-width: 1300px) {
+  .footer__wrapper {
+    margin: 0 40px 40px 40px;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+@media (max-width: 670px) {
+  .footer__wrapper {
+    margin: 0 16px 40px 16px;
+  }
+}
 
 .footer__content_left-side {
   display: flex;
@@ -1067,10 +1080,27 @@ body {
   max-width: 530px;
   gap: 40px;
 }
+@media (max-width: 1300px) {
+  .footer__content_left-side {
+    padding: 100px 60px;
+    max-width: 568px;
+  }
+}
+@media (max-width: 670px) {
+  .footer__content_left-side {
+    padding: 60px 16px 40px 16px;
+    max-width: 568px;
+  }
+}
 
 .social-icons {
   display: flex;
   gap: 12px;
+}
+@media (max-width: 1300px) {
+  .social-icons {
+    gap: 10px;
+  }
 }
 
 .social-icons li {
@@ -1113,15 +1143,40 @@ body {
   padding-left: 2px;
   padding-top: 17px;
 }
+@media (max-width: 1300px) {
+  .footer__content_right-side {
+    padding: 0 60px 82px 60px;
+  }
+}
+@media (max-width: 670px) {
+  .footer__content_right-side {
+    padding: 0 16px 45px 16px;
+  }
+}
 
 .footer_right-side__text {
   padding-bottom: 35px;
+}
+@media (max-width: 1300px) {
+  .footer_right-side__text {
+    padding-bottom: 38px;
+  }
+}
+@media (max-width: 670px) {
+  .footer_right-side__text {
+    padding-bottom: 36px;
+  }
 }
 
 .footer__contact-info li {
   list-style: none;
   padding-bottom: 20px;
   text-decoration: none;
+}
+@media (max-width: 1300px) {
+  .footer__contact-info li {
+    padding-bottom: 18px;
+  }
 }
 
 .footer__contact-info a {
@@ -1155,6 +1210,28 @@ body {
     opacity: 1;
   }
 }
+@media (max-width: 1300px) {
+  .footer__address svg {
+    padding-right: 5px;
+  }
+}
+@media (max-width: 670px) {
+  .footer__address svg {
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .footer__hours svg {
+    padding-right: 5px;
+  }
+}
+@media (max-width: 670px) {
+  .footer__hours svg {
+    padding-right: 5px;
+  }
+}
+
 @media (max-width: 768px) {
   .header__hamburger_circle {
     width: 44px;
@@ -1304,6 +1381,11 @@ h3 {
   line-height: 125%;
   color: #E1D4C9;
 }
+@media (max-width: 670px) {
+  .footer__text {
+    font-size: 32px;
+  }
+}
 
 .footer__text-title_italic {
   font-family: Inter;
@@ -1312,6 +1394,11 @@ h3 {
   font-weight: 600;
   line-height: 125%;
   color: #B0907A;
+}
+@media (max-width: 670px) {
+  .footer__text-title_italic {
+    font-size: 32px;
+  }
 }
 
 p {

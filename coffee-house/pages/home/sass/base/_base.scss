@@ -206,6 +206,10 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 .menu-list__price {

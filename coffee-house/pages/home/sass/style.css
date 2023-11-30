@@ -725,7 +725,7 @@ template {
   .download__wrapper {
     flex-direction: column;
     padding-top: 100px;
-    width: 688px;
+    max-width: 688px;
     flex-direction: column;
     align-items: center;
     padding-bottom: 100px;
@@ -736,6 +736,11 @@ template {
     align-items: flex-start;
     gap: 40px;
     width: unset;
+  }
+}
+@media (max-width: 670px) and (min-width: 470px) {
+  .download__wrapper {
+    align-items: center;
   }
 }
 
@@ -873,6 +878,11 @@ body {
   display: flex;
   gap: 16px;
 }
+@media (max-width: 670px) {
+  .menu__buttons {
+    gap: 8px;
+  }
+}
 
 .menu__btn_active {
   background-color: #665F55;
@@ -901,6 +911,30 @@ body {
   justify-content: space-between;
   row-gap: 40px;
   padding-bottom: 100px;
+}
+@media (max-width: 1300px) {
+  .menu__list {
+    column-gap: 40px;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .menu__list {
+    padding-bottom: 95px;
+  }
+}
+@media (max-width: 743px) {
+  .menu__list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 670px) {
+  .menu__list {
+    row-gap: 38px;
+    padding-bottom: 100px;
+  }
 }
 
 .menu__content {
@@ -943,6 +977,11 @@ body {
   overflow: hidden;
   border-radius: 40px;
 }
+@media (max-width: 768px) {
+  .menu__list__img-content {
+    height: 310px;
+  }
+}
 
 .menu__list__img-content img {
   transform: scale(1.1);
@@ -955,6 +994,42 @@ body {
     transition: transform 0.4s ease-out;
   }
 }
+@media (max-width: 768px) {
+  .menu__content_none {
+    display: none;
+  }
+}
+@media (max-width: 670px) {
+  .menu__content_none {
+    display: none;
+  }
+}
+
+.load-more__button {
+  display: none;
+}
+@media (max-width: 768px) {
+  .load-more__button {
+    display: flex;
+    cursor: pointer;
+  }
+}
+@media (max-width: 670px) {
+  .load-more__button {
+    display: flex;
+  }
+}
+
+.load-more__button span {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid #665F55;
+}
+
 .header__wrapper {
   display: flex;
   justify-content: space-between;
@@ -1070,6 +1145,11 @@ body {
 @media (max-width: 670px) {
   .footer__wrapper {
     margin: 0 16px 40px 16px;
+  }
+}
+@media (max-width: 1400px) and (min-width: 1300px) {
+  .footer__wrapper {
+    margin: 0 40px 40px 40px;
   }
 }
 
@@ -1490,6 +1570,11 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+}
+@media (max-width: 670px) {
+  .menu__title {
+    font-size: 32px;
+  }
 }
 
 .menu-list__price {

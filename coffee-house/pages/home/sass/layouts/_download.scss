@@ -7,16 +7,19 @@
   @include media-middle {
     flex-direction: column;
     padding-top: 100px;
-    width: 688px;
+    max-width: 688px;
     flex-direction: column;
     align-items: center;
     padding-bottom: 100px;
   }
-
   @include media-mobile {
     align-items:flex-start;
     gap: 40px;
     width: unset;
+  }
+
+  @media (max-width: 670px) and (min-width: 470px) {
+    align-items: center;
   }
 }
 

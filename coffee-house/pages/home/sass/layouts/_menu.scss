@@ -88,7 +88,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  row-gap: 40px;
+  row-gap: 38px;
   padding-bottom: 100px;
 
   @include media-middle {
@@ -97,7 +97,7 @@ body {
   }
 
   @include media-tablet {
-    padding-bottom: 95px;
+    padding-bottom: 100px;
   }
 
   @include media-mini {

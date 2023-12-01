@@ -3,17 +3,40 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: $content-width;
+  max-width: 94.5%;
   margin: auto;
   border-radius: 40px;
+
+  @include media-tablet {
+    max-width: 89.4%;
+  }
+
+  @include media-mobile {
+    max-width: 92.4%;
+  }
+}
+
+.enjoy__wrapper {
+  @include media-tablet {
+    padding: 0;
+  }
 }
 
 .enjoy__content {
   display: flex;
   flex-direction: column;
-  width: 530px;
+  max-width: 530px;
   padding: 100px;
   gap: 40px;
+
+  @include media-tablet {
+    padding: 14.6% 8.8%;
+  }
+
+   @include media-mobile {
+    padding: 16.8% 4.6%;
+    max-width: unset;
+  }
 }
 
 .enjoy__btn {
@@ -26,6 +49,22 @@
   gap: 8px;
   text-align: center;
   position: relative;
+
+
+  @include media-tablet {
+    opacity: 1;
+    position: static;
+    right: 20%;
+    padding: 20px 60px 20px 63px;
+    align-items: center;
+  }
+
+  @include media-mobile {
+    opacity: 1;
+    position: static;
+    align-items: center;
+    padding: 20px 63px 20px 63px;
+  }
 }
 
 .enjoy__btn-text {
@@ -42,7 +81,20 @@
   position: absolute;
   transition: opacity 0.4s ease-in-out;
   right: 35%;
+
+  @include media-tablet {
+    opacity: 1;
+    position: static;
+    right: 22%;
+  }
+
+  @include media-mobile {
+    opacity: 1;
+    position: static;
+  }
 }
+
+
 
 @media (hover: hover) {
   .enjoy__btn:hover .enjoy__btn-text {

@@ -28,7 +28,7 @@
 
   @include media-middle {
     padding: 100px 60px;
-    max-width: 568px;
+    max-width: unset;
   }
   @include media-mobile {
     padding: 60px 16px 40px 16px;

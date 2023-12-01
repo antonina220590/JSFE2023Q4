@@ -33,9 +33,9 @@
     padding: 14.6% 8.8%;
   }
 
-  @include media-mobile {
+   @include media-mobile {
     padding: 16.8% 4.6%;
-    max-width: 348px;
+    max-width: unset;
   }
 }
 

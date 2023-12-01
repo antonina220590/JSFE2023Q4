@@ -17,6 +17,11 @@ h1 {
   line-height: 105%;
   color: $color-text-light;
   margin: 0;
+
+  @include media-mobile {
+    font-size: 42px;
+    line-height: 115%;
+  }
 }
 
 .title_italic_h1 {
@@ -26,6 +31,11 @@ h1 {
   font-weight: 600;
   line-height: 105%;
   color: $color-text-accent;
+
+  @include media-mobile {
+    font-size: 42px;
+    line-height: 115%;
+  }
 }
 
 h2 {
@@ -36,6 +46,11 @@ h2 {
   line-height: 125%;
   color: $color-text-dark;
   margin: 0;
+
+  @include media-mobile {
+    font-size: 32px;
+    line-height: 125%;
+  }
 }
 
 .title_italic {
@@ -45,6 +60,11 @@ h2 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-accent;
+
+  @include media-mobile {
+    font-size: 32px;
+    line-height: 125%;
+  }
 }
 
 h3 {
@@ -64,6 +84,27 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   color: $color-text-dark;
+
+  @media (max-width: 948px ) and (min-width: 879px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 879px ) and (min-width: 809px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 809px ) and (min-width: 768px) {
+    font-size: 10px;
+  }
+}
+
+.navigation__links_active li a,
+.menu_cont_active a {
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
 }
 
 .footer__text {
@@ -73,6 +114,10 @@ h3 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-light;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 .footer__text-title_italic {
@@ -82,6 +127,10 @@ h3 {
   font-weight: 600;
   line-height: 125%;
   color: $color-text-accent;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 p {
@@ -174,6 +223,10 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+
+  @include media-mobile {
+    font-size: 32px;
+  }
 }
 
 .menu-list__price {

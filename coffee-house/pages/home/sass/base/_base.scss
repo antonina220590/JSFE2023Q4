@@ -96,16 +96,17 @@ h3 {
   @media (max-width: 809px ) and (min-width: 768px) {
     font-size: 10px;
   }
+
+  @include media-tablet {
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    }
+
 }
 
-.navigation__links_active li a,
-.menu_cont_active a {
-  font-family: Inter;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 125%;
-}
 
 .footer__text {
   font-family: Inter;

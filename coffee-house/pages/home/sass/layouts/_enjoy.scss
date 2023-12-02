@@ -1,19 +1,41 @@
-.enjoy {
-  background: url(..//..//img-hero.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: 94.5%;
-  margin: auto;
+// .enjoy {
+//   // background: url(..//..//img-hero.png);
+//   // background-position: center center;
+//   // background-repeat: no-repeat;
+//   // background-size: cover;
+//   max-width: 94.5%;
+//   margin: auto;
+//   border-radius: 40px;
+
+//   @include media-tablet {
+//     max-width: 89.4%;
+//   }
+
+//   @include media-mobile {
+//     max-width: 92.4%;
+//   }
+// }
+
+.enjoy__video_bg {
+  position: relative;
   border-radius: 40px;
+  margin: auto;
 
   @include media-tablet {
-    max-width: 89.4%;
-  }
+        max-width: 89.4%;
+      }
 
-  @include media-mobile {
-    max-width: 92.4%;
-  }
+      @include media-mobile {
+        max-width: 92.4%;
+      }
+}
+
+.enjoy__video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 40px;
 }
 
 .enjoy__wrapper {
@@ -28,6 +50,8 @@
   max-width: 530px;
   padding: 100px;
   gap: 40px;
+  z-index: 1;
+  position: relative;
 
   @include media-tablet {
     padding: 14.6% 8.8%;

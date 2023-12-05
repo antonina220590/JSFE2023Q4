@@ -1,4 +1,5 @@
 //Burger menu
+console.log("I'm burger file");
 
 const BURGER = document.querySelector('.hamburger');
 
@@ -29,8 +30,7 @@ if (BURGER) {
 
 };
 
-const LINKS = document.querySelectorAll('.link_typography');
-console.log(LINKS)
+
 
 
 

@@ -1,5 +1,6 @@
 const productsJson = [
   {
+    "id": "coffee",
     "img": "../../assets/menu/coffee/coffee-1.jpg",
     "name": "Irish coffee",
     "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",

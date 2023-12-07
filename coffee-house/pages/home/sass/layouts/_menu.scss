@@ -171,13 +171,8 @@ body {
 }
 
 .menu__content_none {
-  @include media-tablet {
     display: none;
-  }
 
-  @include media-mobile {
-    display: none;
-  }
 }
 
 .menu__content_hidden {

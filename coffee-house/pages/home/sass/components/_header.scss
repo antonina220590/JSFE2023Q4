@@ -10,27 +10,44 @@
 
   @include media-mobile {
     padding: 20px 16px;
+
   }
+}
+
+.hamburger__btn {
+  display: none;
 }
 
 .navigation__container {
   display: flex;
   flex: 2;
   padding-left: 20px;
-}
 
-.navigation__container_active {
+
   @include media-tablet {
-    position: absolute;
+    opacity: 0;
+    position: fixed;
     display: flex;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    right: 0;
+    left: 100%;
     gap: 30px;
     background-color: $color-background-body;
     flex-direction: column;
-    top: 100px;
+    top: 80px;
+    z-index: 2;
+    transition: all 1s ease-in-out;
+    visibility: hidden;
+  }
+}
+
+.navigation__container_active {
+  @include media-tablet {
+    left: 0;
+    opacity: 3;
+    visibility: visible;
+
   }
 }
 
@@ -43,13 +60,13 @@
   list-style: none;
   margin: 0;
   padding-top: 17px;
-}
 
-.navigation__links_active {
   @include media-tablet {
     flex-direction: column;
-    padding-top: 60px;
+    padding-top: 80px;
     align-items: center;
+    z-index: 3;
+    transition: all 1s ease-in-out;
   }
 }
 
@@ -57,27 +74,19 @@
   padding-right: 4rem;
 
   @include media-tablet {
-    padding-right: 0;
+    padding-bottom: 60px;
   }
 }
 
-.navigation__links_active li {
-  @include media-tablet {
-  padding-bottom: 60px;
-  }
-}
 
 .menu_cont {
   padding-top: 17px;
 
   @include media-tablet {
-    display: none;
+   display: flex;
+   padding-top: 11px;
+   padding-right: 43px;
   }
-}
-
-.menu_cont_active{
-  display: flex;
-  padding-top: 11px;
 }
 
 .link_typography {
@@ -100,11 +109,16 @@
   bottom: -5px;
 }
 
-.link_typography--active {
+.link_typography_active {
   pointer-events: none;
+
+  @include media-tablet {
+    pointer-events: all;
+    cursor: default;
+  }
 }
 
-.link_typography--active::after{
+.link_typography_active::after{
   opacity: 3;
   transform: scaleX(1);
   pointer-events: none;
@@ -122,21 +136,16 @@
   flex: 1;
 }
 
-.header__navigation {
+.navigation {
   display: flex;
   flex: 6;
 
-  @include media-tablet {
-    display: none;
-  }
-}
-
-.header__navigation_active {
   @include media-tablet {
     display: flex;
     flex: 0;
   }
 }
+
 
 .header__menu {
   display: flex;
@@ -146,7 +155,7 @@
   text-decoration: none;
 
   @include media-tablet{
-    gap: 10px;
+    gap: 15px;
   }
 }
 

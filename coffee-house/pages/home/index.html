@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="../../assets/favicon/cake.png">
   <link rel="stylesheet" href="./sass/style.css">
-  <script defer src="./index.js"></script>
+  <script defer src="./index.js" type="module"></script>
+  <script defer src="./products.js" type="module"></script>
   <title>Home</title>
 </head>
 <body>
@@ -21,7 +22,6 @@
         <img class="logo__img" src="../../assets/header/coffee_logo.svg" alt="logo">
       </a>
       <div class="navigation__container">
-      <div class="header__navigation">
         <nav class="navigation">
           <ul class="navigation__links">
             <li><a href='#favourites' class='navigation__link link_typography'>Favorite coffee</a></li>
@@ -30,23 +30,24 @@
             <li><a href='#footer' class='navigation__link link_typography'>Contact us</a></li>
           </ul>
         </nav>
-      </div>
       <div class="menu_cont">
       <a class="header__menu link_typography" href="../menu/index.html">Menu
         <img class="coffee_cup" src="../../assets/header/coffee-cup.svg" alt="cup of coffee">
       </a>
     </div>
   </div>
-    <div class="header__hamburger_circle">
-      <div class="hamburger">
-        <span></span>
-      </div>
-    </div>
+    <button class="hamburger__btn hamburger">
+        <span class="hamburger__line"></span>
+    </button>
     </div>
   </header>
   <main>
     <section class="enjoy">
       <div class="wrapper enjoy__wrapper">
+        <div class="enjoy__video_bg">
+          <video class="enjoy__video" autoplay loop muted>
+            <source src="../../assets/video/enjoy_video.webm" type="video/webm">
+          </video>
         <div class="enjoy__content">
           <h1 class="enjoy__title"> <span class="favourite__title title_italic_h1">Enjoy</span> premium coffee at our charming cafe</h1>
           <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
@@ -65,6 +66,7 @@
         </div>
         </div>
       </div>
+    </div>
     </section>
     <section class="favourites" id="favourites">
       <div class="wrapper favourites__wrapper">

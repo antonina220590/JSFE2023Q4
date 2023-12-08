@@ -491,7 +491,7 @@ template {
   }
 }
 
-.slider__content {
+.slides {
   max-width: 480px;
   display: flex;
   flex-direction: column;
@@ -500,9 +500,25 @@ template {
   text-align: center;
 }
 @media (max-width: 670px) {
-  .slider__content {
+  .slides {
     max-width: 348px;
   }
+}
+
+.content__container {
+  max-width: 480px;
+  overflow: hidden;
+}
+@media (max-width: 670px) {
+  .content__container {
+    max-width: 348px;
+  }
+}
+
+.slider__content {
+  display: flex;
+  gap: 200px;
+  transition: all 0.5s ease-in-out;
 }
 
 .favourite__slider-button {

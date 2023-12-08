@@ -1481,6 +1481,99 @@ body {
     overflow-y: hidden;
   }
 }
+.modal-window__overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(64, 63, 61, 0.8);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100wv;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-window__overlay_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__content__wrapper {
+  background-color: #E1D4C9;
+  margin: auto 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: absolute;
+  height: 504px;
+  max-width: 800px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+}
+
+.modal-window__img_content {
+  max-width: 310px;
+  max-height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.modal-window_left-side {
+  padding: 16px 0 16px 16px;
+}
+
+.modal-window_right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 16px 16px 0;
+}
+
+.menu-list__title-modal {
+  padding-bottom: 0;
+}
+
+.modal-window_right-side__title {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-window__btns__wrapper {
+  display: flex;
+  padding-top: 12px;
+  gap: 8px;
+}
+
+.modal-window__total {
+  display: flex;
+  gap: 303px;
+}
+
+.modal-window__info {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  border-top: solid 1px #C1B6AD;
+  max-width: 438px;
+}
+
+.modal-window__info svg {
+  width: 16px;
+  height: 16px;
+}
+
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -1633,6 +1726,15 @@ p {
   line-height: 150%;
   color: #403F3D;
   margin: 0;
+  padding: 0;
+}
+
+.modal-window__info-text {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
 }
 
 .enjoy__text {
@@ -1727,6 +1829,15 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+  color: #403F3D;
+}
+
+.menu__btn_circle-size {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
   color: #403F3D;
 }
 

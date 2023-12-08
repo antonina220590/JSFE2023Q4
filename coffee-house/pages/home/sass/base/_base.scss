@@ -142,6 +142,15 @@ p {
   line-height: 150%;
   color: $color-text-dark;
   margin: 0;
+  padding: 0;
+}
+
+.modal-window__info-text {
+  font-family: Inter;
+font-size: 10px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%;
 }
 
 .enjoy__text {
@@ -236,5 +245,14 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+  color: $color-text-dark;
+}
+
+.menu__btn_circle-size {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
   color: $color-text-dark;
 }

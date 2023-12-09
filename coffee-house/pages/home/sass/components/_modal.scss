@@ -146,3 +146,28 @@
     transition:  1s ease-out;
   }
 }
+
+.menu__btn__modal {
+display: flex;
+flex-direction: row-reverse;
+}
+
+.body__lock {
+  overflow-y: hidden;
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu__img_modal {
+  width: unset;
+}

@@ -26,7 +26,6 @@ function createComponent (productsJson) { //созданную карточку 
     const cardComponent = createMenuCard(product);
     cards.push(cardComponent);
   })
-
   return componentCard;
 }
 
@@ -35,12 +34,15 @@ function createMenuCard (product) { //создаем саму структуру
 
   const component = document.createElement('div');
   component.classList.add('menu__content');
+  component.id = product.id;
+
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('menu__list__img-content');
   const image = document.createElement('img');
   image.classList.add('menu__img');
   image.src = product.img;
   image.innerText = product.category;
+
 
   imageContainer.append(image);
 
@@ -51,9 +53,11 @@ function createMenuCard (product) { //создаем саму структуру
   title.classList.add('menu-list__title');
   title.textContent = product.name;
 
+
   const description = document.createElement('p');
   description.classList.add('menu-list__text');
   description.textContent = product.description;
+
 
   const price = document.createElement('span');
   price.classList.add('menu-list__price');

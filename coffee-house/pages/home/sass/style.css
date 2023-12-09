@@ -945,6 +945,7 @@ body {
   }
   .menu__btn:hover .menu__btn_circle {
     background-color: #E1D4C9;
+    color: #403F3D;
   }
 }
 .menu__list {
@@ -1509,13 +1510,22 @@ body {
   flex-direction: row;
   gap: 20px;
   position: absolute;
-  height: 504px;
   max-width: 800px;
   width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 40px;
+}
+@media (max-width: 1095px) {
+  .modal__content__wrapper {
+    max-width: 688px;
+  }
+}
+@media (max-width: 670px) {
+  .modal__content__wrapper {
+    width: 90%;
+  }
 }
 
 .modal-window__img_content {
@@ -1527,10 +1537,16 @@ body {
   justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .modal-window_left-side {
   padding: 16px 0 16px 16px;
+}
+@media (max-width: 670px) {
+  .modal-window_left-side {
+    display: none;
+  }
 }
 
 .modal-window_right-side {
@@ -1538,6 +1554,11 @@ body {
   flex-direction: column;
   gap: 20px;
   padding: 16px 16px 16px 0;
+}
+@media (max-width: 670px) {
+  .modal-window_right-side {
+    padding: 16px 16px 16px 16px;
+  }
 }
 
 .menu-list__title-modal {
@@ -1555,25 +1576,68 @@ body {
   padding-top: 12px;
   gap: 8px;
 }
+@media (max-width: 1095px) {
+  .modal-window__btns__wrapper {
+    flex-wrap: wrap;
+  }
+}
 
 .modal-window__total {
   display: flex;
-  gap: 303px;
+  justify-content: space-between;
+  border-bottom: solid 1px #C1B6AD;
+}
+
+.modal-window__info_warning {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
 .modal-window__info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 8px;
-  border-top: solid 1px #C1B6AD;
   max-width: 438px;
 }
 
-.modal-window__info svg {
+.modal-window__info_warning img {
   width: 16px;
   height: 16px;
+  padding: 12px 0;
+}
+@media (max-width: 1095px) {
+  .modal-window__info_warning img {
+    padding-top: 8px;
+  }
 }
 
+.modal-window__info-text {
+  padding: 12px 0;
+}
+@media (max-width: 1095px) {
+  .modal-window__info-text {
+    padding-top: 8px;
+  }
+}
+
+.modal-window_close_btn {
+  border-radius: 100px;
+  background-color: #E1D4C9;
+  border: 1px solid #665F55;
+  padding: 10px 78px;
+  cursor: pointer;
+  transition: 1s ease-out;
+  margin-top: 10px;
+}
+
+@media (hover: hover) {
+  .modal-window_close_btn:hover {
+    background-color: #665F55;
+    color: #E1D4C9;
+    transition: 1s ease-out;
+  }
+}
 html {
   font-size: 10px;
   scroll-behavior: smooth;

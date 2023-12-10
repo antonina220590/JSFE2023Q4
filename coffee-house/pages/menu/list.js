@@ -5,6 +5,7 @@ const productsJson = [
     "name": "Irish coffee",
     "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
     "price": "$7.00",
+    "currency": "$",
     "category": "coffee",
     "sizes": {
       "s": {
@@ -42,6 +43,7 @@ const productsJson = [
     "name": "Kahlua coffee",
     "description": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
     "price": "$7.00",
+    "currency": "$",
     "category": "coffee",
     "sizes": {
       "s": {

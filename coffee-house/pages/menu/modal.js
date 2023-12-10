@@ -7,7 +7,13 @@ let modalOverlay = null;
 let currentModal = '';
 let currentCard = 'Latte';
 
-let initialPrice = '';
+let basePrice = null;
+let sizeMPrice = null;
+let sizeLPrice = null;
+let additivesPrice = null;
+let clickedSize = null;
+let changedPrice = null;
+let defaultPrice = null;
 //Отрисовка модального окна
 
 function createModalWrapper (productsJson) {
@@ -20,6 +26,7 @@ function createModalWrapper (productsJson) {
   productsJson.forEach((product) => {
     const modalComponent =  createModalWindow(product);
     modal.push(modalComponent);
+
   })
   return  componentContainer;
 }
@@ -68,7 +75,7 @@ function createModalWindow (product) { //создаем саму структу�
   sizeBtnsWrapper.classList.add('modal-window__btns__wrapper', 'modal-window__btns__wrapper_size');
 
   const btnSsize = document.createElement('button');
-  btnSsize.classList.add('menu__btn', 'menu__btn__modal', 'menu__btn_active');
+  btnSsize.classList.add('menu__btn', 'menu__btn__modal', 'menu__btn__modal_size', 'menu__btn__modal_S_size', 'menu__btn_active');
   btnSsize.textContent = product.sizes.s.size;
 
   const btnSSizeSpan = document.createElement('span');
@@ -78,7 +85,7 @@ function createModalWindow (product) { //создаем саму структу�
   btnSsize.append(btnSSizeSpan)
 
   const btnMsize = document.createElement('button');
-  btnMsize.classList.add('menu__btn', 'menu__btn__modal');
+  btnMsize.classList.add('menu__btn', 'menu__btn__modal_size', 'menu__btn__modal_M_size', 'menu__btn__modal');
   btnMsize.textContent = product.sizes.m.size;
 
   const btnMSizeSpan = document.createElement('span');
@@ -88,7 +95,7 @@ function createModalWindow (product) { //создаем саму структу�
   btnMsize.append(btnMSizeSpan)
 
   const btnLsize = document.createElement('button');
-  btnLsize.classList.add('menu__btn', 'menu__btn__modal');
+  btnLsize.classList.add('menu__btn', 'menu__btn__modal_size','menu__btn__modal_L_size', 'menu__btn__modal');
   btnLsize.textContent = product.sizes.l.size;
 
   const btnLSizeSpan = document.createElement('span');
@@ -152,14 +159,18 @@ function createModalWindow (product) { //создаем саму структу�
   totalSpanTitle.classList.add('menu-list__price', 'modal-window_total');
   totalSpanTitle.textContent = 'Total'
 
+  const totalSpanCurrency = document.createElement('span');
+  totalSpanCurrency.classList.add('menu-list__price', 'modal-window__total-price', 'modal-window__total-price_currency');
+  totalSpanCurrency.textContent = '$';
+
   const totalSpanPrice = document.createElement('span');
-  totalSpanPrice.classList.add('menu-list__price', 'modal-window__total-price');
-  totalSpanPrice.textContent = product.price;
+  totalSpanPrice.classList.add('menu-list__price', 'modal-window__total-price', 'modal-window__total-price_changable');
+  defaultPrice = (+(product.price).slice(1)).toFixed(2)
+  totalSpanPrice.textContent = defaultPrice;
 
-  let basePrice = product.price;
-  console.log(+(basePrice.slice(1)))
+  totalSpanCurrency.append(totalSpanPrice);
 
-  componentTotal.append(totalSpanTitle, totalSpanPrice);
+  componentTotal.append(totalSpanTitle, totalSpanCurrency);
 
   const componentWarningWrap = document.createElement('div');
   componentWarningWrap.classList.add('modal-window__info');
@@ -186,6 +197,9 @@ function createModalWindow (product) { //создаем саму структу�
 
   componentWrapper.append(componentLeft, componentRight);
 
+  //price
+
+
   return componentWrapper;
 }
 
@@ -203,67 +217,71 @@ function generateModalCard() {
   modalContainer = createModalWrapper(productsJson);
   modalOverlay = document.querySelector('.modal-window__overlay');
   modalOverlay.append(modalContainer);
+
+
   return modalOverlay;
 }
 generateModalCard();
 
+let price = null;
 
 function defineVisibleModal() {
   modal.forEach((item) => {
     item.querySelectorAll('.menu-list__title-modal').forEach(el => { //el - это название продукта в модальном окне
       if(el.textContent === currentCard) {
         currentModal = item;
+        currentModal.querySelector('.modal-window_close_btn').addEventListener('click', toggleModal);
+        price = currentModal.querySelector('.modal-window__total-price').textContent;
+
       }
   })
-})
 
+})
+sizeBtnsClickHandler();
+updateTotalPrice();
 return currentModal;
 }
 
 defineVisibleModal();
+
+
 
 function renderVisibleCards() {
       modalContainer.insertAdjacentElement('beforeend', currentModal)
 }
 renderVisibleCards();
 
-// Открытие и закрытие модального окна при клике по карточке
 
-const closeModalBtn = document.querySelector('.modal-window_close_btn');
+
+// Открытие и закрытие модального окна при клике по карточке
 
 let clickedCard = '';
 function cardsClickHandler () {
   document.querySelector('.menu__list').addEventListener('click', (event) => {
-
     if(event.target.closest('.menu__content')) {
      clickedCard = event.target.closest('.menu__content');
       currentCard = clickedCard.id;
        defineVisibleModal();
        renderVisibleCards();
-      toggleModal();
+       toggleModal();
     }
   })
 
 }
 
-
-
+// componentContainer.querySelector('modal-window_close_btn').addEventListener('click', toggleModal)
 function toggleModal() {
  const window =  document.querySelector('.modal-window__overlay');
  window.classList.toggle('modal-window__overlay_active');
  document.body.classList.toggle('body__lock');
 }
 
-
-closeModalBtn.addEventListener('click', () => {
-  toggleModal();
-});
-
 document.addEventListener('click', (e) => {
- if (e.target.classList.contains('modal-window__overlay')) {
+ if (e.target.classList.contains('modal-window__overlay_active')) {
   toggleModal();
   };
 });
+
 
 window.addEventListener('load', () => {
   cardsClickHandler ()
@@ -271,5 +289,61 @@ window.addEventListener('load', () => {
 
 // Изменение цены
 
+
+function sizeBtnsClickHandler () {
+  currentModal.querySelector('.modal-window__btns__wrapper_size').addEventListener('click', (event) => {
+    if(event.target.closest('.menu__btn__modal')) {
+       clickedSize = event.target;
+       removeActiveClassSizeBtn();
+       addActiveClassSizeBtn (clickedSize);
+       updateTotalPrice(clickedSize);
+    }
+  })
+}
+
+function removeActiveClassSizeBtn() {
+  let activeSizeBtn = document.querySelectorAll('.menu__btn__modal_size');
+ activeSizeBtn.forEach((btn) => {
+   btn.classList.remove('menu__btn_active');
+ })
+
+}
+
+function addActiveClassSizeBtn (clickedSize) {
+  clickedSize.classList.add('menu__btn_active');
+}
+
+function findAddsPrice (productsJson) {
+  productsJson.forEach(product => {
+   sizeMPrice  = +(product.sizes.m['add-price']);
+   sizeLPrice = +(product.sizes.l['add-price']);
+   additivesPrice = +(product.additives[0]['add-price']);
+  })
+}
+
+
+function updateTotalPrice(clickedSize) {
+   basePrice = +(+price.slice(1));
+
+  if(clickedSize) {
+    if(clickedSize.classList.contains('menu__btn__modal_S_size')) {
+      currentModal.querySelector('.modal-window__total-price_changable').textContent = basePrice.toFixed(2);
+    }
+
+    if(clickedSize.classList.contains('menu__btn__modal_M_size')) {
+     changedPrice = (basePrice + sizeMPrice).toFixed(2);
+     currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice;
+
+    }
+    if(clickedSize.classList.contains('menu__btn__modal_L_size')) {
+      changedPrice = (basePrice + sizeLPrice).toFixed(2);
+      currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice;
+     }
+
+
+  }
+
+  findAddsPrice (productsJson)
+}
 
 

@@ -47,7 +47,7 @@ function moveProgressBar(sliderCount) {
   if(state >= activeState) {
     state = 0;
     progressBar[sliderCount].style.width = '0%';
-    nextSlide();
+    prevSlide();
   } else{
     state += 10;
     progressBar[sliderCount].style.width = `${state}%`;
@@ -60,7 +60,7 @@ let moveIntervalBar = null;
 function autoSlide() {
 
 moveIntervalSlide = setInterval(() =>{
-  nextSlide(sliderCount)
+  prevSlide(sliderCount)
 }, 6000);
 
 moveIntervalBar = setInterval(() => {

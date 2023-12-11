@@ -163,7 +163,7 @@ function createModalWindow (product) { //создаем саму структу�
 
   const totalSpanTitle = document.createElement('span');
   totalSpanTitle.classList.add('menu-list__price', 'modal-window_total');
-  totalSpanTitle.textContent = 'Total'
+  totalSpanTitle.textContent = 'Total:'
 
   const totalSpanCurrency = document.createElement('span');
   totalSpanCurrency.classList.add('menu-list__price', 'modal-window__total-price', 'modal-window__total-price_currency');

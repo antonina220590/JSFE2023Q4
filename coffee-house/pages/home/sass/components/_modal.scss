@@ -96,13 +96,13 @@
 .modal-window__total {
   display: flex;
   justify-content: space-between;
-  border-bottom: solid 1px $color-border-light;
 }
 
 .modal-window__info_warning {
   display: flex;
   flex-direction: row;
   gap: 8px;
+  border-top: solid 1px $color-border-light;
 }
 
 .modal-window__info {
@@ -126,6 +126,11 @@
   padding: 12px 0;
   @include media-modal {
     padding-top: 8px;
+  }
+
+  @include media-tablet {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
   }
 }
 
@@ -170,4 +175,11 @@ flex-direction: row-reverse;
 
 .menu__img_modal {
   width: unset;
+}
+
+
+.modal-window__btns__wrapper_adds {
+  @include media-tablet {
+    padding-top: 8px;;
+  }
 }

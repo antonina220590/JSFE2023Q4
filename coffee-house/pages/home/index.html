@@ -10,7 +10,7 @@
   <link rel="icon" href="../../assets/favicon/cake.png">
   <link rel="stylesheet" href="./sass/style.css">
   <script defer src="./index.js" type="module"></script>
-  <script defer src="./products.js" type="module"></script>
+  <script defer src="./slider.js" type="module"></script>
   <title>Home</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
     <section class="enjoy">
       <div class="wrapper enjoy__wrapper">
         <div class="enjoy__video_bg">
-          <video class="enjoy__video" autoplay loop muted>
+          <video class="enjoy__video" autoplay playsinline loop muted>
             <source src="../../assets/video/enjoy_video.webm" type="video/webm">
           </video>
         <div class="enjoy__content">
@@ -82,10 +82,24 @@
           <div class="favourite__slider__wrapper">
             <div class="content__container">
             <div class="slider__content">
+              <div class="slides slide-1">
               <img class="slider__img" src="../../assets/favourites/coffee-slider-1.png" alt="cup of cold coffee">
               <h3 class="slider__title">S’mores Frappuccino</h3>
               <p class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
               <span class="slider__price">$5.50</span>
+            </div>
+            <div class="slides slide-2">
+              <img class="slider__img" src="../../assets/favourites/coffee-slider-2.png" alt="cup of cold coffee">
+              <h3 class="slider__title">Caramel Macchiato</h3>
+              <p class="slider__text">Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
+              <span class="slider__price">$5.00</span>
+            </div>
+            <div class="slides slide-3">
+              <img class="slider__img" src="../../assets/favourites/coffee-slider-3.png" alt="cup of cold coffee">
+              <h3 class="slider__title">Ice coffee</h3>
+              <p class="slider__text">A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</p>
+              <span class="slider__price">$4.50</span>
+            </div>
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
 const productsJson = [
   {
-    "id": "coffee",
+    "id": "Irish coffee",
     "img": "../../assets/menu/coffee/coffee-1.jpg",
     "name": "Irish coffee",
     "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
     "price": "$7.00",
+    "currency": "$",
     "category": "coffee",
     "sizes": {
       "s": {
@@ -37,10 +38,12 @@ const productsJson = [
   },
 
   {
+    "id": "Kahlua coffee",
     "img": "../../assets/menu/coffee/coffee-2.jpg",
     "name": "Kahlua coffee",
     "description": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
     "price": "$7.00",
+    "currency": "$",
     "category": "coffee",
     "sizes": {
       "s": {
@@ -73,6 +76,7 @@ const productsJson = [
   },
 
   {
+    "id": "Honey raf",
     "img": "../../assets/menu/coffee/coffee-3.jpg",
     "name": "Honey raf",
     "description": "Espresso with frothed milk, cream and aromatic honey",
@@ -109,6 +113,7 @@ const productsJson = [
   },
 
   {
+    "id": "Ice cappuccino",
     "img": "../../assets/menu/coffee/coffee-4.jpg",
     "name": "Ice cappuccino",
     "description": "Cappuccino with soft thick foam in summer version with ice",
@@ -145,6 +150,7 @@ const productsJson = [
   },
 
   {
+    "id": "Espresso",
     "img": "../../assets/menu/coffee/coffee-5.jpg",
     "name": "Espresso",
     "description": "Classic black coffee",
@@ -181,6 +187,7 @@ const productsJson = [
   },
 
   {
+    "id": "Latte",
     "img": "../../assets/menu/coffee/coffee-6.jpg",
     "name": "Latte",
     "description": "Espresso coffee with the addition of steamed milk and dense milk foam",
@@ -217,6 +224,7 @@ const productsJson = [
   },
 
   {
+    "id": "Latte macchiato",
     "img": "../../assets/menu/coffee/coffee-7.jpg",
     "name": "Latte macchiato",
     "description": "Espresso with frothed milk and chocolate",
@@ -253,6 +261,7 @@ const productsJson = [
   },
 
   {
+    "id": "Coffee with cognac",
     "img": "../../assets/menu/coffee/coffee-8.jpg",
     "name": "Coffee with cognac",
     "description": "Fragrant black coffee with cognac and whipped cream",
@@ -289,6 +298,7 @@ const productsJson = [
   },
 
   {
+    "id": "Moroccan",
     "img": "../../assets/menu/tea/tea-1.jpg",
     "name": "Moroccan",
     "description": "Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint",
@@ -325,6 +335,7 @@ const productsJson = [
   },
 
   {
+    "id": "Ginger",
     "img": "../../assets/menu/tea/tea-2.jpg",
     "name": "Ginger",
     "description": "Original black tea with fresh ginger, lemon and honey",
@@ -361,6 +372,7 @@ const productsJson = [
   },
 
   {
+    "id": "Cranberry",
     "img": "../../assets/menu/tea/tea-3.jpg",
     "name": "Cranberry",
     "description": "Invigorating black tea with cranberry and honey",
@@ -397,6 +409,7 @@ const productsJson = [
   },
 
   {
+    "id": "Sea buckthorn",
     "img": "../../assets/menu/tea/tea-4.jpg",
     "name": "Sea buckthorn",
     "description": "Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon",
@@ -433,6 +446,7 @@ const productsJson = [
   },
 
   {
+    "id": "Marble cheesecake",
     "img": "../../assets/menu/desserts/dessert-1.jpg",
     "name": "Marble cheesecake",
     "description": "Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
@@ -469,6 +483,7 @@ const productsJson = [
   },
 
   {
+    "id": "Red velvet",
     "img": "../../assets/menu/desserts/dessert-2.jpg",
     "name": "Red velvet",
     "description": "Layer cake with cream cheese frosting",
@@ -505,6 +520,7 @@ const productsJson = [
   },
 
   {
+    "id": "Cheesecakes",
     "img": "../../assets/menu/desserts/dessert-3.jpg",
     "name": "Cheesecakes",
     "description": "Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar",
@@ -541,6 +557,7 @@ const productsJson = [
   },
 
   {
+    "id": "Creme brulee",
     "img": "../../assets/menu/desserts/dessert-4.jpg",
     "name": "Creme brulee",
     "description": "Delicate creamy dessert in a caramel basket with wild berries",
@@ -577,6 +594,7 @@ const productsJson = [
   },
 
   {
+    "id": "Pancakes",
     "img": "../../assets/menu/desserts/dessert-5.jpg",
     "name": "Pancakes",
     "description": "Tender pancakes with strawberry jam and fresh strawberries",
@@ -613,6 +631,7 @@ const productsJson = [
   },
 
   {
+    "id": "Honey cake",
     "img": "../../assets/menu/desserts/dessert-6.jpg",
     "name": "Honey cake",
     "description": "Classic honey cake with delicate custard",
@@ -649,6 +668,7 @@ const productsJson = [
   },
 
   {
+    "id": "Chocolate cake",
     "img": "../../assets/menu/desserts/dessert-7.jpg",
     "name": "Chocolate cake",
     "description": "Cake with hot chocolate filling and nuts with dried apricots",
@@ -685,6 +705,7 @@ const productsJson = [
   },
 
   {
+    "id": "Black forest",
     "img": "../../assets/menu/desserts/dessert-8.jpg",
     "name": "Black forest",
     "description": "A combination of thin sponge cake with cherry jam and light chocolate mousse",

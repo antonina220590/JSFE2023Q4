@@ -8,12 +8,18 @@ let currentModal = '';
 let currentCard = 'Latte';
 
 let basePrice = null;
+let finalPrice = null;
 let sizeMPrice = null;
 let sizeLPrice = null;
+let sizeSPrice = null;
 let additivesPrice = null;
 let clickedSize = null;
+let clickedAdds = null;
 let changedPrice = null;
 let defaultPrice = null;
+let activeAddsBtns = null;
+
+let initialPrice = null;
 //Отрисовка модального окна
 
 function createModalWrapper (productsJson) {
@@ -119,7 +125,7 @@ function createModalWindow (product) { //создаем саму структу�
   additivesBtnsWrapper.classList.add('modal-window__btns__wrapper', 'modal-window__btns__wrapper_adds');
 
   const btn1Adds = document.createElement('button');
-  btn1Adds.classList.add('menu__btn', 'menu__btn__modal');
+  btn1Adds.classList.add('menu__btn', 'menu__btn__modal', 'menu__btn__modal_adds');
   btn1Adds.textContent = product.additives[0].name;
 
   const btn1AddsSpan = document.createElement('span');
@@ -129,7 +135,7 @@ function createModalWindow (product) { //создаем саму структу�
   btn1Adds.append(btn1AddsSpan);
 
   const btn2Adds = document.createElement('button');
-  btn2Adds.classList.add('menu__btn', 'menu__btn__modal');
+  btn2Adds.classList.add('menu__btn', 'menu__btn__modal', 'menu__btn__modal_adds');
   btn2Adds.textContent = product.additives[1].name;
 
   const btn2AddsSpan = document.createElement('span');
@@ -139,7 +145,7 @@ function createModalWindow (product) { //создаем саму структу�
   btn2Adds.append(btn2AddsSpan);
 
   const btn3Adds = document.createElement('button');
-  btn3Adds.classList.add('menu__btn', 'menu__btn__modal');
+  btn3Adds.classList.add('menu__btn', 'menu__btn__modal', 'menu__btn__modal_adds');
   btn3Adds.textContent = product.additives[2].name;;
 
   const btn3AddsSpan = document.createElement('span');
@@ -238,6 +244,7 @@ function defineVisibleModal() {
 
 })
 sizeBtnsClickHandler();
+addsBtnsClickHandler();
 updateTotalPrice();
 return currentModal;
 }
@@ -290,12 +297,82 @@ window.addEventListener('load', () => {
 // Изменение цены
 
 
+function addsBtnsClickHandler() {
+ let addsBtns = currentModal.querySelectorAll('.menu__btn__modal_adds');
+ addsBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+  btn.classList.toggle('menu__btn_active');
+
+  activeAddsBtns = btn.classList.contains('menu__btn_active');
+  if (activeAddsBtns) {
+   finalPrice = +(changedPrice += additivesPrice)
+  } else {
+    finalPrice = +(changedPrice -= additivesPrice)
+  }
+  currentModal.querySelector('.modal-window__total-price_changable').textContent = finalPrice.toFixed(2);
+  })
+
+ })
+ findAddsPrice (productsJson)
+ updateTotalPrice(changedPrice)
+ return +finalPrice
+}
+
+
+
+function updateTotalPrice() {
+   changedPrice = +(+price.slice(1)) + sizeSPrice;
+
+  if(clickedSize) {
+    if(clickedSize.classList.contains('menu__btn__modal_S_size')) {
+      currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice.toFixed(2);
+    }
+
+    if(clickedSize.classList.contains('menu__btn__modal_M_size')) {
+     changedPrice = changedPrice + sizeMPrice;
+     currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice.toFixed(2);
+
+    }
+    if(clickedSize.classList.contains('menu__btn__modal_L_size')) {
+      changedPrice = changedPrice + sizeLPrice;
+      currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice.toFixed(2);
+    }
+   return changedPrice
+  }
+  findAddsPrice (productsJson)
+}
+
+
+function findAddsPrice (productsJson) { //вытаскиваем значения из JSON
+  productsJson.forEach(product => {
+   sizeMPrice  = +(product.sizes.m['add-price']);
+   sizeLPrice = +(product.sizes.l['add-price']);
+   sizeSPrice = +(product.sizes.s['add-price']);
+
+
+   additivesPrice = +(product.additives[0]['add-price']);
+   initialPrice = parseFloat(product.price);
+  })
+}
+
+
+function findFinalPrice (initialPrice, additivesPrice) { //пишем конструктор для финальной стоимости
+  finalPrice = initialPrice + additivesPrice;
+  let itemToChange = currentModal.querySelector('.modal-window__total-price_changable');
+  itemToChange.textContent = `${finalPrice.toFixed(2)}`
+
+   console.log(itemToChange)
+   findAddsPrice (productsJson)
+}
+findFinalPrice (initialPrice, additivesPrice)
+
+
 function sizeBtnsClickHandler () {
   currentModal.querySelector('.modal-window__btns__wrapper_size').addEventListener('click', (event) => {
     if(event.target.closest('.menu__btn__modal')) {
        clickedSize = event.target;
        removeActiveClassSizeBtn();
-       addActiveClassSizeBtn (clickedSize);
+       addActiveClassSizeBtn(clickedSize);
        updateTotalPrice(clickedSize);
     }
   })
@@ -305,45 +382,12 @@ function removeActiveClassSizeBtn() {
   let activeSizeBtn = document.querySelectorAll('.menu__btn__modal_size');
  activeSizeBtn.forEach((btn) => {
    btn.classList.remove('menu__btn_active');
- })
+   currentModal.querySelector('.modal-window__total-price_changable').textContent = price;
+   })
+ }
 
-}
+
 
 function addActiveClassSizeBtn (clickedSize) {
   clickedSize.classList.add('menu__btn_active');
 }
-
-function findAddsPrice (productsJson) {
-  productsJson.forEach(product => {
-   sizeMPrice  = +(product.sizes.m['add-price']);
-   sizeLPrice = +(product.sizes.l['add-price']);
-   additivesPrice = +(product.additives[0]['add-price']);
-  })
-}
-
-
-function updateTotalPrice(clickedSize) {
-   basePrice = +(+price.slice(1));
-
-  if(clickedSize) {
-    if(clickedSize.classList.contains('menu__btn__modal_S_size')) {
-      currentModal.querySelector('.modal-window__total-price_changable').textContent = basePrice.toFixed(2);
-    }
-
-    if(clickedSize.classList.contains('menu__btn__modal_M_size')) {
-     changedPrice = (basePrice + sizeMPrice).toFixed(2);
-     currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice;
-
-    }
-    if(clickedSize.classList.contains('menu__btn__modal_L_size')) {
-      changedPrice = (basePrice + sizeLPrice).toFixed(2);
-      currentModal.querySelector('.modal-window__total-price_changable').textContent = changedPrice;
-     }
-
-
-  }
-
-  findAddsPrice (productsJson)
-}
-
-

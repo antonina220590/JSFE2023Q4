@@ -935,6 +935,7 @@ body {
 
 .menu__btn_active .menu__btn_circle {
   background-color: #E1D4C9;
+  color: #403F3D;
 }
 
 @media (hover: hover) {

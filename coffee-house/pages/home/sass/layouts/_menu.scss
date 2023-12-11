@@ -70,6 +70,7 @@ body {
 
 .menu__btn_active .menu__btn_circle {
   background-color: $color-background-body;
+  color: $color-text-dark;
 }
 
 @media (hover: hover) {

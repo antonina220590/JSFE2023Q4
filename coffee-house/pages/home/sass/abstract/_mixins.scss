@@ -10,6 +10,11 @@
   @media(max-width: $small-width) {@content; }
 }
 
+@mixin media-modal {
+  @media(max-width: $modal-width) {@content; }
+}
+
+
 @mixin media-tablet {
   @media(max-width: $tablet-width) {@content; }
 }

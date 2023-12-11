@@ -491,7 +491,7 @@ template {
   }
 }
 
-.slider__content {
+.slides {
   max-width: 480px;
   display: flex;
   flex-direction: column;
@@ -500,9 +500,25 @@ template {
   text-align: center;
 }
 @media (max-width: 670px) {
-  .slider__content {
+  .slides {
     max-width: 348px;
   }
+}
+
+.content__container {
+  max-width: 480px;
+  overflow: hidden;
+}
+@media (max-width: 670px) {
+  .content__container {
+    max-width: 348px;
+  }
+}
+
+.slider__content {
+  display: flex;
+  gap: 200px;
+  transition: all 1s ease-in-out;
 }
 
 .favourite__slider-button {
@@ -919,6 +935,7 @@ body {
 
 .menu__btn_active .menu__btn_circle {
   background-color: #E1D4C9;
+  color: #403F3D;
 }
 
 @media (hover: hover) {
@@ -929,6 +946,7 @@ body {
   }
   .menu__btn:hover .menu__btn_circle {
     background-color: #E1D4C9;
+    color: #403F3D;
   }
 }
 .menu__list {
@@ -1465,6 +1483,187 @@ body {
     overflow-y: hidden;
   }
 }
+.modal-window__overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(64, 63, 61, 0.8);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100wv;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-window__overlay_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__content__wrapper {
+  background-color: #E1D4C9;
+  margin: auto 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: absolute;
+  max-width: 800px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+}
+@media (max-width: 1095px) {
+  .modal__content__wrapper {
+    max-width: 688px;
+  }
+}
+@media (max-width: 670px) {
+  .modal__content__wrapper {
+    width: 90%;
+  }
+}
+
+.modal-window__img_content {
+  max-width: 310px;
+  max-height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.modal-window_left-side {
+  padding: 16px 0 16px 16px;
+}
+@media (max-width: 670px) {
+  .modal-window_left-side {
+    display: none;
+  }
+}
+
+.modal-window_right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 16px 16px 0;
+}
+@media (max-width: 670px) {
+  .modal-window_right-side {
+    padding: 16px 16px 16px 16px;
+  }
+}
+
+.menu-list__title-modal {
+  padding-bottom: 0;
+}
+
+.modal-window_right-side__title {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-window__btns__wrapper {
+  display: flex;
+  padding-top: 12px;
+  gap: 8px;
+}
+@media (max-width: 1095px) {
+  .modal-window__btns__wrapper {
+    flex-wrap: wrap;
+  }
+}
+
+.modal-window__total {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #C1B6AD;
+}
+
+.modal-window__info_warning {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.modal-window__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 438px;
+}
+
+.modal-window__info_warning img {
+  width: 16px;
+  height: 16px;
+  padding: 12px 0;
+}
+@media (max-width: 1095px) {
+  .modal-window__info_warning img {
+    padding-top: 8px;
+  }
+}
+
+.modal-window__info-text {
+  padding: 12px 0;
+}
+@media (max-width: 1095px) {
+  .modal-window__info-text {
+    padding-top: 8px;
+  }
+}
+
+.modal-window_close_btn {
+  border-radius: 100px;
+  background-color: #E1D4C9;
+  border: 1px solid #665F55;
+  padding: 10px 78px;
+  cursor: pointer;
+  transition: 1s ease-out;
+  margin-top: 10px;
+}
+
+@media (hover: hover) {
+  .modal-window_close_btn:hover {
+    background-color: #665F55;
+    color: #E1D4C9;
+    transition: 1s ease-out;
+  }
+}
+.menu__btn__modal {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.body__lock {
+  overflow-y: hidden;
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu__img_modal {
+  width: unset;
+}
+
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -1617,6 +1816,15 @@ p {
   line-height: 150%;
   color: #403F3D;
   margin: 0;
+  padding: 0;
+}
+
+.modal-window__info-text {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
 }
 
 .enjoy__text {
@@ -1711,6 +1919,15 @@ ul {
   font-style: normal;
   font-weight: 600;
   line-height: 125%;
+  color: #403F3D;
+}
+
+.menu__btn_circle-size {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
   color: #403F3D;
 }
 

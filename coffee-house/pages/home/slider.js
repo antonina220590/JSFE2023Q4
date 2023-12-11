@@ -1,49 +1,71 @@
 const ARROW_LEFT = document.querySelector('.favourite__slider-btn-prev');
 const ARROW_RIGHT = document.querySelector('.favourite__slider-btn-next');
 const SLIDER_CONTAINER = document.querySelector('.content__container')
-const SLIDER_LINE = document.querySelector('.slider__content'); //carousel
+const SLIDER_LINE = document.querySelector('.slider__content');
 const SLIDE = document.querySelectorAll('.slides');
-
-let sliderWidth = SLIDE[0].clientWidth + 200;
+let gapStyle = getComputedStyle(SLIDER_LINE);
+let progressBar = document.querySelectorAll('.pagination__line_dark_active');
+let state = 0;
+let activeState = 100;
+let startState = 10;
+let gap = parseInt(gapStyle.getPropertyValue('gap'));
+let sliderWidth = SLIDE[0].clientWidth + gap;
 let offset = 0;
 let sliderCount = 0;
+let currentWidth = null;
 
-
-function prevSlide() {
-sliderCount--;
-offset += sliderWidth;
-
- if(sliderCount <= -SLIDE.length) {
-    sliderCount = 0;
-    offset = 0;
-  }
-SLIDER_LINE.style.transform = `translateX(-${offset}px)`
-}
-
-
+//Progress Bar
 
 function nextSlide() {
-
-  sliderCount--;
-  offset += sliderWidth;
-
-  if(sliderCount <= -SLIDE.length) {
-    offset = 0;
+  progressBar[sliderCount].style.width = '0%';
+  state = startState;
+  sliderCount++;
+  if(offset === -2 * sliderWidth) {
     sliderCount = 0;
+    offset = 0;
+  }else {
+    offset -= sliderWidth
   }
-
-  SLIDER_LINE.style.transform = `translateX(${-offset}px)`;
+  SLIDER_LINE.style.transform = `translateX(${offset}px)`;
 }
 
-ARROW_LEFT.addEventListener('click', prevSlide)
-ARROW_RIGHT.addEventListener('click', nextSlide)
-let  moveInterval = null;
+function prevSlide() {
+ progressBar[sliderCount].style.width = '0%';
+ state = startState;
+ sliderCount--;
+  if(offset === 0) {
+    sliderCount = 2;
+    offset -= 2 * sliderWidth;
+  }else {
+    offset += sliderWidth;
+  }
+
+SLIDER_LINE.style.transform = `translateX(${offset}px)`;
+}
+
+function moveProgressBar(sliderCount) {
+  if(state >= activeState) {
+    state = 0;
+    progressBar[sliderCount].style.width = '0%';
+    nextSlide();
+  } else{
+    state += 10;
+    progressBar[sliderCount].style.width = `${state}%`;
+  }
+}
+
+let  moveIntervalSlide = null;
+let moveIntervalBar = null;
 
 function autoSlide() {
-moveInterval = setInterval(timer, 5000);
-  function timer() {
-    nextSlide()
-  }
+
+moveIntervalSlide = setInterval(() =>{
+  nextSlide(sliderCount)
+}, 6000);
+
+moveIntervalBar = setInterval(() => {
+  moveProgressBar(sliderCount)
+}, 600)
 }
 
 autoSlide()
@@ -82,15 +104,28 @@ function touchMove(event) {
 //Прерывание перелистывания при наведении мыши
 
 function stopMoving() {
-  clearInterval(moveInterval);
+  clearInterval(moveIntervalSlide);
+  clearInterval(moveIntervalBar);
 }
 
 function startMoving() {
-  clearInterval(moveInterval);
+  clearInterval(moveIntervalSlide);
+  clearInterval(moveIntervalBar);
   autoSlide()
 }
 
+
+function resizeWindow() {
+  currentWidth = window.innerWidth;
+  gap = parseInt(gapStyle.getPropertyValue('gap'));
+}
+
+window.addEventListener('resize', resizeWindow);
+
 SLIDE.forEach((slide) => {
   slide.addEventListener('mouseover', stopMoving, true);
-  slide.addEventListener('mouseout', startMoving, true)
+  slide.addEventListener('mouseout', startMoving, true);
 })
+
+ARROW_LEFT.addEventListener('click', prevSlide);
+ARROW_RIGHT.addEventListener('click', nextSlide);

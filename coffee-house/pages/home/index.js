@@ -1,6 +1,4 @@
 //Burger menu
-console.log("I'm burger file");
-
 const BURGER = document.querySelector('.hamburger');
 
 if (BURGER) {

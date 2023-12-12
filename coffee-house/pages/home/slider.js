@@ -14,11 +14,14 @@ let offset = 0;
 let sliderCount = 0;
 let currentWidth = null;
 
-//Progress Bar
 
-function nextSlide() {
+function refreshProgressBar() {
   progressBar[sliderCount].style.width = '0%';
   state = startState;
+}
+
+function nextSlide() {
+  refreshProgressBar()
   sliderCount++;
   if(offset === -2 * sliderWidth) {
     sliderCount = 0;
@@ -26,12 +29,12 @@ function nextSlide() {
   }else {
     offset -= sliderWidth
   }
-  SLIDER_LINE.style.transform = `translateX(${offset}px)`;
+
+  SLIDER_LINE.style.transform = `translate(${offset}px)`;
 }
 
 function prevSlide() {
- progressBar[sliderCount].style.width = '0%';
- state = startState;
+refreshProgressBar();
  sliderCount--;
   if(offset === 0) {
     sliderCount = 2;
@@ -40,14 +43,14 @@ function prevSlide() {
     offset += sliderWidth;
   }
 
-SLIDER_LINE.style.transform = `translateX(${offset}px)`;
+SLIDER_LINE.style.transform = `translate(${offset}px)`;
 }
 
 function moveProgressBar(sliderCount) {
-  if(state >= activeState) {
-    state = 0;
-    progressBar[sliderCount].style.width = '0%';
+  if(state > activeState) {
+    refreshProgressBar();
     prevSlide();
+    autoSlide();
   } else{
     state += 10;
     progressBar[sliderCount].style.width = `${state}%`;

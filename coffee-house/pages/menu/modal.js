@@ -356,17 +356,6 @@ function findAddsPrice (productsJson) { //вытаскиваем значени�
 }
 
 
-function findFinalPrice (initialPrice, additivesPrice) { //пишем конструктор для финальной стоимости
-  finalPrice = initialPrice + additivesPrice;
-  let itemToChange = currentModal.querySelector('.modal-window__total-price_changable');
-  itemToChange.textContent = `${finalPrice.toFixed(2)}`
-
-   console.log(itemToChange)
-   findAddsPrice (productsJson)
-}
-findFinalPrice (initialPrice, additivesPrice)
-
-
 function sizeBtnsClickHandler () {
   currentModal.querySelector('.modal-window__btns__wrapper_size').addEventListener('click', (event) => {
     if(event.target.closest('.menu__btn__modal')) {

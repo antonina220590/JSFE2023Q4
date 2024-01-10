@@ -32,3 +32,81 @@ body {
   width: 300px;
   transition: opacity 0.3s ease-out;
 }
+
+.game__title {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 20px 30px;
+  color: #3a0861;
+  cursor: pointer;
+}
+
+.right-side__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  gap: 10px;
+}
+
+.guessed__letter {
+  width: 25px;
+  border-bottom: 3px solid black;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+
+.guessed__word {
+  list-style: none;
+  display: flex;
+  font-size: 22px;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.correct__guesse {
+  border-bottom: transparent;
+  margin-bottom: 15px;
+}
+
+.question__text {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.guesses__attempts {
+  margin-bottom: 20px;
+}
+
+.incorrect {
+  color: red;
+}
+
+.keypad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.btn {
+  border-radius: 5px;
+  width: calc(100% / 7 - 5px );
+  background-color: #ef1d26;
+  color: white;
+  padding: 7px;
+  text-transform: uppercase;
+  outline: none;
+  border: transparent;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f57c71;
+}

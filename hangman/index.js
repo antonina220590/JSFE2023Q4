@@ -35,11 +35,25 @@ rightSide.append(secretLine, questionText, incorrectAttemptsTitle, keypad);
 mainContainer.append(leftSide, rightSide);
 document.body.append(mainContainer);
 
+//modal window
+
+const modalWindow = createElem("div", "modal-window");
+const modalContent = createElem("div", "modal-window__content");
+const modalStatement = createElem("h4", "modal__statement");
+
+const modalWord = createElem("p", "modal__word");
+
+const modalBtn = createElem("button", "modal-window__btn");
+modalBtn.innerText = "Play Again";
+
+modalContent.append(modalStatement, modalWord, modalBtn);
+modalWindow.append(modalContent);
+document.body.append(mainContainer, modalWindow);
+
 let generatedWord;
 let numberOfAttempts = 0;
 let correct = [];
-
-
+let maxNumberOfAttemts = 6;
 
 function checkAnswer(btn, guessedLetter) {
   if (generatedWord.includes(guessedLetter)) {
@@ -52,8 +66,9 @@ function checkAnswer(btn, guessedLetter) {
     });
   } else {
     numberOfAttempts++;
-    console.log(numberOfAttempts)
   }
+  btn.classList.add("btn_inactive");
+  incorrectAttemptsNum.innerText = `${numberOfAttempts} / ${maxNumberOfAttemts}`;
 }
 
 //keybord
@@ -65,6 +80,7 @@ for (let i = 97; i <= 122; i += 1) {
     checkAnswer(event.target, String.fromCharCode(i))
   );
 }
+
 
 //random questions and line
 
@@ -78,8 +94,7 @@ function generateRandomQuestion() {
 
 generateRandomQuestion();
 
-
-for (let i = 0; i < generatedWord.length; i ++) {
-  const secretLetter = createElem('span', "guessed__letter");
-  secretLine.append(secretLetter)
+for (let i = 0; i < generatedWord.length; i++) {
+  const secretLetter = createElem("span", "guessed__letter");
+  secretLine.append(secretLetter);
 }

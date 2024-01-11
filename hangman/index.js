@@ -33,12 +33,25 @@ incorrectAttemptsNum.innerText = "0 / 6";
 const keypad = createElem("div", "keypad");
 rightSide.append(secretLine, questionText, incorrectAttemptsTitle, keypad);
 
-mainContainer.append(leftSide, rightSide)
-document.body.append(mainContainer)
+mainContainer.append(leftSide, rightSide);
+document.body.append(mainContainer);
 
+//keybord
 for (let i = 97; i <= 122; i += 1) {
-  const btn = document.createElement("button");
-  btn.classList.add("btn");
+  const btn = createElem("button", "btn");
   btn.innerText = String.fromCharCode(i);
   keypad.append(btn);
 }
+
+//random questions and line
+let current;
+
+function generateRandomQuestion() {
+  const { word, question } =
+    questions[Math.floor(Math.random() * questions.length)];
+  console.log(word);
+  current = word;
+  questionText.innerText = question;
+}
+
+generateRandomQuestion();

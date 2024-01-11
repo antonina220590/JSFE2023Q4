@@ -59,7 +59,6 @@ body {
 }
 
 .guessed__word {
-  list-style: none;
   display: flex;
   font-size: 22px;
   gap: 5px;

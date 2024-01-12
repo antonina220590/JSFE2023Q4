@@ -23,14 +23,24 @@ body {
 }
 
 .gallow__box {
-  position: relative;
   margin-left: 20px;
   padding: 12em 0;
   background-repeat: no-repeat;
   background-position: top 80px left 5px;
   background-size: 100%;
   width: 300px;
-  transition: opacity 0.3s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.gallow__box1 {
+  position: absolute;
+  margin-left: 20px;
+  padding: 12em 0;
+  background-repeat: no-repeat;
+  background-position: top 80px left 5px;
+  background-size: 100%;
+  width: 300px;
+  transition: 0.5s ease-out;
 }
 
 .game__title {
@@ -39,6 +49,12 @@ body {
   padding: 0 0 20px 30px;
   color: #3a0861;
   cursor: pointer;
+}
+
+.left-side__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-side__container {

@@ -11,13 +11,20 @@ const mainContainer = createElem("div", "main__container");
 //left side
 
 const leftSide = createElem("div", "left-side__container");
+
+//gallow box
 const gallowBox = createElem("div", "gallow__box");
 let gallowImg = `url(${`./assets/0.svg`})`;
 gallowBox.style.backgroundImage = gallowImg;
+
+const gallowBox1 = createElem("div", "gallow__box1");
+let gallowImg1 = `url(${`./assets/0.svg`})`;
+gallowBox1.style.backgroundImage = gallowImg1;
+
 const title = createElem("h1", "game__title");
 title.innerText = "HANGMAN GAME";
 
-leftSide.append(gallowBox, title);
+leftSide.append(gallowBox, gallowBox1, title);
 
 //right side
 
@@ -57,21 +64,31 @@ let maxNumberOfAttemts = 6;
 
 function checkAnswer(btn, guessedLetter) {
   if (generatedWord.includes(guessedLetter)) {
-    [...generatedWord].forEach((element, i) => {
-      if (element === guessedLetter) {
-        correct.push(element);
-        secretLine.querySelectorAll("span")[i].innerText = element;
+    [...generatedWord].forEach((letter, i) => {
+      if (letter === guessedLetter) {
+        correct.push(letter);
+        secretLine.querySelectorAll("span")[i].innerText = letter;
         secretLine.querySelectorAll("span")[i].classList.add("correct__guesse");
       }
     });
   } else {
     numberOfAttempts++;
+    let newGallowImg = `url(${`./assets/${numberOfAttempts}.svg`})`;
+    gallowBox1.style.backgroundImage = newGallowImg;
   }
   btn.classList.add("btn_inactive");
   incorrectAttemptsNum.innerText = `${numberOfAttempts} / ${maxNumberOfAttemts}`;
+
+  if (numberOfAttempts === maxNumberOfAttemts) {
+    gameOverLoose();
+  }
+  if (correct.length === generatedWord.length) {
+    gameOverWin();
+  }
 }
 
 //keybord
+
 for (let i = 97; i <= 122; i += 1) {
   const btn = createElem("button", "btn");
   btn.innerText = String.fromCharCode(i);
@@ -98,3 +115,35 @@ for (let i = 0; i < generatedWord.length; i++) {
   const secretLetter = createElem("span", "guessed__letter");
   secretLine.append(secretLetter);
 }
+
+
+function gameOverWin() {
+  setTimeout(() => {
+    modalWindow.classList.add("modal-window_active");
+    modalStatement.innerText = "You win!";
+    modalWord.innerText = `${"You guessed the word:"} ${generatedWord}!`;
+  }, 400);
+}
+
+function gameOverLoose() {
+  setTimeout(() => {
+    modalWindow.classList.add("modal-window_active");
+    modalStatement.innerText = "You loose!";
+    modalWord.innerText = `${"The word was:"} ${generatedWord}!`;
+  }, 400);
+}
+
+function playAgain() {
+  generateRandomQuestion();
+  modalWindow.classList.remove("modal-window_active");
+  keypad
+    .querySelectorAll(".btn")
+    .forEach((button) => button.classList.remove("btn_inactive"));
+  modalWindow.classList.remove("modal-window_active");
+  incorrectAttemptsNum.innerText = `${0} / ${maxNumberOfAttemts}`;
+  numberOfAttempts = 0;
+  secretLine.innerHTML = '';
+  gallowBox1.style.backgroundImage = `url(${`./assets/${numberOfAttempts}.svg`})`;
+}
+
+modalBtn.addEventListener("click", playAgain);

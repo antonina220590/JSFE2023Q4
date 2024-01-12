@@ -58,8 +58,8 @@ modalWindow.append(modalContent);
 document.body.append(mainContainer, modalWindow);
 
 let generatedWord;
-let numberOfAttempts = 0;
-let correct = [];
+let correct;
+let numberOfAttempts;
 let maxNumberOfAttemts = 6;
 
 function checkAnswer(btn, guessedLetter) {
@@ -87,6 +87,8 @@ function checkAnswer(btn, guessedLetter) {
   }
 }
 
+
+
 //keybord
 
 for (let i = 97; i <= 122; i += 1) {
@@ -107,14 +109,10 @@ function generateRandomQuestion() {
   generatedWord = word;
   console.log(generatedWord);
   questionText.innerText = question;
+  resetAll();
 }
 
 generateRandomQuestion();
-
-for (let i = 0; i < generatedWord.length; i++) {
-  const secretLetter = createElem("span", "guessed__letter");
-  secretLine.append(secretLetter);
-}
 
 
 function gameOverWin() {
@@ -133,17 +131,35 @@ function gameOverLoose() {
   }, 400);
 }
 
-function playAgain() {
-  generateRandomQuestion();
-  modalWindow.classList.remove("modal-window_active");
+for (let i = 0; i < generatedWord.length; i++) {
+  const secretLetter = createElem("span", "guessed__letter");
+  secretLine.append(secretLetter);
+}
+
+function resetAll() {
+  correct = [];
+  numberOfAttempts = 0;
+  incorrectAttemptsNum.innerText = `${numberOfAttempts} / ${maxNumberOfAttemts}`;
+  gallowBox1.style.backgroundImage = `url(${`./assets/${numberOfAttempts}.svg`})`;
+  secretLine.innerHTML = '';
+  for (let i = 0; i < generatedWord.length; i ++) {
+    const secretLetter = createElem('span', "guessed__letter");
+    secretLine.append(secretLetter)
+  }
   keypad
     .querySelectorAll(".btn")
     .forEach((button) => button.classList.remove("btn_inactive"));
   modalWindow.classList.remove("modal-window_active");
   incorrectAttemptsNum.innerText = `${0} / ${maxNumberOfAttemts}`;
-  numberOfAttempts = 0;
-  secretLine.innerHTML = '';
-  gallowBox1.style.backgroundImage = `url(${`./assets/${numberOfAttempts}.svg`})`;
+}
+
+function playAgain() {
+  resetAll();
+  generateRandomQuestion();
 }
 
 modalBtn.addEventListener("click", playAgain);
+
+const updateBtn = document.querySelector(".game__title");
+
+updateBtn.addEventListener("click", generateRandomQuestion);

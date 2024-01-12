@@ -1,15 +1,5 @@
 const questions = [
   {
-    word: "everest",
-    question: "The highest mountain in the world."
-  },
-
-  {
-    word: "moon",
-    question: "What is the name of the Earth's satellite?"
-  },
-
-  {
     word: "dog",
     question: "Man's best friend."
   },
@@ -35,18 +25,28 @@ const questions = [
   },
 
   {
-    word: "mercury",
-    question: "Which planet is closest to the Sun?"
-  },
-
-  {
     word: "honey",
     question: "What is the sweet substance made by bees using flower nectar?"
   },
 
   {
-    word: "giraffe",
-    question: "Which animal is known for its long neck?"
+    word: "dublin",
+    question: "What is the capital of Ireland?"
+  },
+
+  {
+    word: "nepal",
+    question: "What is the only flag that does not have four sides?"
+  },
+
+  {
+    word: "venus",
+    question: "Which planet in the Milky Way is the hottest?"
+  },
+
+  {
+    word: "rome",
+    question: "What city is known as 'The Eternal City'?"
   }
 ];
 

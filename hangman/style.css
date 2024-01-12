@@ -29,7 +29,7 @@ body {
   background-position: top 80px left 5px;
   background-size: 100%;
   width: 300px;
-  transition: 0.5s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .gallow__box1 {
@@ -40,7 +40,7 @@ body {
   background-position: top 80px left 5px;
   background-size: 100%;
   width: 300px;
-  transition: 0.5s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .game__title {
@@ -93,6 +93,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   font-weight: 500;
+  height: 30px;
 }
 
 .guesses__attempts {
@@ -187,3 +188,59 @@ body {
 .modal__word {
   font-size: 1.3rem;
 }
+
+@media(max-width: 768px) {
+  .gallow__box {
+    background-size: 70%;
+    padding: 10em 0;
+  }
+
+  .gallow__box1 {
+    background-size: 70%;
+    padding: 10em 0;
+  }
+
+  .game__title {
+    font-size: 25px;
+  }
+
+  .main__container {
+    gap: 10px;
+  }
+}
+
+@media(max-width: 630px) {
+  .main__container {
+    flex-direction: column;
+  }
+
+  .left-side__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallow__box {
+    background-position: top 30px left 80px;
+    background-size: 60%;
+    padding: 7em 0;
+    justify-content: center;
+  }
+
+  .gallow__box1 {
+    background-position: top 30px left 80px;
+    background-size: 60%;
+    padding: 7em 0;
+    justify-content: center;
+  }
+
+  .game__title {
+    padding: 0 0 20px 0;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .modal-window__content {
+    max-width: 300px
+  }
+}
+

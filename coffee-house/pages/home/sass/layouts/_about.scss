@@ -1,0 +1,146 @@
+
+.about__images {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 100px;
+
+  @include media-middle { //media-middle
+    padding-bottom: 0;
+  }
+}
+
+.about__images_center {
+  display: none;
+
+  @include media-small {//media-middle
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px
+  }
+
+  @include media-mobile {
+    display: none;
+  }
+}
+
+.about__images_center_mobile {
+  display: none;
+
+
+  @include media-small {//middle
+   display: none;
+  }
+
+  @include media-tablet{
+    display: none;
+  }
+
+  @include media-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 40px
+  }
+}
+
+.about__images_lefts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include media-small { //middle
+    display: none;
+  }
+
+  @include media-mobile{
+    display: none;
+  }
+}
+
+.about__images_rights {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include media-small { //middle
+    display: none;
+  }
+
+  @include media-mobile{
+    display: none;
+  }
+}
+
+.about__img {
+  border-radius: 20px;
+  max-width: 660px;
+  overflow: hidden;
+  height: 590px;
+
+  @include media-middle { //middle
+    max-width: 688px;
+    height: unset; //delete
+
+  }
+
+  @include media-mobile {
+    max-height: unset;
+  }
+}
+
+
+.about__img_2 {
+  max-height: 430px;
+
+  @include media-mobile {
+    max-height: unset;
+  }
+}
+
+.about__img_3 {
+  max-height: 430px;
+}
+
+.about__img img {
+  display: block;
+  transform: scale(1.1);
+  transition: transform 0.4s ease-out;
+  transform-origin: bottom;
+  width: 100%;
+
+  @include  media-small {//middle
+    transform: scale(1);
+  }
+
+  @include  media-mobile {
+    transform: scale(1);
+    margin: 0;
+  }
+}
+
+.about__img_2 img {
+  display: block;
+  transform: scale(1.1);
+  transition: transform 0.4s ease-out;
+  transform-origin: bottom;
+  width: 100%;
+  margin: -80px auto;
+}
+
+.about__img_3 img {
+  display: block;
+  transform: scale(1.1);
+  transition: transform 0.4s ease-out;
+  transform-origin: bottom;
+  width: 100%;
+  margin: -80px auto;
+}
+
+@media (hover: hover) {
+  .about__img:hover img {
+    transform: scale(1);
+    transition: transform 0.4s ease-out;
+  }
+}

@@ -87,8 +87,6 @@ function checkAnswer(btn, guessedLetter) {
   }
 }
 
-
-
 //keybord
 
 for (let i = 97; i <= 122; i += 1) {
@@ -100,6 +98,30 @@ for (let i = 97; i <= 122; i += 1) {
   );
 }
 
+//physical keyboard
+
+document.body.addEventListener("keydown", function (event) {
+  try {
+  let pushedLetter;
+  if (event.key === "Enter") {
+    playAgain();
+  }
+  for (let i = 97; i <= 122; i += 1) {
+    let buttons = document.querySelectorAll(".btn");
+    buttons.forEach((button) => {
+      if (event.key === button.textContent) {
+        pushedLetter = button;
+        button.classList.add("btn_inactive");
+      }
+    });
+  }
+  if (pushedLetter.className !== "btn_inactive" && pushedLetter !== 'Enter') {
+    checkAnswer(pushedLetter, event.key);
+  }
+} catch (event) {
+  throw Error ('key is invalid')
+}
+});
 
 //random questions and line
 
@@ -113,7 +135,6 @@ function generateRandomQuestion() {
 }
 
 generateRandomQuestion();
-
 
 function gameOverWin() {
   setTimeout(() => {
@@ -131,20 +152,15 @@ function gameOverLoose() {
   }, 400);
 }
 
-for (let i = 0; i < generatedWord.length; i++) {
-  const secretLetter = createElem("span", "guessed__letter");
-  secretLine.append(secretLetter);
-}
-
 function resetAll() {
   correct = [];
   numberOfAttempts = 0;
   incorrectAttemptsNum.innerText = `${numberOfAttempts} / ${maxNumberOfAttemts}`;
   gallowBox1.style.backgroundImage = `url(${`./assets/${numberOfAttempts}.svg`})`;
-  secretLine.innerHTML = '';
-  for (let i = 0; i < generatedWord.length; i ++) {
-    const secretLetter = createElem('span', "guessed__letter");
-    secretLine.append(secretLetter)
+  secretLine.innerHTML = "";
+  for (let i = 0; i < generatedWord.length; i++) {
+    const secretLetter = createElem("span", "guessed__letter");
+    secretLine.append(secretLetter);
   }
   keypad
     .querySelectorAll(".btn")

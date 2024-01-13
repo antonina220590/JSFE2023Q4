@@ -1,23 +1,7 @@
 {
-  "name": "antonina220590-jsfe2023q4",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "style": "sass --watch coffee-house/pages/home/sass/style.scss coffee-house/pages/home/sass/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rolling-scopes-school/antonina220590-JSFE2023Q4.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rolling-scopes-school/antonina220590-JSFE2023Q4/issues"
-  },
-  "homepage": "https://github.com/rolling-scopes-school/antonina220590-JSFE2023Q4#readme",
-  "dependencies": {
-    "normalize-scss": "^8.0.0"
+
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.1.1"
   }
-}

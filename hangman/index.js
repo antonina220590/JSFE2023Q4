@@ -119,7 +119,7 @@ document.body.addEventListener("keydown", function (event) {
     checkAnswer(pushedLetter, event.key);
   }
 } catch (event) {
-  throw Error ('key is invalid')
+  console.log ('key is invalid')
 }
 });
 

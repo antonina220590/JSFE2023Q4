@@ -61,6 +61,7 @@ let generatedWord;
 let correct;
 let numberOfAttempts;
 let maxNumberOfAttemts = 6;
+let pushedLetter = null;
 
 function checkAnswer(btn, guessedLetter) {
   if (generatedWord.includes(guessedLetter)) {
@@ -81,10 +82,12 @@ function checkAnswer(btn, guessedLetter) {
 
   if (numberOfAttempts === maxNumberOfAttemts) {
     gameOverLoose();
+    document.querySelectorAll('.btn').forEach((button) => button.classList.add('btn_inactive'))
   }
   if (correct.length === generatedWord.length) {
     gameOverWin();
-  }
+    document.querySelectorAll('.btn').forEach((button) => button.classList.add('btn_inactive'))
+}
 }
 
 //keybord
@@ -102,7 +105,7 @@ for (let i = 97; i <= 122; i += 1) {
 
 document.body.addEventListener("keydown", function (event) {
   try {
-  let pushedLetter;
+
   if (event.key === "Enter") {
     playAgain();
   }
@@ -115,13 +118,20 @@ document.body.addEventListener("keydown", function (event) {
       }
     });
   }
+
+  if(modalWindow.classList.contains("modal-window_active")) {
+    btn.classList.add("btn_inactive")
+  }
+
   if (pushedLetter.className !== "btn_inactive" && pushedLetter !== 'Enter') {
     checkAnswer(pushedLetter, event.key);
-  }
+  } 
+
 } catch (event) {
   console.log ('key is invalid')
 }
 });
+
 
 //random questions and line
 
@@ -129,12 +139,16 @@ function generateRandomQuestion() {
   const { word, question } =
     questions[Math.floor(Math.random() * questions.length)];
   generatedWord = word;
-  console.log(generatedWord);
+ console.log(generatedWord);
   questionText.innerText = question;
   resetAll();
 }
 
 generateRandomQuestion();
+
+function getRandom() {
+  questions[Math.floor(Math.random() * questions.length)];
+}
 
 function gameOverWin() {
   setTimeout(() => {

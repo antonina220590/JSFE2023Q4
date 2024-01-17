@@ -82,12 +82,16 @@ function checkAnswer(btn, guessedLetter) {
 
   if (numberOfAttempts === maxNumberOfAttemts) {
     gameOverLoose();
-    document.querySelectorAll('.btn').forEach((button) => button.classList.add('btn_inactive'))
+    document
+      .querySelectorAll(".btn")
+      .forEach((button) => button.classList.add("btn_inactive"));
   }
   if (correct.length === generatedWord.length) {
     gameOverWin();
-    document.querySelectorAll('.btn').forEach((button) => button.classList.add('btn_inactive'))
-}
+    document
+      .querySelectorAll(".btn")
+      .forEach((button) => button.classList.add("btn_inactive"));
+  }
 }
 
 //keybord
@@ -105,50 +109,53 @@ for (let i = 97; i <= 122; i += 1) {
 
 document.body.addEventListener("keydown", function (event) {
   try {
+    if (event.key === "Enter") {
+      playAgain();
+    }
 
-  if (event.key === "Enter") {
-    playAgain();
+    for (let i = 97; i <= 122; i += 1) {
+      let buttons = document.querySelectorAll(".btn");
+      buttons.forEach((button) => {
+        if (event.key === button.textContent) {
+          pushedLetter = button;
+          button.classList.add("btn_inactive");
+        }
+      });
+    }
+
+    if (modalWindow.classList.contains("modal-window_active")) {
+      button.classList.add("btn_inactive");
+    }
+
+    if (event.key === "Enter") {
+      btn.classList.remove("btn_inactive");
+    }
+
+    if (pushedLetter.className !== "btn_inactive" && pushedLetter !== "Enter") {
+      checkAnswer(pushedLetter, event.key);
+    }
+  } catch (event) {
+    console.log("key is invalid");
   }
-  for (let i = 97; i <= 122; i += 1) {
-    let buttons = document.querySelectorAll(".btn");
-    buttons.forEach((button) => {
-      if (event.key === button.textContent) {
-        pushedLetter = button;
-        button.classList.add("btn_inactive");
-      }
-    });
-  }
-
-  if(modalWindow.classList.contains("modal-window_active")) {
-    btn.classList.add("btn_inactive")
-  }
-
-  if (pushedLetter.className !== "btn_inactive" && pushedLetter !== 'Enter') {
-    checkAnswer(pushedLetter, event.key);
-  } 
-
-} catch (event) {
-  console.log ('key is invalid')
-}
 });
 
-
+let generatedQuize;
 //random questions and line
 
 function generateRandomQuestion() {
-  const { word, question } =
+  const checkRandom = () =>
     questions[Math.floor(Math.random() * questions.length)];
-  generatedWord = word;
- console.log(generatedWord);
-  questionText.innerText = question;
+  generatedQuize = checkRandom();
+  if (questionText.textContent === generatedQuize.question) {
+    generatedQuize = checkRandom();
+  }
+  generatedWord = generatedQuize.word;
+  console.log(generatedWord);
+  questionText.innerText = generatedQuize.question;
   resetAll();
 }
 
 generateRandomQuestion();
-
-function getRandom() {
-  questions[Math.floor(Math.random() * questions.length)];
-}
 
 function gameOverWin() {
   setTimeout(() => {

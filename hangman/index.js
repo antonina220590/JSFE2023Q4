@@ -109,6 +109,7 @@ document.body.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     playAgain();
   }
+
   for (let i = 97; i <= 122; i += 1) {
     let buttons = document.querySelectorAll(".btn");
     buttons.forEach((button) => {
@@ -120,12 +121,16 @@ document.body.addEventListener("keydown", function (event) {
   }
 
   if(modalWindow.classList.contains("modal-window_active")) {
-    btn.classList.add("btn_inactive")
+    button.classList.add("btn_inactive")
+  }
+
+  if(event.key === 'Enter') {
+    btn.classList.remove("btn_inactive")
   }
 
   if (pushedLetter.className !== "btn_inactive" && pushedLetter !== 'Enter') {
     checkAnswer(pushedLetter, event.key);
-  } 
+  }
 
 } catch (event) {
   console.log ('key is invalid')

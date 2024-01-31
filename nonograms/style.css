@@ -1,0 +1,90 @@
+
+body{
+  background: url("./assets/back_light.jpg") no-repeat;
+  background-size: cover;
+}
+
+.game__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+.field__wrapper_common {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.field__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__center {
+  border: 2px solid black;
+}
+
+.field__horizontal {
+  display: flex;
+  flex-wrap: wrap;
+
+  &:nth-child(5n) {
+    border-bottom: 2px solid black;
+  }
+}
+
+.field__cell {
+  border: 1px dotted black;
+  width: 50px;
+  height: 50px;
+  padding: 7px;
+  line-height: 1.5;
+  white-space: nowrap;
+
+  &:nth-child(5n) {
+    border-right: 2px solid black;
+  }
+}
+
+.horizontal-keys {
+  display: flex;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.key,
+.key-top {
+  min-width: 50px;
+  min-height: 50px;
+  padding: 7px;
+  line-height: 1.5;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.key-left {
+  min-width: 50px;
+  min-height: 50px;
+  padding: 7px;
+  line-height: 1.5;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.vertical-keys {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+}

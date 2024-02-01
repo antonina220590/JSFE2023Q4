@@ -1,15 +1,16 @@
 
 body{
-  background: url("./assets/back_light.jpg") no-repeat;
-  background-size: cover;
+  /*background: #2b5353;*/
+  background: #d8bfd8;
 }
+
 
 .game__section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .field__wrapper_common {
@@ -43,10 +44,15 @@ body{
   padding: 7px;
   line-height: 1.5;
   white-space: nowrap;
+  cursor: pointer;
 
   &:nth-child(5n) {
     border-right: 2px solid black;
   }
+}
+
+.field__cell_dark {
+  background: dimgrey;
 }
 
 .horizontal-keys {

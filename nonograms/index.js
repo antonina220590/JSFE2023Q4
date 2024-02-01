@@ -26,6 +26,8 @@ document.body.append(mainContainer);
 let nonogramsInfo = nonograms[0];
 let nonogramsSize = nonogramsInfo.size;
 let nonogramsMatrix = nonogramsInfo.input;
+let map = nonogramsInfo.input;
+console.log(nonogramsMatrix);
 
 function createField(size) {
   for (let i = 0; i < size; i++) {
@@ -36,14 +38,13 @@ function createField(size) {
     verticallKeys.append(leftKeys);
     for (let j = 0; j < size; j++) {
       const fieldCells = createElem("div", "field__cell");
+      fieldCells.setAttribute("data-attr", j);
       horizontalField.append(fieldCells);
     }
     field.append(horizontalField);
   }
 }
 createField(nonogramsSize);
-
-//createHorizontalKeysField(nonogramsSize)
 
 // ищем ключи по горизонтали
 let horizontalClues = [];
@@ -145,3 +146,47 @@ function renderVerticalKeys(verticalKeyCells, arr) {
 }
 
 renderVerticalKeys(verticalKeyCells, horizontalClues);
+
+//отмечаем темные квадраты
+
+function handleClickDark() {
+  const centerField = document.querySelector(".field__center");
+  let fieldCells = document.querySelectorAll(".field__cell");
+  centerField.addEventListener("click", (e) => {
+    let clickedCell = e.target;
+    if (e.target.classList.contains("field__cell")) {
+      clickedCell.classList.add("field__cell_dark");
+    }
+    checkWin();
+  });
+}
+
+handleClickDark();
+
+//проверка на выигрыш
+
+function checkWin() {
+  let playerArray = [];
+  let fieldCells = document.querySelectorAll(".field__cell");
+  let array = Array.from(fieldCells);
+  array.map((cell) => {
+    if (cell.classList.contains("field__cell_dark")) {
+      playerArray.push(1);
+    }else{
+      playerArray.push(0)
+    }
+  })
+
+  let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
+  let string1 = flattedMatrix.toString();
+  let string2 = playerArray.toString();
+
+  if(string1 === string2) {
+    console.log("You win!")
+  }
+}
+
+
+
+
+

@@ -1,14 +1,34 @@
 body {
-  /*background: #2b5353;*/
   background: #d8bfd8;
 }
 
-.game__title {
+.body_dark-theme {
+  background: #2b5353;
+}
+
+.header_div {
   display: flex;
   justify-content: center;
+}
+
+.game__title {
   font-size: 70px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+}
+
+.game__title_dark-theme {
+  color: darkgoldenrod;
+}
+
+.theme__container {
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+
+.theme__icon {
+  width: 50px;
 }
 
 .game__section {
@@ -23,6 +43,10 @@ body {
 .timer {
   font-size: 30px;
   margin: 0 auto;
+}
+
+.timer_dark-theme {
+  color: darkgoldenrod;
 }
 
 .field__wrapper_common {
@@ -40,12 +64,22 @@ body {
   border: 2px solid black;
 }
 
+.field__center_dark-theme {
+  border: 2px solid darkgoldenrod;
+}
+
 .field__horizontal {
   display: flex;
   flex-wrap: wrap;
 
   &:nth-child(5n) {
     border-bottom: 2px solid black;
+  }
+}
+
+.field__horizontal_dark-theme {
+  &:nth-child(5n) {
+    border-bottom: 2px solid darkgoldenrod;
   }
 }
 
@@ -67,6 +101,13 @@ body {
   background: dimgrey;
 }
 
+.field__cell_dark-theme {
+  border: 1px dotted darkgoldenrod;
+  &:nth-child(5n) {
+    border-right: 2px solid darkgoldenrod;
+  }
+}
+
 .field__cell_cross {
  background: url('./assets/cross1.svg');
  background-repeat: no-repeat;
@@ -78,6 +119,15 @@ body {
   border-right: 2px solid black;
   border-left: 2px solid black;
   border-top: 2px solid black;
+  font-size: 25px;
+}
+
+.horizontal-keys_dark-theme {
+  border-right: 2px solid darkgoldenrod;
+  border-left: 2px solid darkgoldenrod;
+  border-top: 2px solid darkgoldenrod;
+  font-size: 25px;
+  color: darkgoldenrod;
 }
 
 .key,
@@ -93,6 +143,10 @@ body {
   flex-direction: column;
 }
 
+.key-top_dark-theme {
+  border: 1px solid darkgoldenrod;
+}
+
 .key-left {
   min-width: 50px;
   min-height: 50px;
@@ -105,10 +159,22 @@ body {
   flex-direction: row;
 }
 
+.key-left_dark-theme {
+  border: 1px solid darkgoldenrod;
+}
+
 .vertical-keys {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-top: 2px solid black;
+  font-size: 25px;
+}
+
+.vertical-keys_dark-theme {
+  border-bottom: 2px solid darkgoldenrod;
+  border-left: 2px solid darkgoldenrod;
+  border-top: 2px solid darkgoldenrod;
+  color: darkgoldenrod;
 }

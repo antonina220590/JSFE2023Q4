@@ -17,20 +17,28 @@ const verticallKeys = createElem("div", "vertical-keys");
 const field = createElem("div", "field__center");
 
 //доп информация
+const headerDiv = createElem("div", "header_div");
 const title = createElem("h1", "game__title");
 title.textContent = "Nonograms";
+
+const themeChangerDiv = createElem("div", "theme__container");
+const dayNigthIcon = createElem("img", "theme__icon");
+dayNigthIcon.src = "./assets/day_icon.png";
+
+themeChangerDiv.append(dayNigthIcon);
 
 const timer = createElem("span", "timer");
 timer.textContent = "00 : 00";
 
+headerDiv.append(title);
 fieldWrapper.append(horizontalKeys, field);
 commonFieldWrapper.append(fieldWrapper, verticallKeys);
 gameSection.append(timer, commonFieldWrapper);
-mainContainer.append(title, gameSection);
+mainContainer.append(themeChangerDiv, headerDiv, gameSection);
 document.body.append(mainContainer);
 
 // информация о нонограмме
-let nonogramsInfo = nonograms[1];
+let nonogramsInfo = nonograms[2];
 let nonogramsSize = nonogramsInfo.size;
 let nonogramsMatrix = nonogramsInfo.input;
 let map = nonogramsInfo.input;
@@ -109,10 +117,10 @@ let findVerticalClues = function (matrix) {
 };
 
 findVerticalClues(nonogramsMatrix);
-console.log(verticalClues);
+//console.log(verticalClues);
 
 //Отрисовка ключей по горизонтали
-console.log(horizontalClues);
+//console.log(horizontalClues);
 
 let horizontalKeyCells = document.querySelectorAll(".key-top");
 let verticalKeyCells = document.querySelectorAll(".key-left");
@@ -202,7 +210,7 @@ function checkWin() {
       playerArray.push(0);
     }
   });
-  console.log(playerArray);
+  //console.log(playerArray);
   let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
   let string1 = flattedMatrix.toString();
   let string2 = playerArray.toString();
@@ -254,3 +262,28 @@ function initiateTimer() {
     }, 1000);
   }
 }
+
+// смена цветовой схемы
+
+function changeTheme() {
+  document.body.classList.toggle("body_dark-theme");
+  title.classList.toggle("game__title_dark-theme");
+  timer.classList.toggle("timer_dark-theme");
+  verticallKeys.classList.toggle("vertical-keys_dark-theme");
+  horizontalKeys.classList.toggle("horizontal-keys_dark-theme");
+  field.classList.toggle("field__center_dark-theme");
+  document.querySelectorAll(".key-left").forEach((key) => {
+    key.classList.toggle("key-left_dark-theme");
+  });
+  document.querySelectorAll(".key-top").forEach((key) => {
+    key.classList.toggle("key-top_dark-theme");
+  });
+  document.querySelectorAll(".field__cell").forEach((cell) => {
+    cell.classList.toggle("field__cell_dark-theme");
+  });
+  document.querySelectorAll(".field__horizontal").forEach((field) => {
+    field.classList.toggle("field__horizontal_dark-theme");
+  });
+}
+
+dayNigthIcon.addEventListener("click", changeTheme);

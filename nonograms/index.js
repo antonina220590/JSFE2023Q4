@@ -16,14 +16,21 @@ const horizontalKeys = createElem("div", "horizontal-keys");
 const verticallKeys = createElem("div", "vertical-keys");
 const field = createElem("div", "field__center");
 
+//доп информация
+const title = createElem("h1", "game__title");
+title.textContent = "Nonograms";
+
+const timer = createElem("span", "timer");
+timer.textContent = "00 : 00";
+
 fieldWrapper.append(horizontalKeys, field);
 commonFieldWrapper.append(fieldWrapper, verticallKeys);
-gameSection.append(commonFieldWrapper);
-mainContainer.append(gameSection);
+gameSection.append(timer, commonFieldWrapper);
+mainContainer.append(title, gameSection);
 document.body.append(mainContainer);
 
 // информация о нонограмме
-let nonogramsInfo = nonograms[0];
+let nonogramsInfo = nonograms[1];
 let nonogramsSize = nonogramsInfo.size;
 let nonogramsMatrix = nonogramsInfo.input;
 let map = nonogramsInfo.input;
@@ -153,9 +160,10 @@ function handleClickDark() {
   const centerField = document.querySelector(".field__center");
   let fieldCells = document.querySelectorAll(".field__cell");
   centerField.addEventListener("click", (e) => {
+    initiateTimer();
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
-      clickedCell.classList.add("field__cell_dark");
+      clickedCell.classList.toggle("field__cell_dark");
     }
     checkWin();
   });
@@ -172,21 +180,59 @@ function checkWin() {
   array.map((cell) => {
     if (cell.classList.contains("field__cell_dark")) {
       playerArray.push(1);
-    }else{
-      playerArray.push(0)
+    } else {
+      playerArray.push(0);
     }
-  })
-
+  });
+  console.log(playerArray);
   let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
   let string1 = flattedMatrix.toString();
   let string2 = playerArray.toString();
 
-  if(string1 === string2) {
-    console.log("You win!")
+  if (string1 === string2) {
+    console.log("You win!");
   }
 }
 
+//Таймер
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timerOn = false;
+const startTimer = Date.now();
 
+function updateTimer() {
+  timerOn = true;
+  seconds++;
+  if (minutes < 60) {
+    if (seconds === 60) {
+      minutes++;
+      seconds = 0;
+    }
+    if (minutes === 60) {
+      hours++;
+      minutes = 0;
+    }
+    timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  }
+  if (hours > 0) {
+    timer.textContent = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+}
 
-
-
+function initiateTimer() {
+  if (timerOn === false) {
+    timerOn = false;
+    clearInterval(timer);
+  }
+  if (!timerOn === true) {
+    timerOn = true;
+    setInterval(() => {
+      updateTimer(startTimer);
+    }, 1000);
+  }
+}

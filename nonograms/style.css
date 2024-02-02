@@ -15,6 +15,7 @@ body {
   font-size: 70px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+    margin: 10px 0 40px 0;
 }
 
 .game__title_dark-theme {
@@ -177,4 +178,14 @@ cursor: pointer;
   border-left: 2px solid darkgoldenrod;
   border-top: 2px solid darkgoldenrod;
   color: darkgoldenrod;
+}
+
+.message {
+  font-size: 25px;
+  color: brown;
+  visibility: hidden;
+}
+
+.message_active {
+  visibility: visible;
 }

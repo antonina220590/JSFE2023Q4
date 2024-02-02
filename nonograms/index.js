@@ -1,4 +1,5 @@
 import nonograms from "./nonograms.js";
+let timerOn = false;
 
 // отрисовка
 
@@ -30,10 +31,13 @@ themeChangerDiv.append(dayNigthIcon);
 const timer = createElem("span", "timer");
 timer.textContent = "00 : 00";
 
+const winMessage = createElem("span", "message");
+//winMessage.textContent = "Great! You have solved the nonogram in ## seconds!";
+
 headerDiv.append(title);
 fieldWrapper.append(horizontalKeys, field);
 commonFieldWrapper.append(fieldWrapper, verticallKeys);
-gameSection.append(timer, commonFieldWrapper);
+gameSection.append(winMessage, timer,  commonFieldWrapper);
 mainContainer.append(themeChangerDiv, headerDiv, gameSection);
 document.body.append(mainContainer);
 
@@ -217,14 +221,20 @@ function checkWin() {
 
   if (string1 === string2) {
     console.log("You win!");
+    winMessage.classList.add("message_active")
+    winMessage.textContent = `Great! You have solved the nonogram in ${timer.textContent} seconds!`;
+    stopTimer()
   }
 }
+
+
 
 //Таймер
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
-let timerOn = false;
+let timerSet;
+
 const startTimer = Date.now();
 
 function updateTimer() {
@@ -251,17 +261,18 @@ function updateTimer() {
 }
 
 function initiateTimer() {
-  if (timerOn === false) {
-    timerOn = false;
-    clearInterval(timer);
-  }
   if (!timerOn === true) {
     timerOn = true;
-    setInterval(() => {
+    timerSet = setInterval(() => {
       updateTimer(startTimer);
     }, 1000);
   }
 }
+
+function stopTimer() {
+  clearInterval(timerSet);
+}
+
 
 // смена цветовой схемы
 

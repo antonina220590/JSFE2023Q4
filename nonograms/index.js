@@ -158,11 +158,11 @@ renderVerticalKeys(verticalKeyCells, horizontalClues);
 
 function handleClickDark() {
   const centerField = document.querySelector(".field__center");
-  let fieldCells = document.querySelectorAll(".field__cell");
   centerField.addEventListener("click", (e) => {
     initiateTimer();
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
+      clickedCell.classList.remove("field__cell_cross");
       clickedCell.classList.toggle("field__cell_dark");
     }
     checkWin();
@@ -170,6 +170,24 @@ function handleClickDark() {
 }
 
 handleClickDark();
+
+// отмечаем крестики
+
+function handleClickCross() {
+  const centerField = document.querySelector(".field__center");
+  centerField.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    initiateTimer();
+    let clickedCell = e.target;
+    if (e.target.classList.contains("field__cell")) {
+      clickedCell.classList.remove("field__cell_dark");
+      clickedCell.classList.toggle("field__cell_cross");
+    }
+    checkWin();
+  });
+}
+
+handleClickCross();
 
 //проверка на выигрыш
 

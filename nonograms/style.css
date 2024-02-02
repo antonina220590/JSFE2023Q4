@@ -67,6 +67,12 @@ body {
   background: dimgrey;
 }
 
+.field__cell_cross {
+ background: url('./assets/cross1.svg');
+ background-repeat: no-repeat;
+ margin: auto;
+}
+
 .horizontal-keys {
   display: flex;
   border-right: 2px solid black;

@@ -1,0 +1,313 @@
+body {
+  background: #d8bfd8;
+}
+
+.body__lock {
+ overflow-y: hidden;
+}
+
+.body_dark-theme {
+  background: #2b5353;
+}
+
+.header_div {
+  display: flex;
+  justify-content: center;
+}
+
+.game__title {
+  font-size: 70px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+  margin: 10px 0 40px 0;
+}
+
+.game__title_dark-theme {
+  color: darkgoldenrod;
+}
+
+.theme__container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 30px;
+  width: fit-content;
+  background: #b4c9ee;
+}
+
+.theme__container_dark-theme {
+  background: darkgoldenrod;
+}
+
+.theme__icon {
+  width: 50px;
+}
+
+.game__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 65vh;
+  gap: 35px;
+}
+
+.timer {
+  font-size: 30px;
+  margin: 0 auto;
+}
+
+
+.timer_dark-theme {
+  color: darkgoldenrod;
+}
+
+.field__wrapper_common {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.field__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__center {
+  border: 2px solid black;
+}
+
+.field__center_dark-theme {
+  border: 2px solid darkgoldenrod;
+}
+
+.field__center_disabled {
+  pointer-events: none;
+}
+
+.field__horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  background: lavender;
+
+  &:nth-child(5n) {
+    border-bottom: 2px solid black;
+  }
+}
+
+.field__horizontal_dark-theme {
+  background: cornsilk;
+  &:nth-child(5n) {
+    border-bottom: 2px solid darkgoldenrod;
+  }
+}
+
+.field__cell {
+  border: 1px dotted black;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:nth-child(5n) {
+    border-right: 2px solid black;
+  }
+}
+
+.field__cell_dark {
+  background: dimgrey;
+}
+
+.field__cell_dark-theme {
+  border: 1px dotted darkgoldenrod;
+  &:nth-child(5n) {
+    border-right: 2px solid darkgoldenrod;
+  }
+}
+
+.field__cell_cross {
+  background: url("./assets/cross1.svg");
+  background-repeat: no-repeat;
+  margin: auto;
+}
+
+.horizontal-keys {
+  display: flex;
+  background: #b4c9ee;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  font-size: 25px;
+}
+
+.horizontal-keys_dark-theme {
+  background: burlywood;
+  border-right: 2px solid darkgoldenrod;
+  border-left: 2px solid darkgoldenrod;
+  border-top: 2px solid darkgoldenrod;
+  font-size: 25px;
+  color: #2b5353;
+}
+
+.key,
+.key-top {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 7px;
+  line-height: 1.5;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.key-top_dark-theme {
+  border: 1px solid darkgoldenrod;
+}
+
+.key-left {
+  min-width: 100px;
+  min-height: 40px;
+  padding: 7px;
+  line-height: 1.5;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.key-left_dark-theme {
+  border: 1px solid darkgoldenrod;
+}
+
+.vertical-keys {
+  display: flex;
+  flex-direction: column;
+  background: #b4c9ee;
+  border-bottom: 4px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  font-size: 25px;
+}
+
+.vertical-keys_dark-theme {
+  background: burlywood;
+  border-bottom: 2px solid darkgoldenrod;
+  border-left: 2px solid darkgoldenrod;
+  border-top: 2px solid darkgoldenrod;
+  color: #2b5353;
+}
+
+.message {
+  font-size: 25px;
+  color: brown;
+  visibility: hidden;
+}
+
+.message_active {
+  visibility: visible;
+}
+
+.game__btns {
+  display: flex;
+  justify-content: center;
+}
+
+.btn__reset {
+  padding: 10px 40px;
+  outline: none;
+  border: none;
+  background-color: #7b245e;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+}
+
+.btn__reset_dark-theme {
+  background-color: darkgoldenrod;
+}
+
+.btn__reset:hover {
+  background-color: grey;
+}
+
+.modal__window {
+  background-color: #b4c9ee;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  visibility: hidden;
+  display: flex;
+  top: 70px;
+  align-items: flex-start;
+  justify-content:center;
+}
+
+
+.modal__window_active {
+  visibility: visible;
+}
+
+.level__container {
+  display: flex;
+  gap: 300px;
+  margin-top: 100px;
+}
+
+.level__btns {
+  display: flex;
+  margin-left: 100px;
+  gap: 70px;
+  flex-direction: column;
+}
+
+.level__btn {
+  display: flex;
+  background: #7b245e;
+  padding: 30px 50px;
+  color: white;
+  font-size: 30px;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.level__btn_active {
+  background: rgb(43, 77, 157);
+}
+
+.nonograms__list {
+  width: 300px;
+  height: 400px;
+  border: 4px dotted #7b245e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.nonograms__name {
+  list-style: none;
+  font-size: 30px;
+  padding-left: 0;
+  padding-bottom: 20px;
+  color:rgb(43, 77, 157);
+  cursor: pointer;
+}
+
+.nonograms__name:hover {
+  color:#7b245e;
+}
+
+.nonograms__name_active {
+  color:#7b245e;
+}

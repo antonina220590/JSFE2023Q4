@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: $content-width;
+  margin: auto;
+
+
+@media (max-width: 1390px) and (min-width: 769px) {
+  padding: 0 40px;
+}
+
+  @include media-middle {
+    padding: 0 40px;
+  }
+  @include media-mobile{
+    padding: 0 16px;
+  }
+}

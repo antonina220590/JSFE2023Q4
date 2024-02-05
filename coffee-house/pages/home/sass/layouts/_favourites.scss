@@ -1,0 +1,145 @@
+.favourites__wrapper{
+  padding-top: 100px;
+
+
+}
+
+.favourite__title {
+  text-align: center;
+}
+
+.favourite__slider {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favourite__slider__wrapper {
+  padding-top: 40px;
+}
+
+.slider__img {
+  width: 480px;
+
+  @include media-mobile {
+    max-width: 348px;
+  }
+}
+
+.slides {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  text-align: center;
+
+  @include media-mobile {
+    max-width: 348px;
+  }
+}
+
+.content__container {
+  max-width: 480px;
+  overflow: hidden;
+
+  @include media-mobile {
+    max-width: 348px;
+  }
+}
+
+
+.slider__content {
+  display: flex;
+  gap: 200px;
+  transition: all 1s ease-in-out;
+
+  @include media-mobile {
+    gap: 100px;
+  }
+}
+
+
+
+.favourite__slider-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  top: 15px;
+}
+
+.favourite__slider-btn {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid $color-border-dark;
+  background-color: $color-background-body;
+  align-items: center;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+
+  @include media-mobile {
+    display: none;
+  }
+}
+
+.favourite__slider-btn svg {
+  stroke: $color-border-dark;
+  transition: 1s ease-in-out;
+  @include media-mobile {
+    display: none;
+  }
+}
+
+
+@media (hover: hover) {
+  .favourite__slider-btn:hover {
+    background-color: $color-background-container;
+    transition: 1s ease-in-out;
+  }
+
+
+  .favourite__slider-btn:hover svg {
+    stroke: $color-text-light;
+    transition: 1s ease-in-out;
+  }
+}
+
+.pagination__line {
+  border-radius: 100px;
+  width: 40px;
+  height: 4px;
+  background: $color-border-light;
+  display: block;
+}
+
+.pagination__container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+.pagination__line_dark {
+  background-color: #665F55;
+  position: relative;
+  width: 0%;
+  display: block;
+  height: 4px;
+  border-radius: 100px;
+  transition: all 1s ease-in-out;
+}
+
+.pagination__line_dark_active {
+  width: 100%;
+  background-color: #665F55;
+  position: relative;
+  width: 0%;
+  display: block;
+  height: 4px;
+  border-radius: 100px;
+  transition: all 1s ease-in-out;
+}

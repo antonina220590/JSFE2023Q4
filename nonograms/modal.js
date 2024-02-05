@@ -4,9 +4,12 @@ import {
   levelBtnsContainer,
   nonogramsList,
   createElem,
+  playBtn,
+  timer,
+  randomBtn
 } from "./index.js";
 import nonograms from "./nonograms.js";
-import { createGameTable, findVerticalClues, findHorizontalClues } from "./gamefield.js";
+import { createGameTable, resetTimer, winMessage } from "./gamefield.js";
 
 function openModal() {
   document.body.classList.toggle("body__lock");
@@ -18,7 +21,7 @@ levelIcon.addEventListener("click", openModal);
 
 let btnArr = [];
 function addLevelBtn() {
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 3; i++) {
     let levelBtns = createElem("button", "level__btn");
     levelBtnsContainer.append(levelBtns);
     btnArr.push(levelBtns);
@@ -27,42 +30,81 @@ function addLevelBtn() {
     btnArr[0].textContent = "5 x 5";
     btnArr[0].classList.add("easy__level");
     btnArr[0].classList.add("level__btn_active");
-    // btnArr[1].textContent = "10 x 10";
-    // btnArr[1].classList.add("medium__level");
-    // btnArr[2].textContent = "15 x 15";
-    // btnArr[2].classList.add("hard__level");
+    btnArr[1].textContent = "10 x 10";
+    btnArr[1].classList.add("medium__level");
+    btnArr[2].textContent = "15 x 15";
+    btnArr[2].classList.add("hard__level");
   }
   return btnArr;
 }
 addLevelBtn();
 
-let nonogramsNameList;
+function handleClickLevelBtn() {
+  for (let i = 0; i < btnArr.length; i++) {
+    btnArr[1].addEventListener("click", () => {
+      displayListOfTitles();
+      btnArr[1].classList.add("level__btn_active");
+      btnArr[0].classList.remove("level__btn_active");
+      btnArr[2].classList.remove("level__btn_active");
+    });
+    btnArr[0].addEventListener("click", () => {
+      displayListOfTitles();
+      btnArr[0].classList.add("level__btn_active");
+      btnArr[1].classList.remove("level__btn_active");
+      btnArr[2].classList.remove("level__btn_active");
+    });
+    btnArr[2].addEventListener("click", () => {
+      displayListOfTitles();
+      btnArr[2].classList.add("level__btn_active");
+      btnArr[0].classList.remove("level__btn_active");
+      btnArr[1].classList.remove("level__btn_active");
+    });
+  }
+}
+handleClickLevelBtn();
 
+let nonogramsNameList;
+console.log(nonogramsNameList)
 function createList() {
-  nonogramsNameList = createElem("li", "nonograms__name", nonogramsList);
+  nonogramsNameList = createElem("li", "nonograms__name");
+  nonogramsList.append(nonogramsNameList);
 }
 
-export function displayListOfTitles() {
+function displayListOfTitles() {
   let easyLevelBtn = document.querySelector(".easy__level");
-  //let mediumLevelBtn = document.querySelector(".medium__level");
-  // let hardLevelBtn = document.querySelector(".hard__level");
+  let mediumLevelBtn = document.querySelector(".medium__level");
+  let hardLevelBtn = document.querySelector(".hard__level");
   const smallArr = nonograms.filter((item) => item.size === 5);
-  //  const mediumArr = nonograms.filter((item) => item.size === 10);
-  //  const bigArr = nonograms.filter((item) => item.size === 15);
+   const mediumArr = nonograms.filter((item) => item.size === 10);
+   const bigArr = nonograms.filter((item) => item.size === 15);
   let arr = [];
   if (easyLevelBtn.classList.contains("level__btn_active")) {
     nonogramsList.innerHTML = "";
     smallArr.forEach((item) => {
       createList();
       nonogramsNameList.textContent = item.name.toUpperCase();
-      nonogramsNameList.id = item.ind;
-      arr.push(item);
+      arr.push(item)
     });
-    console.log(arr);
+    console.log(arr)
+  }
+  if (mediumLevelBtn.classList.contains("level__btn_active")) {
+    nonogramsList.innerHTML = "";
+    mediumArr.forEach((item) => {
+      createList();
+      nonogramsNameList.textContent = item.name.toUpperCase();
+    });
+  }
+  if (hardLevelBtn.classList.contains("level__btn_active")) {
+    nonogramsList.innerHTML = "";
+    bigArr.forEach((item) => {
+      createList();
+      nonogramsNameList.textContent = item.name.toUpperCase();
+    });
   }
   return nonogramsNameList;
 }
 displayListOfTitles();
+
 
 let defaultNono = "STROLLER";
 export let active = 0;
@@ -79,18 +121,17 @@ function changeNono () {
           active = nonograms[i].ind;
         }
       }
-
       document.querySelector(".field__wrapper_common").remove();
-
+      resetTimer();
       createGameTable(nonograms[active].size, nonograms[active].input);
-
+      console.log(nonograms[active].input)
     }
-    console.log(active)
     });
     }
-    changeNono ()
 
-
+    document.querySelectorAll('.nonograms__name').forEach((name) => {
+      name.addEventListener('click', changeNono)
+    })
 
     function removeActiveClass() {
       let activeBtns = document.querySelectorAll('.nonograms__name');
@@ -104,4 +145,22 @@ function changeNono () {
     }
 
 
+    function playGame() {
+      modal.classList.remove("modal__window_active");
+      winMessage.classList.remove("message_active");
+    }
 
+    playBtn.addEventListener('click', playGame)
+
+    function playRandom() {
+      document.querySelector(".field__wrapper_common").remove();
+      resetTimer();
+      let randomActive = Math.floor(Math.random() * nonograms.length);
+      createGameTable(nonograms[randomActive].size, nonograms[randomActive].input);
+      console.log(nonograms[randomActive].input)
+      console.log(nonograms[randomActive].name)
+      modal.classList.remove("modal__window_active");
+      winMessage.classList.remove("message_active");
+    }
+
+    randomBtn.addEventListener("click", playRandom);

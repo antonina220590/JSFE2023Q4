@@ -44,8 +44,7 @@ levelIcon.src = "./assets/level.png";
 
 themeChangerDiv.append(dayNigthIcon, levelIcon);
 
-const timer = createElem("span", "timer");
-timer.textContent = "00 : 00";
+
 
 const winMessage = createElem("span", "message");
 headerDiv.append(title);
@@ -67,8 +66,7 @@ let nonogramsInfo = nonograms[0];
 let nonogramsSize = nonogramsInfo.size;
 let nonogramsMatrix = nonogramsInfo.input;
 
-
-function createField (size) {
+function createField(size) {
   for (let i = 0; i < size; i++) {
     const horizontalField = createElem("div", "field__horizontal");
     const topKeys = createElem("div", "key-top");
@@ -153,7 +151,7 @@ function renderHorizontalKeys(horizontalKeyCells, arr) {
     keys.forEach((key) => {
       span = document.createElement("span");
       span.classList.add("horizontal-key");
-      span.innerHTML = '';
+      span.innerHTML = "";
       span.textContent = key;
       horizontalKeyCells[i].append(span);
     });
@@ -170,12 +168,11 @@ function renderVerticalKeys(verticalKeyCells, arr) {
     keys.forEach((key) => {
       span = document.createElement("span");
       span.classList.add("vertical-key");
-      span.innerHTML = '';
+      span.innerHTML = "";
       span.textContent = key;
       verticalKeyCells[i].append(span);
     });
   }
-
 }
 
 findHorizontalClues(nonogramsMatrix);
@@ -218,32 +215,15 @@ function handleClickCross() {
 
 handleClickCross();
 
-//проверка на выигрыш
-
-function checkWin() {
-  let playerArray = [];
-  let fieldCells = document.querySelectorAll(".field__cell");
-  let array = Array.from(fieldCells);
-  array.map((cell) => {
-    if (cell.classList.contains("field__cell_dark")) {
-      playerArray.push(1);
-    } else {
-      playerArray.push(0);
-    }
-  });
-  let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
-  let string1 = flattedMatrix.toString();
-  let string2 = playerArray.toString();
-
-  if (string1 === string2) {
-    winMessage.classList.add("message_active");
-    winMessage.textContent = `Great! You have solved the nonogram in ${timer.textContent} seconds!`;
-    stopTimer();
-    field.classList.add("field__center_disabled");
-  }
-}
 
 //Таймер
+
+export function drawTimer() {
+  const timer = createElem("span", "timer");
+  timer.textContent = "00 : 00";
+}
+drawTimer()
+
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
@@ -285,21 +265,41 @@ function initiateTimer() {
 }
 
 function stopTimer() {
+
   clearInterval(timerSet);
 }
 
-function resetTimer() {
-  if (seconds !== 0) {
-    seconds = 0;
-  }
-  if (minutes !== 0) {
-    minutes = 0;
-  }
-  timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
-  stopTimer();
+export function resetTimer() {
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
 }
+
+//проверка на выигрыш
+
+function checkWin() {
+  let playerArray = [];
+  let fieldCells = document.querySelectorAll(".field__cell");
+  let array = Array.from(fieldCells);
+  array.map((cell) => {
+    if (cell.classList.contains("field__cell_dark")) {
+      playerArray.push(1);
+    } else {
+      playerArray.push(0);
+    }
+  });
+  let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
+  let string1 = flattedMatrix.toString();
+  let string2 = playerArray.toString();
+
+  if (string1 === string2) {
+    winMessage.classList.add("message_active");
+    winMessage.textContent = `Great! You have solved the nonogram in ${timer.textContent} seconds!`;
+    stopTimer();
+    field.classList.add("field__center_disabled");
+  }
+}
+
 
 // смена цветовой схемы
 
@@ -358,7 +358,7 @@ levelIcon.addEventListener("click", openModal);
 
 let btnArr = [];
 function addLevelBtn() {
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 3; i++) {
     let levelBtns = createElem("button", "level__btn");
     levelBtnsContainer.append(levelBtns);
     btnArr.push(levelBtns);
@@ -367,10 +367,10 @@ function addLevelBtn() {
     btnArr[0].textContent = "5 x 5";
     btnArr[0].classList.add("easy__level");
     btnArr[0].classList.add("level__btn_active");
-    // btnArr[1].textContent = "10 x 10";
-    // btnArr[1].classList.add("medium__level");
-    // btnArr[2].textContent = "15 x 15";
-    // btnArr[2].classList.add("hard__level");
+    btnArr[1].textContent = "10 x 10";
+    btnArr[1].classList.add("medium__level");
+    btnArr[2].textContent = "15 x 15";
+    btnArr[2].classList.add("hard__level");
   }
   return btnArr;
 }
@@ -398,10 +398,10 @@ function handleClickLevelBtn() {
     });
   }
 }
-//handleClickLevelBtn();
+handleClickLevelBtn();
 
 let nonogramsNameList;
-console.log(nonogramsNameList)
+console.log(nonogramsNameList);
 function createList() {
   nonogramsNameList = createElem("li", "nonograms__name");
   nonogramsList.append(nonogramsNameList);
@@ -409,41 +409,38 @@ function createList() {
 
 function displayListOfTitles() {
   let easyLevelBtn = document.querySelector(".easy__level");
-  //let mediumLevelBtn = document.querySelector(".medium__level");
-  // let hardLevelBtn = document.querySelector(".hard__level");
+  let mediumLevelBtn = document.querySelector(".medium__level");
+  let hardLevelBtn = document.querySelector(".hard__level");
   const smallArr = nonograms.filter((item) => item.size === 5);
-  //  const mediumArr = nonograms.filter((item) => item.size === 10);
-  //  const bigArr = nonograms.filter((item) => item.size === 15);
+  const mediumArr = nonograms.filter((item) => item.size === 10);
+  const bigArr = nonograms.filter((item) => item.size === 15);
   let arr = [];
   if (easyLevelBtn.classList.contains("level__btn_active")) {
     nonogramsList.innerHTML = "";
     smallArr.forEach((item) => {
       createList();
       nonogramsNameList.textContent = item.name.toUpperCase();
-      arr.push(item)
+      arr.push(item);
     });
-    console.log(arr)
+    console.log(arr);
   }
-
-  // if (mediumLevelBtn.classList.contains("level__btn_active")) {
-  //   nonogramsList.innerHTML = "";
-  //   mediumArr.forEach((item) => {
-  //     createList();
-  //     nonogramsNameList.textContent = item.name.toUpperCase();
-  //   });
-  // }
-  // if (hardLevelBtn.classList.contains("level__btn_active")) {
-  //   nonogramsList.innerHTML = "";
-  //   bigArr.forEach((item) => {
-  //     createList();
-
-  //     nonogramsNameList.textContent = item.name.toUpperCase();
-  //   });
-  //}
+  if (mediumLevelBtn.classList.contains("level__btn_active")) {
+    nonogramsList.innerHTML = "";
+    mediumArr.forEach((item) => {
+      createList();
+      nonogramsNameList.textContent = item.name.toUpperCase();
+    });
+  }
+  if (hardLevelBtn.classList.contains("level__btn_active")) {
+    nonogramsList.innerHTML = "";
+    bigArr.forEach((item) => {
+      createList();
+      nonogramsNameList.textContent = item.name.toUpperCase();
+    });
+  }
   return nonogramsNameList;
 }
 displayListOfTitles();
-
 
 let topKeys = document.querySelectorAll(".horizontal-key");
 console.log(topKeys);
@@ -458,12 +455,12 @@ function renderTable() {
       if (nonograms[i].name === clickedName.innerHTML) {
         //commonFieldWrapper.innerHTML = "";
         currentNonogramsMatrix = nonograms[i].input;
-        currentNonogramsSize = nonograms[i].size
-        console.log(currentNonogramsMatrix)
+        currentNonogramsSize = nonograms[i].size;
+        console.log(currentNonogramsMatrix);
       }
     }
     //findHorizontalClues(currentNonogramsMatrix);
-   // findVerticalClues(currentNonogramsMatrix);
+    // findVerticalClues(currentNonogramsMatrix);
     renderVerticalKeys(verticalKeyCells, horizontalClues);
     renderHorizontalKeys(horizontalKeyCells, verticalClues);
   });
@@ -472,6 +469,6 @@ function renderTable() {
 let button = document.querySelector(".easy__level");
 // console.log(button)
 // button.addEventListener("click", () => {
-  renderTable();
+renderTable();
 //   console.log('!')
 // })

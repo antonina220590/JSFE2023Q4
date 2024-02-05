@@ -103,7 +103,7 @@ body {
 }
 
 .field__cell {
-  border: 1px dotted black;
+  border: 1px dotted gray;
   width: 40px;
   height: 40px;
   padding: 7px;
@@ -117,7 +117,7 @@ body {
 }
 
 .field__cell_dark {
-  background: dimgrey;
+  background: black;
 }
 
 .field__cell_dark-theme {
@@ -246,8 +246,10 @@ body {
   visibility: hidden;
   display: flex;
   top: 70px;
-  align-items: flex-start;
-  justify-content:center;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 100px;
 }
 
 
@@ -267,8 +269,9 @@ body {
   gap: 70px;
   flex-direction: column;
 }
-
-.level__btn {
+.play__btn,
+.level__btn,
+.random__btn {
   display: flex;
   background: #7b245e;
   padding: 30px 50px;
@@ -278,6 +281,11 @@ body {
   border-radius: 10px;
   cursor: pointer;
   outline: none;
+}
+.level__btn:hover,
+.play__btn:hover,
+.random__btn:hover {
+  background: rgb(43, 77, 157);
 }
 
 .level__btn_active {
@@ -310,4 +318,9 @@ body {
 
 .nonograms__name_active {
   color:#7b245e;
+}
+
+.modal-btn__container {
+  display: flex;
+  gap: 80px;
 }

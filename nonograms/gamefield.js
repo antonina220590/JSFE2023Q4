@@ -1,9 +1,87 @@
 import nonograms from "./nonograms.js";
-import { createElem, gameSection, title } from "./index.js";
+import { createElem, gameSection, title, resetBtn, timer } from "./index.js";
 import { active } from "./modal.js";
+
+//Таймер
+
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timerSet;
+let timerOn = false;
+
+const startTimer = Date.now();
+
+function updateTimer() {
+  timerOn = true;
+  seconds++;
+  if (minutes < 60) {
+    if (seconds === 60) {
+      minutes++;
+      seconds = 0;
+    }
+    if (minutes === 60) {
+      hours++;
+      minutes = 0;
+    }
+    timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  }
+  if (hours > 0) {
+    timer.textContent = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+}
+
+function initiateTimer() {
+  if (!timerOn === true) {
+    timerOn = true;
+    timerSet = setInterval(() => {
+      updateTimer(startTimer);
+    }, 1000);
+  }
+}
+
+export function stopTimer() {
+  clearInterval(timerSet);
+}
+
+export function resetTimer() {
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+
+  if (seconds !== 0) {
+    seconds = 0;
+  }
+  if (minutes !== 0) {
+    minutes = 0;
+  }
+  timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
+  stopTimer();
+}
+
+//reset
+
+function resetGame() {
+  document.querySelectorAll(".field__cell").forEach((cell) => {
+    cell.classList.remove("field__cell_dark");
+    cell.classList.remove("field__cell_cross");
+  });
+  let field = document.querySelector(".field__center");
+  field.classList.remove("field__center_disabled");
+  winMessage.classList.remove("message_active");
+}
+
+resetBtn.addEventListener("click", resetGame);
 
 let horizontalClues = [];
 let verticalClues = [];
+export const winMessage = createElem("span", "message", gameSection);
 
 export function findHorizontalClues(matrix) {
   let rowsLength = matrix.length;
@@ -26,8 +104,6 @@ export function findHorizontalClues(matrix) {
   }
   return horizontalClues;
 }
-
-console.log(verticalClues);
 
 export function findVerticalClues(matrix) {
   let rowsLength = matrix.length;
@@ -114,12 +190,13 @@ function handleClickDark() {
   const centerField = document.querySelector(".field__center");
   centerField.addEventListener("click", (e) => {
     initiateTimer();
+    checkWin();
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
       clickedCell.classList.remove("field__cell_cross");
       clickedCell.classList.toggle("field__cell_dark");
     }
-     checkWin();
+    checkWin();
   });
 }
 
@@ -128,8 +205,8 @@ function handleClickDark() {
 function handleClickCross() {
   const centerField = document.querySelector(".field__center");
   centerField.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
     initiateTimer();
+    e.preventDefault();
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
       clickedCell.classList.remove("field__cell_dark");
@@ -139,8 +216,7 @@ function handleClickCross() {
   });
 }
 
- //проверка на выигрыш
- const winMessage = createElem("span", "message", gameSection);
+//проверка на выигрыш
 
 function checkWin() {
   let playerArray = [];
@@ -155,7 +231,7 @@ function checkWin() {
   });
 
   let nonogramsMatrix = nonograms[active].input;
-  let nonogramsSize =  nonograms[active].size;
+  let nonogramsSize = nonograms[active].size;
   let flattedMatrix = nonogramsMatrix.flat(nonogramsSize);
   let string1 = flattedMatrix.toString();
   let string2 = playerArray.toString();
@@ -167,67 +243,4 @@ function checkWin() {
     let field = document.querySelector(".field__center");
     field.classList.add("field__center_disabled");
   }
-}
-
-
-//Таймер
-
-const timer = createElem("span", "timer", gameSection);
-timer.textContent = "00 : 00";
-
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
-let timerSet;
-let timerOn = false;
-
-const startTimer = Date.now();
-
-function updateTimer() {
-  timerOn = true;
-  seconds++;
-  if (minutes < 60) {
-    if (seconds === 60) {
-      minutes++;
-      seconds = 0;
-    }
-    if (minutes === 60) {
-      hours++;
-      minutes = 0;
-    }
-    timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  }
-  if (hours > 0) {
-    timer.textContent = `${hours.toString().padStart(2, "0")}:${minutes
-      .toString()
-      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-  }
-}
-
-function initiateTimer() {
-  if (!timerOn === true) {
-    timerOn = true;
-    timerSet = setInterval(() => {
-      updateTimer(startTimer);
-    }, 1000);
-  }
-}
-
-function stopTimer() {
-  clearInterval(timerSet);
-}
-
-function resetTimer() {
-  if (seconds !== 0) {
-    seconds = 0;
-  }
-  if (minutes !== 0) {
-    minutes = 0;
-  }
-  timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
-  stopTimer();
 }

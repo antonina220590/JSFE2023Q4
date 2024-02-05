@@ -1,6 +1,10 @@
 import nonograms from "./nonograms.js";
 import { createElem, gameSection, title, resetBtn, timer } from "./index.js";
-import { active } from "./modal.js";
+import { active, playRandom } from "./modal.js";
+
+let horizontalClues = [];
+let verticalClues = [];
+export let winMessage = createElem("span", "message", gameSection)
 
 //Таймер
 
@@ -35,6 +39,7 @@ function updateTimer() {
   }
 }
 
+
 function initiateTimer() {
   if (!timerOn === true) {
     timerOn = true;
@@ -45,6 +50,7 @@ function initiateTimer() {
 }
 
 export function stopTimer() {
+  timerOn = false;
   clearInterval(timerSet);
 }
 
@@ -52,7 +58,6 @@ export function resetTimer() {
   seconds = 0;
   minutes = 0;
   hours = 0;
-
   if (seconds !== 0) {
     seconds = 0;
   }
@@ -79,9 +84,6 @@ function resetGame() {
 
 resetBtn.addEventListener("click", resetGame);
 
-let horizontalClues = [];
-let verticalClues = [];
-export const winMessage = createElem("span", "message", gameSection);
 
 export function findHorizontalClues(matrix) {
   let rowsLength = matrix.length;
@@ -180,6 +182,7 @@ export function createGameTable(size, arr) {
       span.textContent = key;
     });
   }
+
   handleClickCross();
   handleClickDark();
 }
@@ -190,7 +193,6 @@ function handleClickDark() {
   const centerField = document.querySelector(".field__center");
   centerField.addEventListener("click", (e) => {
     initiateTimer();
-    checkWin();
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
       clickedCell.classList.remove("field__cell_cross");
@@ -213,12 +215,14 @@ function handleClickCross() {
       clickedCell.classList.toggle("field__cell_cross");
     }
     checkWin();
+    console.log(winMessage)
   });
 }
 
 //проверка на выигрыш
 
-function checkWin() {
+export function checkWin() {
+
   let playerArray = [];
   let fieldCells = document.querySelectorAll(".field__cell");
   let array = Array.from(fieldCells);
@@ -244,3 +248,4 @@ function checkWin() {
     field.classList.add("field__center_disabled");
   }
 }
+

@@ -9,7 +9,7 @@ import {
   randomBtn
 } from "./index.js";
 import nonograms from "./nonograms.js";
-import { createGameTable, resetTimer, winMessage } from "./gamefield.js";
+import { createGameTable, resetTimer, winMessage, checkWin } from "./gamefield.js";
 
 function openModal() {
   document.body.classList.toggle("body__lock");
@@ -121,8 +121,8 @@ function changeNono () {
           active = nonograms[i].ind;
         }
       }
-      document.querySelector(".field__wrapper_common").remove();
       resetTimer();
+      document.querySelector(".field__wrapper_common").remove();
       createGameTable(nonograms[active].size, nonograms[active].input);
       console.log(nonograms[active].input)
     }
@@ -152,15 +152,17 @@ function changeNono () {
 
     playBtn.addEventListener('click', playGame)
 
-    function playRandom() {
+   export function playRandom() {
       document.querySelector(".field__wrapper_common").remove();
-      resetTimer();
-      let randomActive = Math.floor(Math.random() * nonograms.length);
-      createGameTable(nonograms[randomActive].size, nonograms[randomActive].input);
-      console.log(nonograms[randomActive].input)
-      console.log(nonograms[randomActive].name)
-      modal.classList.remove("modal__window_active");
       winMessage.classList.remove("message_active");
+      resetTimer();
+      active = Math.floor(Math.random() * nonograms.length);
+      createGameTable(nonograms[active].size, nonograms[active].input);
+      console.log(nonograms[active].input)
+      console.log(nonograms[active].name)
+      modal.classList.remove("modal__window_active");
     }
 
     randomBtn.addEventListener("click", playRandom);
+
+    console.log(timer)

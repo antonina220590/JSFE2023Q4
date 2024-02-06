@@ -125,6 +125,7 @@ function changeNono () {
       resetTimer();
       document.querySelector(".field__wrapper_common").remove();
       createGameTable(nonograms[active].size, nonograms[active].input);
+      console.log(nonograms[active].input)
     }
     });
     }
@@ -147,7 +148,7 @@ function changeNono () {
       let fieldCells = document.querySelectorAll(".field__cell");
       let verticalCells = document.querySelectorAll(".key-left");
       let horizontalCells = document.querySelectorAll(".key-top");
-      let cross = document.querySelector(".field__cell_cross");
+
 
       let defaultNonoSize;
       for (let i = 0; i < nonograms.length; i++) {
@@ -159,7 +160,7 @@ function changeNono () {
         fieldCells.forEach((cell) => {
           cell.classList.toggle("field__cell_medium")
         })
-        
+
        verticalCells.forEach((cell) => {
           cell.classList.toggle("key-left_medium")
         })

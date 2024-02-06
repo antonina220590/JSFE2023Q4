@@ -182,7 +182,6 @@ export function createGameTable(size, arr) {
       span.textContent = key;
     });
   }
-
   handleClickCross();
   handleClickDark();
 }
@@ -198,6 +197,7 @@ function handleClickDark() {
       clickedCell.classList.remove("field__cell_cross");
       clickedCell.classList.toggle("field__cell_dark");
     }
+
     checkWin();
   });
 }
@@ -215,7 +215,6 @@ function handleClickCross() {
       clickedCell.classList.toggle("field__cell_cross");
     }
     checkWin();
-    console.log(winMessage)
   });
 }
 
@@ -248,4 +247,5 @@ export function checkWin() {
     field.classList.add("field__center_disabled");
   }
 }
+
 

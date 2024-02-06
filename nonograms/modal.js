@@ -9,7 +9,7 @@ import {
   randomBtn
 } from "./index.js";
 import nonograms from "./nonograms.js";
-import { createGameTable, resetTimer, winMessage, checkWin } from "./gamefield.js";
+import { createGameTable, resetTimer, winMessage } from "./gamefield.js";
 
 function openModal() {
   document.body.classList.toggle("body__lock");
@@ -42,18 +42,21 @@ addLevelBtn();
 function handleClickLevelBtn() {
   for (let i = 0; i < btnArr.length; i++) {
     btnArr[1].addEventListener("click", () => {
+      console.log("btn1")
       displayListOfTitles();
       btnArr[1].classList.add("level__btn_active");
       btnArr[0].classList.remove("level__btn_active");
       btnArr[2].classList.remove("level__btn_active");
     });
     btnArr[0].addEventListener("click", () => {
+      console.log("btn2")
       displayListOfTitles();
       btnArr[0].classList.add("level__btn_active");
       btnArr[1].classList.remove("level__btn_active");
       btnArr[2].classList.remove("level__btn_active");
     });
     btnArr[2].addEventListener("click", () => {
+      console.log("btn2")
       displayListOfTitles();
       btnArr[2].classList.add("level__btn_active");
       btnArr[0].classList.remove("level__btn_active");
@@ -85,7 +88,6 @@ function displayListOfTitles() {
       nonogramsNameList.textContent = item.name.toUpperCase();
       arr.push(item)
     });
-    console.log(arr)
   }
   if (mediumLevelBtn.classList.contains("level__btn_active")) {
     nonogramsList.innerHTML = "";
@@ -111,6 +113,7 @@ export let active = 0;
 
 function changeNono () {
   document.querySelector('.nonograms__list').addEventListener('click', (event) => {
+    console.log('!')
     if(event.target.classList.contains('nonograms__name')) {
       let clickedBtn = event.target;
       removeActiveClass();
@@ -148,6 +151,7 @@ function changeNono () {
     function playGame() {
       modal.classList.remove("modal__window_active");
       winMessage.classList.remove("message_active");
+      document.body.classList.toggle("body__lock");
     }
 
     playBtn.addEventListener('click', playGame)
@@ -161,8 +165,7 @@ function changeNono () {
       console.log(nonograms[active].input)
       console.log(nonograms[active].name)
       modal.classList.remove("modal__window_active");
+      document.body.classList.toggle("body__lock");
     }
 
     randomBtn.addEventListener("click", playRandom);
-
-    console.log(timer)

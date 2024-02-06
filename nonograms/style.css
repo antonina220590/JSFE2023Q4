@@ -298,7 +298,7 @@ body {
 }
 
 .nonograms__list {
-  width: 200px;
+  width: 250px;
   height: 300px;
   border: 4px dotted #7b245e;
   display: flex;

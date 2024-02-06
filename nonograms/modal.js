@@ -82,21 +82,18 @@ displayListOfTitles();
 function handleClickLevelBtn() {
   for (let i = 0; i < btnArr.length; i++) {
     btnArr[0].addEventListener("click", () => {
-      console.log("btn1")
       displayListOfTitles();
       btnArr[0].classList.add("level__btn_active");
       btnArr[1].classList.remove("level__btn_active");
       btnArr[2].classList.remove("level__btn_active");
     });
     btnArr[1].addEventListener("click", () => {
-      console.log("btn2")
       displayListOfTitles();
       btnArr[1].classList.add("level__btn_active");
       btnArr[0].classList.remove("level__btn_active");
       btnArr[2].classList.remove("level__btn_active");
     });
     btnArr[2].addEventListener("click", () => {
-      console.log("btn3")
       displayListOfTitles();
       btnArr[2].classList.add("level__btn_active");
       btnArr[0].classList.remove("level__btn_active");
@@ -115,7 +112,6 @@ function changeNono () {
   document.querySelector('.nonograms__list').addEventListener('click', (event) => {
    if(event.target.classList.contains('nonograms__name')) {
       let clickedBtn = event.target;
-      console.log(event.target)
       removeActiveClass();
       addActiveClass(clickedBtn);
       defaultNono = clickedBtn.textContent;
@@ -124,12 +120,11 @@ function changeNono () {
         if (nonograms[i].name === defaultNono) {
           active = nonograms[i].ind;
         }
-        console.log(defaultNono)
       }
+
       resetTimer();
       document.querySelector(".field__wrapper_common").remove();
       createGameTable(nonograms[active].size, nonograms[active].input);
-      console.log(nonograms[active].input)
     }
     });
     }
@@ -149,6 +144,44 @@ function changeNono () {
       modal.classList.remove("modal__window_active");
       winMessage.classList.remove("message_active");
       document.body.classList.toggle("body__lock");
+      let fieldCells = document.querySelectorAll(".field__cell");
+      let verticalCells = document.querySelectorAll(".key-left");
+      let horizontalCells = document.querySelectorAll(".key-top");
+      let cross = document.querySelector(".field__cell_cross");
+
+      let defaultNonoSize;
+      for (let i = 0; i < nonograms.length; i++) {
+        if (nonograms[i].name === defaultNono) {
+          defaultNonoSize = nonograms[i].size;
+        }
+      }
+       if (defaultNonoSize === 10) {
+        fieldCells.forEach((cell) => {
+          cell.classList.toggle("field__cell_medium")
+        })
+        
+       verticalCells.forEach((cell) => {
+          cell.classList.toggle("key-left_medium")
+        })
+        horizontalCells.forEach((cell) => {
+          cell.classList.toggle("key-top_medium")
+        })
+       }
+
+       if (defaultNonoSize === 15) {
+        fieldCells.forEach((cell) => {
+          cell.classList.remove("field__cell_medium");
+          cell.classList.toggle("field__cell_big");
+        })
+        verticalCells.forEach((cell) => {
+          cell.classList.remove("key-left_medium");
+          cell.classList.toggle("key-left_big");
+        })
+        horizontalCells.forEach((cell) => {
+          cell.classList.remove("key-top_medium")
+          cell.classList.toggle("key-top_big")
+        })
+       }
     }
 
     playBtn.addEventListener('click', playGame)

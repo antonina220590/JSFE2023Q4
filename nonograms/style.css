@@ -48,7 +48,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 65vh;
+  min-height: 65vh;
   gap: 25px;
 }
 

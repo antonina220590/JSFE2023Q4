@@ -252,6 +252,11 @@ body {
   gap: 100px;
 }
 
+.modal__window_dark-theme {
+  background-color: darkgoldenrod;
+
+}
+
 
 .modal__window_active {
   visibility: visible;
@@ -266,7 +271,7 @@ body {
 .level__btns {
   display: flex;
   margin-left: 100px;
-  gap: 70px;
+  gap: 50px;
   flex-direction: column;
 }
 .play__btn,
@@ -274,9 +279,9 @@ body {
 .random__btn {
   display: flex;
   background: #7b245e;
-  padding: 30px 50px;
+  padding: 20px 50px;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   justify-content: center;
   border-radius: 10px;
   cursor: pointer;
@@ -293,8 +298,8 @@ body {
 }
 
 .nonograms__list {
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   border: 4px dotted #7b245e;
   display: flex;
   flex-direction: column;

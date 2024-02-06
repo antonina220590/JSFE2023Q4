@@ -252,6 +252,11 @@ body {
   gap: 100px;
 }
 
+.modal__window_dark-theme {
+  background-color: darkgoldenrod;
+
+}
+
 
 .modal__window_active {
   visibility: visible;

@@ -19,7 +19,7 @@ export function createElem(HTMLtag, classNames, par, text, idName) {
 
 
 const mainContainer = createElem("main", "main__container");
-const themeChangerDiv = createElem("div", "theme__container", mainContainer);
+export const themeChangerDiv = createElem("div", "theme__container", mainContainer);
 const headerDiv = createElem("div", "header_div", mainContainer);
 export const title = createElem("h1", "game__title", headerDiv, "Nonograms");
 export const gameSection = createElem("section", "game__section", mainContainer);

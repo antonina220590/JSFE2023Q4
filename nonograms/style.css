@@ -48,7 +48,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 65vh;
+  height: 65vh;
   gap: 25px;
 }
 
@@ -87,7 +87,6 @@ body {
 
 .field__horizontal {
   display: flex;
-  flex-wrap: wrap;
   background: lavender;
 
   &:nth-child(5n) {
@@ -117,13 +116,13 @@ body {
 }
 
 .field__cell_medium {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .field__cell_big {
-  width: 15px;
-  height: 15px;
+  width: 5px;
+  height: 5px;
 }
 
 .field__cell_dark {
@@ -175,11 +174,11 @@ body {
 }
 
 .key-top_medium {
-  width: 25px;
+  width: 20px;
 }
 
 .key-top_big {
-  width: 15px;
+  width: 5px;
 }
 
 .key-top_dark-theme {
@@ -199,11 +198,11 @@ body {
 }
 
 .key-left_medium {
-  height: 25px;
+  height: 20px;
 }
 
 .key-left_big {
-  height: 15px;
+  height: 5px;
 }
 
 .key-left_dark-theme {

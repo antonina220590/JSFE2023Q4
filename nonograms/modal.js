@@ -39,35 +39,8 @@ function addLevelBtn() {
 }
 addLevelBtn();
 
-function handleClickLevelBtn() {
-  for (let i = 0; i < btnArr.length; i++) {
-    btnArr[1].addEventListener("click", () => {
-      console.log("btn1")
-      displayListOfTitles();
-      btnArr[1].classList.add("level__btn_active");
-      btnArr[0].classList.remove("level__btn_active");
-      btnArr[2].classList.remove("level__btn_active");
-    });
-    btnArr[0].addEventListener("click", () => {
-      console.log("btn2")
-      displayListOfTitles();
-      btnArr[0].classList.add("level__btn_active");
-      btnArr[1].classList.remove("level__btn_active");
-      btnArr[2].classList.remove("level__btn_active");
-    });
-    btnArr[2].addEventListener("click", () => {
-      console.log("btn2")
-      displayListOfTitles();
-      btnArr[2].classList.add("level__btn_active");
-      btnArr[0].classList.remove("level__btn_active");
-      btnArr[1].classList.remove("level__btn_active");
-    });
-  }
-}
-handleClickLevelBtn();
-
 let nonogramsNameList;
-console.log(nonogramsNameList)
+
 function createList() {
   nonogramsNameList = createElem("li", "nonograms__name");
   nonogramsList.append(nonogramsNameList);
@@ -80,13 +53,12 @@ function displayListOfTitles() {
   const smallArr = nonograms.filter((item) => item.size === 5);
    const mediumArr = nonograms.filter((item) => item.size === 10);
    const bigArr = nonograms.filter((item) => item.size === 15);
-  let arr = [];
+
   if (easyLevelBtn.classList.contains("level__btn_active")) {
     nonogramsList.innerHTML = "";
     smallArr.forEach((item) => {
       createList();
       nonogramsNameList.textContent = item.name.toUpperCase();
-      arr.push(item)
     });
   }
   if (mediumLevelBtn.classList.contains("level__btn_active")) {
@@ -107,22 +79,52 @@ function displayListOfTitles() {
 }
 displayListOfTitles();
 
+function handleClickLevelBtn() {
+  for (let i = 0; i < btnArr.length; i++) {
+    btnArr[0].addEventListener("click", () => {
+      console.log("btn1")
+      displayListOfTitles();
+      btnArr[0].classList.add("level__btn_active");
+      btnArr[1].classList.remove("level__btn_active");
+      btnArr[2].classList.remove("level__btn_active");
+    });
+    btnArr[1].addEventListener("click", () => {
+      console.log("btn2")
+      displayListOfTitles();
+      btnArr[1].classList.add("level__btn_active");
+      btnArr[0].classList.remove("level__btn_active");
+      btnArr[2].classList.remove("level__btn_active");
+    });
+    btnArr[2].addEventListener("click", () => {
+      console.log("btn3")
+      displayListOfTitles();
+      btnArr[2].classList.add("level__btn_active");
+      btnArr[0].classList.remove("level__btn_active");
+      btnArr[1].classList.remove("level__btn_active");
+    });
+  }
+}
+handleClickLevelBtn();
+
 
 let defaultNono = "STROLLER";
 export let active = 0;
 
+
 function changeNono () {
   document.querySelector('.nonograms__list').addEventListener('click', (event) => {
-    console.log('!')
-    if(event.target.classList.contains('nonograms__name')) {
+   if(event.target.classList.contains('nonograms__name')) {
       let clickedBtn = event.target;
+      console.log(event.target)
       removeActiveClass();
       addActiveClass(clickedBtn);
       defaultNono = clickedBtn.textContent;
+
       for (let i = 0; i < nonograms.length; i++) {
         if (nonograms[i].name === defaultNono) {
           active = nonograms[i].ind;
         }
+        console.log(defaultNono)
       }
       resetTimer();
       document.querySelector(".field__wrapper_common").remove();
@@ -132,9 +134,9 @@ function changeNono () {
     });
     }
 
-    document.querySelectorAll('.nonograms__name').forEach((name) => {
-      name.addEventListener('click', changeNono)
-    })
+    function addActiveClass(clickedBtn) {
+      clickedBtn.classList.add('nonograms__name_active');
+    }
 
     function removeActiveClass() {
       let activeBtns = document.querySelectorAll('.nonograms__name');
@@ -142,11 +144,6 @@ function changeNono () {
         btn.classList.remove('nonograms__name_active');
       })
     }
-
-    function addActiveClass(clickedBtn) {
-      clickedBtn.classList.add('nonograms__name_active');
-    }
-
 
     function playGame() {
       modal.classList.remove("modal__window_active");
@@ -169,3 +166,7 @@ function changeNono () {
     }
 
     randomBtn.addEventListener("click", playRandom);
+
+     window.addEventListener('load', (event) => {
+      changeNono ();
+    });

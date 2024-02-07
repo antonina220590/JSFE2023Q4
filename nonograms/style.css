@@ -119,8 +119,8 @@ body {
 }
 
 .field__cell_medium {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 .field__cell_big {
@@ -177,7 +177,7 @@ body {
 }
 
 .key-top_medium {
-  width: 20px;
+  width: 15px;
 }
 
 .key-top_big {
@@ -201,7 +201,7 @@ body {
 }
 
 .key-left_medium {
-  height: 20px;
+  height: 15px;
 }
 
 .key-left_big {

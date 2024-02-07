@@ -122,7 +122,6 @@ function changeNono () {
         }
       }
 
-
       resetTimer();
       document.querySelector(".field__wrapper_common").remove();
       createGameTable(nonograms[active].size, nonograms[active].input);
@@ -204,3 +203,4 @@ function changeNono () {
      window.addEventListener('load', (event) => {
       changeNono ();
     });
+

@@ -211,7 +211,18 @@ function handleClickCross() {
     let clickedCell = e.target;
     if (e.target.classList.contains("field__cell")) {
       clickedCell.classList.remove("field__cell_dark");
+      let nonogramsSize = nonograms[active].size;
+      if (nonogramsSize === 5) {
+        console.log(nonogramsSize)
       clickedCell.classList.toggle("field__cell_cross");
+      }
+      if (nonogramsSize === 10){
+        clickedCell.classList.toggle("field__cell_cross_medium");
+      }
+      if (nonogramsSize === 15){
+        clickedCell.classList.toggle("field__cell_cross_big");
+      }
+
     }
     checkWin();
   });

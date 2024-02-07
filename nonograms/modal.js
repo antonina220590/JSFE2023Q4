@@ -149,7 +149,6 @@ function changeNono () {
       let verticalCells = document.querySelectorAll(".key-left");
       let horizontalCells = document.querySelectorAll(".key-top");
 
-
       let defaultNonoSize;
       for (let i = 0; i < nonograms.length; i++) {
         if (nonograms[i].name === defaultNono) {
@@ -167,6 +166,7 @@ function changeNono () {
         horizontalCells.forEach((cell) => {
           cell.classList.toggle("key-top_medium")
         })
+
        }
 
        if (defaultNonoSize === 15) {

@@ -145,6 +145,18 @@ body {
   margin: auto;
 }
 
+.field__cell_cross_medium {
+  background: url("./assets/cross1.svg");
+  background-repeat: no-repeat;
+  margin: auto;
+}
+
+.field__cell_cross_big {
+  background: url("./assets/cross3.svg");
+  background-repeat: no-repeat;
+  margin: auto;
+}
+
 .horizontal-keys {
   display: flex;
   background: #b4c9ee;

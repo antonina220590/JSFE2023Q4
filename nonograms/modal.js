@@ -104,7 +104,7 @@ function handleClickLevelBtn() {
 handleClickLevelBtn();
 
 
-let defaultNono = "STROLLER";
+export let defaultNono = "STROLLER";
 export let active = 0;
 
 
@@ -121,6 +121,7 @@ function changeNono () {
           active = nonograms[i].ind;
         }
       }
+
 
       resetTimer();
       document.querySelector(".field__wrapper_common").remove();
@@ -192,9 +193,8 @@ function changeNono () {
       winMessage.classList.remove("message_active");
       resetTimer();
       active = Math.floor(Math.random() * nonograms.length);
+      defaultNono = nonograms[active].name;
       createGameTable(nonograms[active].size, nonograms[active].input);
-      console.log(nonograms[active].input)
-      console.log(nonograms[active].name)
       modal.classList.remove("modal__window_active");
       document.body.classList.toggle("body__lock");
     }

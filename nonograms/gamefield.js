@@ -185,6 +185,7 @@ export function createGameTable(size, arr) {
 }
 
 createGameTable(nonograms[active].size, nonograms[active].input);
+console.log(nonograms[active].input)
 
 function handleClickDark() {
   const centerField = document.querySelector(".field__center");

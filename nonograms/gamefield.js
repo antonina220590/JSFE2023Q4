@@ -1,10 +1,10 @@
 import nonograms from "./nonograms.js";
-import { createElem, gameSection, title, resetBtn, timer } from "./index.js";
-import { active, playRandom } from "./modal.js";
+import { createElem, gameSection, title, resetBtn, timer, solutionBtn } from "./index.js";
+import { active, playRandom, defaultNono } from "./modal.js";
 
 let horizontalClues = [];
 let verticalClues = [];
-export let winMessage = createElem("span", "message", gameSection)
+export let winMessage = createElem("span", "message", gameSection);
 
 //Таймер
 
@@ -38,7 +38,6 @@ function updateTimer() {
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   }
 }
-
 
 function initiateTimer() {
   if (!timerOn === true) {
@@ -83,7 +82,6 @@ function resetGame() {
 }
 
 resetBtn.addEventListener("click", resetGame);
-
 
 export function findHorizontalClues(matrix) {
   let rowsLength = matrix.length;
@@ -151,7 +149,7 @@ export function createGameTable(size, arr) {
 
     for (let j = 0; j < size; j++) {
       const fieldCells = createElem("div", "field__cell", activeField);
-      fieldCells.setAttribute("data-attr", j);
+      fieldCells.id = j;
     }
   }
   let horizontalKeyCells = document.querySelectorAll(".key-top");
@@ -221,7 +219,6 @@ function handleClickCross() {
 //проверка на выигрыш
 
 export function checkWin() {
-
   let playerArray = [];
   let fieldCells = document.querySelectorAll(".field__cell");
   let array = Array.from(fieldCells);
@@ -248,4 +245,26 @@ export function checkWin() {
   }
 }
 
+//показать решение
 
+function getSolution() {
+  let cells = document.querySelectorAll(".field__cell");
+  stopTimer();
+  let defaultNonoMatrix;
+  for (let i = 0; i < nonograms.length; i++) {
+    if (nonograms[i].name === defaultNono) {
+      defaultNonoMatrix = nonograms[i].input.flat();
+    }
+  }
+
+  for (let i = 0; i < defaultNonoMatrix.length; i++) {
+    let cell = cells[i];
+    cell.classList.remove("field__cell_dark");
+    cell.classList.remove("field__cell_cross");
+    if (defaultNonoMatrix[i] === 1) {
+      cell.classList.toggle("field__cell_dark");
+    }
+  }
+}
+
+solutionBtn.addEventListener("click", getSolution)

@@ -1,5 +1,5 @@
 import nonograms from "./nonograms.js";
-console.log("Дорогой, проверяющий. Заранее прошу прощения за возможные неудобства. Если у вас будет возможность проверить мою работу в среду или четверг, я буду очень благодарна. У меня очень много недочетов и я бы хотела попробовать исправить их. Спасибо за понимание.")
+
 // отрисовка
 
 export function createElem(HTMLtag, classNames, par, text, idName) {
@@ -44,6 +44,9 @@ levelIcon.src = "./assets/level.png";
 const btnContainer = createElem("div", "game__btns", mainContainer);
 export const resetBtn = createElem("button", "btn__reset", btnContainer);
 resetBtn.textContent = "Reset";
+
+export const solutionBtn = createElem("button", "btn__reset", btnContainer);
+solutionBtn.textContent = "Solution";
 
 export let timer = createElem("span", "timer", gameSection);
 timer.textContent = "00 : 00";

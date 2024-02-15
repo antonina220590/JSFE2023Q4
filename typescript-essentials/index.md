@@ -3,11 +3,12 @@
 ## Badges Overview
 
 Here is a collection of badges I earned from completing Microsoft Learn's TypeScript modules:
-barde
 
 1. **Getting Started with TypeScript**: [Badge](https://learn.microsoft.com/en-us/users/antonina220590-5242/achievements/yv38e24r)
 2. **Declare Variable Types in TypeScript**: [Badge](https://learn.microsoft.com/en-us/users/antonina220590-5242/achievements/j6qdea7t)
 3. **Implement Interfaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/HYGWRRZ8?sharingId=ED6FF0C12A1CA0DB)
+4. **Develop Typed Functions in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/WACYM7EN?sharingId=ED6FF0C12A1CA0DB)
+
 
 ## Reflections
 
@@ -23,5 +24,6 @@ Also the module provides us with the useful information of how to use type asser
 3. **Implement Interfaces in TypeScript**: This module introduces me with a new TS type: interface. Interface is one of the object types. It is used in order to describe an object. Namely we can indicate the properties and methods of the object and declare their types. It is important to note that interface solely describes the object but doesn't initialize or implemented this object.
 Interface is very useful feature. First of all we should think which properties and methods shoud have our objects. And it helps us to achieve some kind of consistency if we work in a big team.
 The interface also can be extended by another interface if for example our objects have some common properies and methods and some different.
-
-
+4. **Develop Typed Functions in TypeScript**: This module extends our understanding of functions in TS. In contrast to JS functions the functions in TS let us define types of parameters (required, optional, default, rest parameters) and type of return values. It actually makes our code less bulky as we don't need to write extra logic to check the parameters as we do it in JS.
+We also can use alias or interface to define the parameters types what is very useful.
+As for real life programming TS function gives us more chances to find the errors during the process of code writing. It saves a lot of time.

@@ -9,6 +9,8 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 3. **Implement Interfaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/HYGWRRZ8?sharingId=ED6FF0C12A1CA0DB)
 4. **Develop Typed Functions in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/WACYM7EN?sharingId=ED6FF0C12A1CA0DB)
 5. **Declare and Instantiate Classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/BLMGRAWD?sharingId=ED6FF0C12A1CA0DB)
+6. **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/EJ75RQAP?sharingId=ED6FF0C12A1CA0DB)
+7. **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/en-us/users/antonina220590-5242/achievements/wacm344n)
 
 
 ## Reflections
@@ -43,3 +45,11 @@ As for real life programming TS function gives us more chances to find the error
 In this module we can see that JS classes are extended by TS by adding types to properties, methods and also it's allowed to add required and optional parameters. Moreover we can use interfaces in order to define required properties and their types. Otherwise classes in TS works the same way as classes in JS.
 From this module I got some new information about get and set accessor and access modifier that are very important in real-life programming as we want to limit the access to the information contained in the property. Otherwise it may lead to some unexpected result in our new objects. And get and set accessors give us control over this.
 
+6. **Generics in TypeScript**:
+
+This module provides us with the information about very useful tool - generics. Sometimes we need to reuse the function for different types of data. Sometimes it could be numbers, then strings or boolean. And in this situation we can use generics. It saves the ability of TS to check the types during the runtime and lets us reuse functions in order to reduce amount of codelines.
+In order to avoid TS errors it's important to use generic constraint. It means that we should define the range of types in relation in relation to which certain methods can be applied. We can do it by using custom type or in case with an object type by using keyof.
+In this module we also received more comprehensive knowledges how to implement generics not only to viriables but also to interfaces and classes.
+
+7. **Work with External Libraries in TypeScript**:
+This module provides us with information how to organize TS code using modules and also how to compile TS modules. As we know from JS modules let us organize our code and make it more convenient for us and other programmers. And also it helps us to avoid naming conflicts. 

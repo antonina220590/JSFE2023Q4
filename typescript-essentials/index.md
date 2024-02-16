@@ -11,6 +11,7 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 5. **Declare and Instantiate Classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/BLMGRAWD?sharingId=ED6FF0C12A1CA0DB)
 6. **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/antonina220590-5242/EJ75RQAP?sharingId=ED6FF0C12A1CA0DB)
 7. **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/en-us/users/antonina220590-5242/achievements/wacm344n)
+8. **Organize Code with Namespaces in TypeScript**: [Badge](https://learn.microsoft.com/en-us/users/antonina220590-5242/achievements/cwt72ng9)
 
 
 ## Reflections
@@ -18,12 +19,12 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 1. **Getting Started with TypeScript**:
 
 From this module I got the basic understanding of what TypeScript(TS) is and why do we need it. TS is a superset of JavaScript(JS) or in other words it extends JS. The main idea is that in TS we identify the type of data and if something goes wrong we can catch the problem immediately.
-   TS also needs to be compiled to JS as browsers can read and understand only JS code. And based on uderstanding that TS extends JS, we can make a conclusion that when we write in JS this code can become a TS code but not vice versa. And from this module I also learned how to install a compiler.
+TS also needs to be compiled to JS as browsers can read and understand only JS code. And based on uderstanding that TS extends JS, we can make a conclusion that when we write in JS this code can become a TS code but not vice versa. And from this module I also learned how to install a compiler.
 
 2. **Declare Variable Types in TypeScript**:
 
 The main idea of this module is to show what type of data are available in TS and how to assotiate them to the variables. It also gives more understanding why static types are more preferable than dynamic.
-   Since we immediately make it clear what type of data will be used and this is checked as the code is written, any addional resources are wasted during the program execution.
+Since we immediately make it clear what type of data will be used and this is checked as the code is written, any addional resources are wasted during the program execution.
 Also this module gives us an overview of types in TS. In general they are the same as in JS but not exactly. We can see some additional types such as enum, void, interface and literals and etc.
 Enum, for example, is very useful one. It lets us structure similar elements and assigns them with the indexes. It's kind of a mixture of arrays and objects. We can access an element by name or index. So in real life programming we don't need to create a lot of variables for similar objects.
 Also the module provides us with the useful information of how to use type assertion if our initial variable had to be declared with the unknown type.
@@ -52,4 +53,11 @@ In order to avoid TS errors it's important to use generic constraint. It means t
 In this module we also received more comprehensive knowledges how to implement generics not only to viriables but also to interfaces and classes.
 
 7. **Work with External Libraries in TypeScript**:
-This module provides us with information how to organize TS code using modules and also how to compile TS modules. As we know from JS modules let us organize our code and make it more convenient for us and other programmers. And also it helps us to avoid naming conflicts. 
+
+This module provides us with information how to organize TS code using modules and also how to compile TS modules. As we know from JS modules let us organize our code and make it more convenient for us and other programmers. And also it helps us to avoid naming conflicts. Also this module provides us with the practical skills how to access external libraries. This is very new for me as I've never did it before.
+
+8. **Organize Code with Namespaces in TypeScript**:
+
+This module introduces us with the namespaces. Namespace is kind of analogue of modules. It also lets us organize our code by grouping related code together and this code is executed in local scope. However, modules have some additional benefits in comparison to namespaces. For example in modules we can re-export components and provides better code reuse.
+So, namespaces are good probably good for small projects that do not require big amount of code and logic.
+Even the module by itself reccomends to use modules.

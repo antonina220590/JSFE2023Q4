@@ -2,6 +2,7 @@ import './news.css';
 
 class News {
     draw(data) {
+      
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
@@ -30,9 +31,11 @@ class News {
             fragment.append(newsClone);
         });
 
+
         document.querySelector('.news').innerHTML = '';
         document.querySelector('.news').appendChild(fragment);
     }
+
 }
 
 export default News;

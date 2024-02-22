@@ -8,14 +8,19 @@ export class AppView {
     }
 
     drawNews(data) {
+      console.log(data)
         const values = data?.articles ? data?.articles : [];
+        console.log(values)
         this.news.draw(values);
     }
 
     drawSources(data) {
         const values = data?.sources ? data?.sources : [];
+        console.log(values)
         this.sources.draw(values);
     }
+
 }
 
 export default AppView;
+

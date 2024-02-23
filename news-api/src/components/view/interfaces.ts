@@ -17,3 +17,13 @@ export interface NewsArticle {
         name: string;
     };
 }
+
+export interface NewsSource {
+    category: string;
+    country: string;
+    description: string;
+    language: string;
+    name: string;
+    url: string;
+    id: string;
+}

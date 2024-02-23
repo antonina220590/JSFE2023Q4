@@ -4,6 +4,11 @@ export interface NewsResponseData {
     articles: NewsArticle[];
 }
 
+export interface SourcesResponceData {
+    status: string;
+    sources: NewsSource[];
+}
+
 export interface NewsArticle {
     author: string;
     content: string;

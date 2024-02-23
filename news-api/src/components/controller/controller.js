@@ -32,7 +32,6 @@ class AppController extends AppLoader {
                 return;
             }
             target = target.parentNode;
-            console.log(target)
         }
     }
 }

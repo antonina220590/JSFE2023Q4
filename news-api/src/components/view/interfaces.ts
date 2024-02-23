@@ -1,21 +1,19 @@
-export interface IResponseData {
-  status: string,
-  totalResults: number,
-  articles: IArticle[]
+export interface NewsResponseData {
+    status: string;
+    totalResults: number;
+    articles: NewsArticle[];
 }
 
-export interface IArticle {
-  author: string,
-  content: string,
-  description: string,
-  publishedAt: string,
-  title: string,
-  url: string,
-  urlToImage: string,
-  sources: ISource[]
-}
-
-export interface ISource {
-  id: string,
-  name: string
+export interface NewsArticle {
+    author: string;
+    content: string;
+    description: string;
+    publishedAt: string;
+    title: string;
+    url: string;
+    urlToImage: string;
+    source: {
+        id: string;
+        name: string;
+    };
 }

@@ -32,3 +32,12 @@ export interface NewsSource {
     url: string;
     id: string;
 }
+
+export interface ApiOptions {
+    apiKey: string;
+}
+export interface SourceOptions {
+    sources?: string;
+}
+
+export type CallbackGen<T = void> = (data: T) => void;

@@ -5,6 +5,7 @@ import { assertValues } from '../view/news/assertions';
 class App {
     controller;
     view;
+
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();

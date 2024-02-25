@@ -1,37 +1,46 @@
 import AppLoader from './appLoader';
+import { CallbackGen } from '../view/interfaces';
+import { assertValues } from '../view/news/assertions';
 
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources<T>(callback: CallbackGen<T>): void {
         super.getResp(
             {
                 endpoint: 'sources',
+                options: {},
             },
             callback
         );
     }
 
-    getNews(e, callback) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
-
+    getNews<T>(e: Event, callback: CallbackGen<T>): void {
+        let target: EventTarget | null = e.target;
+        const newsContainer: EventTarget | null = e.currentTarget;
         while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
+            if (!(target instanceof HTMLElement && newsContainer instanceof HTMLElement)) {
+                throw new Error('Error!');
+            } else {
+                if (target.classList.contains('source__item')) {
+                    const sourceId: string | null = target.getAttribute('data-source-id');
+                    assertValues(sourceId);
+
+                    if (newsContainer.getAttribute('data-source') !== sourceId) {
+                        newsContainer.setAttribute('data-source', sourceId);
+
+                        super.getResp(
+                            {
+                                endpoint: 'everything',
+                                options: {
+                                    sources: sourceId,
+                                },
                             },
-                        },
-                        callback
-                    );
+                            callback
+                        );
+                    }
+                    return;
                 }
-                return;
+                target = target.parentNode;
             }
-            target = target.parentNode;
         }
     }
 }

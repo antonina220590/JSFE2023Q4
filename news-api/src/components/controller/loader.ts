@@ -23,6 +23,7 @@ class Loader {
         }
     ): void {
         this.load('GET', endpoint, callback, options);
+        console.log(endpoint);
     }
 
     errorHandler(res: Response): Response {

@@ -37,8 +37,8 @@ export interface ApiOptions {
     apiKey: string;
 }
 export interface SourceOptions {
-    sources?: string;
-    apiKey?: string;
+    sources: string;
+    apiKey: string;
 }
 
 export type CallbackGen<T> = (data: T) => void;

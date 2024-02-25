@@ -12,7 +12,7 @@ class App {
         this.view = new AppView();
     }
 
-    start(): void {
+    public start(): void {
         const appSources = document.querySelector('.sources');
         assertValues(appSources);
         appSources.addEventListener('click', (e) =>

@@ -3,7 +3,7 @@ import { NewsSource } from '../interfaces';
 import { assertValues } from '../news/assertions';
 
 class Sources {
-    draw(data: NewsSource[]): void {
+    public draw(data: NewsSource[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null =
             document.querySelector<HTMLTemplateElement>('#sourceItemTemp');

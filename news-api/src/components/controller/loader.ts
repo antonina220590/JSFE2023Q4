@@ -8,7 +8,7 @@ const enum resStatus {
 
 class Loader {
     baseLink: string;
-    options: ApiOptions;
+    options: Partial<ApiOptions>;
 
     constructor(baseLink: string, options: ApiOptions) {
         this.baseLink = baseLink;
@@ -16,17 +16,16 @@ class Loader {
         assertValues(options);
     }
 
-    public getResp<T>(
+    protected getResp<T>(
         { endpoint, options = {} }: { endpoint: string; options: object | SourceOptions },
         callback: CallbackGen<T> = (): void => {
             console.error('No callback for GET response');
         }
     ): void {
         this.load('GET', endpoint, callback, options);
-        console.log(endpoint);
     }
 
-    errorHandler(res: Response): Response {
+    private errorHandler(res: Readonly<Response>): Response {
         if (!res.ok) {
             if (res.status === resStatus.UNAUTHORIZED || res.status === resStatus.NOTFOUND)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -36,7 +35,6 @@ class Loader {
     }
 
     private makeUrl(options: object | SourceOptions, endpoint: string): string {
-        console.log(options);
         const urlOptions: { [index: string]: string } = { ...this.options, ...options };
         let url: string = `${this.baseLink}${endpoint}?`;
         Object.keys(urlOptions).forEach((key) => {
@@ -45,7 +43,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    public load<T>(
+    private load<T>(
         method: string,
         endpoint: string,
         callback: CallbackGen<T>,

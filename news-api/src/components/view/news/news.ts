@@ -2,7 +2,7 @@ import './news.css';
 import { NewsArticle } from '../interfaces';
 import { assertValues } from './assertions';
 export class News {
-    draw(data: NewsArticle[]): void {
+    public draw(data: NewsArticle[]): void {
         const news: NewsArticle[] =
             data.length >= 10 ? data.filter((_item: NewsArticle, idx: number) => idx < 10) : data;
         const fragment: DocumentFragment = document.createDocumentFragment();

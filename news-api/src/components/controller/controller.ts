@@ -3,7 +3,7 @@ import { CallbackGen } from '../view/interfaces';
 import { assertValues } from '../view/news/assertions';
 
 class AppController extends AppLoader {
-    getSources<T>(callback: CallbackGen<T>): void {
+    public getSources<T>(callback: CallbackGen<T>): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -13,7 +13,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews<T>(e: Event, callback: CallbackGen<T>): void {
+    public getNews<T>(e: Event, callback: CallbackGen<T>): void {
         let target: EventTarget | null = e.target;
         const newsContainer: EventTarget | null = e.currentTarget;
         while (target !== newsContainer) {

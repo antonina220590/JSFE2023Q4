@@ -1,4 +1,5 @@
 import { ApiOptions, SourceOptions, CallbackGen } from '../view/interfaces';
+import { assertValues } from '../view/news/assertions';
 
 const enum resStatus {
     UNAUTHORIZED = 401,
@@ -12,10 +13,11 @@ class Loader {
     constructor(baseLink: string, options: ApiOptions) {
         this.baseLink = baseLink;
         this.options = options;
+        assertValues(options);
     }
 
     public getResp<T>(
-        { endpoint, options = {} }: { endpoint: string; options: SourceOptions },
+        { endpoint, options = {} }: { endpoint: string; options: object | SourceOptions },
         callback: CallbackGen<T> = (): void => {
             console.error('No callback for GET response');
         }
@@ -23,7 +25,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    private errorHandler(res: Response): Response {
+    errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === resStatus.UNAUTHORIZED || res.status === resStatus.NOTFOUND)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -32,17 +34,22 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: SourceOptions, endpoint: string): string {
+    private makeUrl(options: object | SourceOptions, endpoint: string): string {
+        console.log(options);
         const urlOptions: { [index: string]: string } = { ...this.options, ...options };
         let url: string = `${this.baseLink}${endpoint}?`;
         Object.keys(urlOptions).forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
         });
-
         return url.slice(0, -1);
     }
 
-    public load<T>(method: string, endpoint: string, callback: CallbackGen<T>, options: SourceOptions = {}): void {
+    public load<T>(
+        method: string,
+        endpoint: string,
+        callback: CallbackGen<T>,
+        options: object | SourceOptions = {}
+    ): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

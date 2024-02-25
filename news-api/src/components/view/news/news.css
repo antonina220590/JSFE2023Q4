@@ -1,3 +1,8 @@
+.news {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
@@ -163,4 +168,24 @@
     .news__item.alt .news__meta-details {
         padding-left: 25px;
     }
+}
+
+@media only screen and (max-width: 1460px) and (min-width: 1415px) {
+  .news__item {
+    max-width: 650px;
+}
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1500px)  {
+  .news__item {
+    max-width: 900px;
+  }
+
+  .news__item .news__description h2 {
+    font-size: 2.2rem;
+  }
+
+  .news {
+    margin-top: 50px;
+  }
 }

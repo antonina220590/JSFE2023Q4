@@ -3,5 +3,4 @@ npm run ci:format
 
 # validate branch name before commit
 
-npx validate-branch-name -r'${regexp}/g'
-
+npx validate-branch-name -r "^(master|main|develop|rss-puzzle){1}$|^(feat|fix|hotfix|release|refactor)/RSS-PZ-\\d{2}_[a-z]+[a-zA-Z0-9]*$"

@@ -1,0 +1,7 @@
+cd rss-puzzle
+npm run ci:format
+
+# validate branch name before commit
+
+npx validate-branch-name -r'${regexp}/g'
+

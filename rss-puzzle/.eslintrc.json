@@ -1,9 +1,10 @@
+
 {
     "plugins": ["prettier", "import", "@typescript-eslint"],
     "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended", "prettier"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 2018,
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
@@ -22,6 +23,25 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-infferable-types": "off",
         "max-lines-per-function": ["error", 40],
-        "@typescript-eslint/explicit-function-return-type": "error"
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "mjs": "never"
+          }
+        ]
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["src"],
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
     }
 }

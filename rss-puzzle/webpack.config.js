@@ -1,6 +1,6 @@
 const path = require('path');
-const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const EslingPlugin = require('eslint-webpack-plugin');
@@ -29,7 +29,7 @@ const baseConfig = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.js', '.jsx', '.css'],
     },
     output: {
         filename: 'index.js',

@@ -1,5 +1,7 @@
 import './buttons.css';
 import { CommonParams, CommonView } from '../view';
+import ErrorBoxView from '../input/input-field/error-box/error-box-name';
+import ErrorBoxViewSurname from '../input/input-field/error-box/error-box-surname';
 
 const styles = {
     BUTTON: 'button',
@@ -20,5 +22,19 @@ export default class ButtonView extends CommonView {
         };
         super(params);
         this.elementCreator.addTextContent('Log In');
+        this.handle();
+    }
+
+    handle(): void {
+        const button = this.elementCreator.getElement();
+
+        function handleClickFunction(event: Event): void {
+            event.preventDefault();
+            const errorName = new ErrorBoxView();
+            errorName.addErrorLabel();
+            const errorSurname = new ErrorBoxViewSurname();
+            errorSurname.addErrorLabel();
+        }
+        button.addEventListener('click', handleClickFunction);
     }
 }

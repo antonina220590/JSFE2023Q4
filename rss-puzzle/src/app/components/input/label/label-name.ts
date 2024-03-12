@@ -1,7 +1,7 @@
 import '../login-form-wrapper/login-form-wrapper.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../elements-creator';
-import InputNameDisplay from '../input-field/input-name';
+import ErrorBoxView from '../input-field/error-box/error-box-name';
 
 const styles = {
     LABEL: 'login__form__label',
@@ -24,7 +24,6 @@ export default class LabelNameDisplay extends CommonView {
         const params: CommonParams = {
             HTMLtag: 'label',
             classNames: [styles.LABEL, styles.LABELNAME],
-            text: text.EMPTY,
         };
         super(params);
         this.formView();
@@ -35,14 +34,14 @@ export default class LabelNameDisplay extends CommonView {
         const paraNameParams: CommonParams = {
             HTMLtag: 'p',
             classNames: [styles.TEXT, styles.TEXTNAME],
-            text: text.NAME,
         };
         const paraNameCreator = new BaseElementCreator(paraNameParams);
+        paraNameCreator.addTextContent(text.NAME);
         this.elementCreator.appendElement(paraNameCreator);
     }
 
     showChildren(): void {
-        const inputNameCreator = new InputNameDisplay();
-        this.getHtmlElement().append(inputNameCreator.getHtmlElement());
+        const errorBoxCreator = new ErrorBoxView();
+        this.getHtmlElement().append(errorBoxCreator.getHtmlElement());
     }
 }

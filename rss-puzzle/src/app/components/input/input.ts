@@ -30,9 +30,9 @@ export default class InputDisplay extends CommonView {
         const LOGINParams: CommonParams = {
             HTMLtag: 'p',
             classNames: [styles.TITLE],
-            text: text.P,
         };
         const loginTitleCreator = new BaseElementCreator(LOGINParams);
+        loginTitleCreator.addTextContent(text.P);
         this.elementCreator.appendElement(loginTitleCreator);
     }
 

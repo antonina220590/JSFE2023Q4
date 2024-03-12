@@ -19,7 +19,7 @@ export default class InfoView extends CommonView {
         const params: CommonParams = {
             HTMLtag: 'div',
             classNames: [styles.INFO],
-            text: text.EMPTY,
+            // text: text.EMPTY,
         };
 
         super(params);
@@ -30,15 +30,16 @@ export default class InfoView extends CommonView {
         const h1Params: CommonParams = {
             HTMLtag: 'h1',
             classNames: [styles.TITLE],
-            text: text.H1,
+            // text: text.H1,
         };
         const h1Creator = new BaseElementCreator(h1Params);
+        h1Creator.addTextContent(text.H1);
         this.elementCreator.appendElement(h1Creator);
 
         const paraParams: CommonParams = {
             HTMLtag: 'p',
             classNames: [styles.P],
-            text: text.P,
+            // text: text.P,
         };
         const paraCreator = new BaseElementCreator(paraParams);
         this.elementCreator.appendElement(paraCreator);

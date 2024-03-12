@@ -8,18 +8,11 @@ const styles = {
     FORM: 'login__form',
 };
 
-const text = {
-    EMPTY: '',
-    P: 'LOGIN',
-    NAME: 'Name',
-    SURNAME: 'Surname',
-};
 export default class FormDisplay extends CommonView {
     constructor() {
         const params: CommonParams = {
             HTMLtag: 'form',
             classNames: [styles.FORM],
-            text: text.EMPTY,
         };
         super(params);
         this.setAttr();

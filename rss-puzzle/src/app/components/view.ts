@@ -3,7 +3,7 @@ import { BaseElementCreator } from './elements-creator';
 export interface CommonParams {
     HTMLtag: keyof HTMLElementTagNameMap;
     classNames: string[];
-    text: string;
+    text?: string;
 }
 export class CommonView {
     elementCreator: BaseElementCreator<HTMLElement>;
@@ -23,7 +23,6 @@ export class CommonView {
             text: '',
         };
         const elementCreator = new BaseElementCreator(elementCreatorParams);
-
         return elementCreator;
     }
 }

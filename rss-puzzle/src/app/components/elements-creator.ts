@@ -5,7 +5,7 @@ export interface Element {
 export interface FullElementDescription<T extends HTMLElement = HTMLElement> extends Element {
     classNames: string[];
     parent?: HTMLElement;
-    text: string;
+    text?: string;
     callback?: CallbackGen<T>;
 }
 
@@ -25,7 +25,7 @@ export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
         this.addClasses(node.classNames);
         this.toggleClasses(node.classNames);
         this.removeClasses(node.classNames);
-        this.addTextContent(node.text);
+        // this.addTextContent(node.text);
     }
 
     public addClasses(classNames: string[]): void {

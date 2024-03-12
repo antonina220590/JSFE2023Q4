@@ -1,10 +1,11 @@
 import '../login-form-wrapper/login-form-wrapper.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../elements-creator';
-import InputSurnameDisplay from '../input-field/input-surname';
+import ErrorBoxViewSurname from '../input-field/error-box/error-box-surname';
 
 const styles = {
     LABEL: 'login__form__label',
+    LABELNAME: 'login-form_name',
     LABLESURNAME: 'login-form_surname',
     TEXT: 'login__form_text',
     TEXTNAME: 'login__form_text__name',
@@ -23,7 +24,6 @@ export default class LabelSurnameDisplay extends CommonView {
         const params: CommonParams = {
             HTMLtag: 'label',
             classNames: [styles.LABEL, styles.LABLESURNAME],
-            text: text.EMPTY,
         };
         super(params);
         this.formView();
@@ -31,17 +31,17 @@ export default class LabelSurnameDisplay extends CommonView {
     }
 
     formView(): void {
-        const paraSurnameParams: CommonParams = {
+        const paraNameParams: CommonParams = {
             HTMLtag: 'p',
-            classNames: [styles.TEXT, styles.TEXTSURNAME],
-            text: text.SURNAME,
+            classNames: [styles.TEXT, styles.TEXTNAME],
         };
-        const paraSurnameCreator = new BaseElementCreator(paraSurnameParams);
-        this.elementCreator.appendElement(paraSurnameCreator);
+        const paraNameCreator = new BaseElementCreator(paraNameParams);
+        paraNameCreator.addTextContent(text.SURNAME);
+        this.elementCreator.appendElement(paraNameCreator);
     }
 
     showChildren(): void {
-        const inputSurnameCreator = new InputSurnameDisplay();
-        this.getHtmlElement().append(inputSurnameCreator.getHtmlElement());
+        const errorBoxCreator = new ErrorBoxViewSurname();
+        this.getHtmlElement().append(errorBoxCreator.getHtmlElement());
     }
 }

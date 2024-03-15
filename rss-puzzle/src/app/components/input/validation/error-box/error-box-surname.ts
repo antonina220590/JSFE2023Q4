@@ -1,7 +1,7 @@
 import './error-box.css';
 import { CommonParams, CommonView } from '../../../view';
-import InputNameDisplay from '../input-name';
-import ErrorLabel from '../../validation/error-label';
+import InputSurnameDisplay from '../../input-field/input-surname';
+import ErrorLabel from '../error-label';
 import assertValues from '../../../../utils/assertion-functions';
 
 const styles = {
@@ -12,7 +12,7 @@ const styles = {
     ERROR_LABEL: 'error-label',
 };
 
-export default class ErrorBoxView extends CommonView {
+export default class ErrorBoxViewSurname extends CommonView {
     constructor() {
         const params: CommonParams = {
             HTMLtag: 'div',
@@ -23,27 +23,26 @@ export default class ErrorBoxView extends CommonView {
     }
 
     showChildren(): void {
-        const inputNameCreator = new InputNameDisplay();
-        this.getHtmlElement().append(inputNameCreator.getHtmlElement());
+        const inputSurnameCreator = new InputSurnameDisplay();
+        this.getHtmlElement().append(inputSurnameCreator.getHtmlElement());
 
         const errorLabelCreator = new ErrorLabel();
-        errorLabelCreator.elementCreator.setAttribute('id', 'errorName');
+        errorLabelCreator.elementCreator.setAttribute('id', 'errorSurname');
         this.getHtmlElement().append(errorLabelCreator.getHtmlElement());
     }
 
     addErrorLabel(): void {
-        const inputName = document.getElementById('logename') as HTMLInputElement;
+        const inputName = document.getElementById('logsurname') as HTMLInputElement;
         const inputNameVal = inputName.value;
-        const labelErrorName = document.getElementById('errorName');
+        const labelErrorName = document.getElementById('errorSurname');
         const regExpUpper = /[A-Z][\\-a-zA-z]+$/;
         const test = regExpUpper.test(inputNameVal);
         assertValues(labelErrorName);
 
-        if (inputNameVal.length < 3) {
-            console.log('!!!');
+        if (inputNameVal.length < 4) {
             labelErrorName.innerText = '';
             setTimeout(() => {
-                labelErrorName.innerText = 'Name must contain at least 3 characters';
+                labelErrorName.innerText = 'Surname must contain at least 4 characters';
             }, 100);
             inputName.classList.add('error');
         } else if (test === false) {

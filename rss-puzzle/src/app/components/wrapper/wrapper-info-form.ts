@@ -1,22 +1,17 @@
-import { CommonParams, CommonView } from '../../../app/components/view';
 import './wrapper.css';
+import { CommonParams, CommonView } from '../view';
 import InfoView from './info/info';
-import InputDisplay from '../../../app/components/input/input';
+import InputDisplay from '../input/login-form-wrapper';
 
 const styles = {
-    WRAPPER: 'wrapper',
+    WRAPPERFORM: 'wrapper__info__form',
 };
 
-const text = {
-    EMPTY: '',
-};
-
-export default class WrapperView extends CommonView {
+export default class WrapperInfoFormView extends CommonView {
     constructor() {
         const wrapperParams: CommonParams = {
             HTMLtag: 'div',
-            classNames: [styles.WRAPPER],
-            text: text.EMPTY,
+            classNames: [styles.WRAPPERFORM],
         };
         super(wrapperParams);
         this.showChildren();

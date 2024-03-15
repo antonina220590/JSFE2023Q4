@@ -1,7 +1,7 @@
-import '../login-form-wrapper/login-form-wrapper.css';
+import '../login-form/login-form.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../elements-creator';
-import ErrorBoxView from '../input-field/error-box/error-box-name';
+import ErrorBoxView from '../validation/error-box/error-box-name';
 
 const styles = {
     LABEL: 'login__form__label',

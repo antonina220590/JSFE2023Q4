@@ -4,6 +4,7 @@ export interface CommonParams {
     HTMLtag: keyof HTMLElementTagNameMap;
     classNames: string[];
     text?: string;
+    src?: string;
 }
 export class CommonView {
     elementCreator: BaseElementCreator<HTMLElement>;
@@ -21,8 +22,9 @@ export class CommonView {
             HTMLtag: params.HTMLtag,
             classNames: params.classNames,
             text: '',
+            src: '',
         };
-        const elementCreator = new BaseElementCreator(elementCreatorParams);
-        return elementCreator;
+        this.elementCreator = new BaseElementCreator(elementCreatorParams);
+        return this.elementCreator;
     }
 }

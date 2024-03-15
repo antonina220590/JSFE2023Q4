@@ -1,5 +1,5 @@
 import '../styles/style.css';
-import MainView from '../pages/loginpage/entrypage';
+import MainView from '../pages/main';
 
 export default class App {
     constructor() {

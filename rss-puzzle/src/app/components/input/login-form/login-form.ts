@@ -1,4 +1,4 @@
-import './login-form-wrapper.css';
+import './login-form.css';
 import { CommonParams, CommonView } from '../../view';
 import LabelNameDisplay from '../label/label-name';
 import LabelSurnameDisplay from '../label/label-surname';

@@ -1,8 +1,10 @@
 import './buttons.css';
 import { CommonParams, CommonView } from '../view';
-import ErrorBoxView from '../input/input-field/error-box/error-box-name';
-import ErrorBoxViewSurname from '../input/input-field/error-box/error-box-surname';
+import ErrorBoxView from '../input/validation/error-box/error-box-name';
+import ErrorBoxViewSurname from '../input/validation/error-box/error-box-surname';
 import LocalStorage from '../../utils/local-storage';
+/* eslint-disable */
+import StartView from '../../../pages/startpage/startpage';
 
 const styles = {
     BUTTON: 'button',
@@ -23,6 +25,7 @@ export default class ButtonView extends CommonView {
         };
         super(params);
         this.elementCreator.addTextContent('Log In');
+        this.elementCreator.setAttribute('id', 'logBtn');
         this.handle();
     }
 
@@ -30,7 +33,7 @@ export default class ButtonView extends CommonView {
         const button = this.elementCreator.getElement();
         const myStorage = new LocalStorage();
 
-        function handleClickFunction(event: Event): void {
+        const handleClickFunction = (event: Event): number => {
             event.preventDefault();
             const errorName = new ErrorBoxView();
             errorName.addErrorLabel();
@@ -46,8 +49,18 @@ export default class ButtonView extends CommonView {
                 username: `${inputNameVal}`,
                 usersurname: `${inputSurnameVal}`,
             };
-            myStorage.setItems('userAT', user);
-        }
+            if (!inputName.classList.contains('error') && !inputSurname.classList.contains('error')) {
+                myStorage.setItems('userAT', user);
+                document.body.setAttribute('id', 'wow');
+
+                const start = new StartView();
+                document.body.innerHTML = '';
+                document.body.append(start.getHtmlElement());
+            }
+            console.log(localStorage.length);
+            return localStorage.length;
+        };
+
         button.addEventListener('click', handleClickFunction);
     }
 }

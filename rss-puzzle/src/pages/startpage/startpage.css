@@ -1,3 +1,15 @@
+.start-page__wrapper {
+    background: url('../../app/assets/start.jpg');
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-position: center center;
+    justify-content: center;
+    align-items: center;
+}
+
 .button {
     background-color: #fff;
     border-radius: 2px;
@@ -28,9 +40,4 @@
     border-radius: 2px;
     border: 1px solid #bb945f;
     transition: all 0.2s ease-in-out;
-}
-
-.modal_btn {
-    background-color: cornflowerblue;
-    cursor: pointer;
 }

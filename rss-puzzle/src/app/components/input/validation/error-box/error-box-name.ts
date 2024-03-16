@@ -1,7 +1,7 @@
 import './error-box.css';
 import { CommonParams, CommonView } from '../../../view';
-import InputSurnameDisplay from '../input-surname';
-import ErrorLabel from '../../validation/error-label';
+import InputNameDisplay from '../../input-field/input-name';
+import ErrorLabel from '../error-label';
 import assertValues from '../../../../utils/assertion-functions';
 
 const styles = {
@@ -12,7 +12,7 @@ const styles = {
     ERROR_LABEL: 'error-label',
 };
 
-export default class ErrorBoxViewSurname extends CommonView {
+export default class ErrorBoxView extends CommonView {
     constructor() {
         const params: CommonParams = {
             HTMLtag: 'div',
@@ -23,28 +23,26 @@ export default class ErrorBoxViewSurname extends CommonView {
     }
 
     showChildren(): void {
-        const inputSurnameCreator = new InputSurnameDisplay();
-        this.getHtmlElement().append(inputSurnameCreator.getHtmlElement());
+        const inputNameCreator = new InputNameDisplay();
+        this.getHtmlElement().append(inputNameCreator.getHtmlElement());
 
         const errorLabelCreator = new ErrorLabel();
-        errorLabelCreator.elementCreator.setAttribute('id', 'errorSurname');
+        errorLabelCreator.elementCreator.setAttribute('id', 'errorName');
         this.getHtmlElement().append(errorLabelCreator.getHtmlElement());
     }
 
-    addErrorLabel(): void {
-        const inputName = document.getElementById('logsurname') as HTMLInputElement;
+    addErrorLabel(): boolean {
+        const inputName = document.getElementById('logename') as HTMLInputElement;
         const inputNameVal = inputName.value;
-        const labelErrorName = document.getElementById('errorSurname');
-        console.log(labelErrorName);
+        const labelErrorName = document.getElementById('errorName');
         const regExpUpper = /[A-Z][\\-a-zA-z]+$/;
         const test = regExpUpper.test(inputNameVal);
         assertValues(labelErrorName);
 
-        if (inputNameVal.length < 4) {
-            console.log('!!!');
+        if (inputNameVal.length < 3) {
             labelErrorName.innerText = '';
             setTimeout(() => {
-                labelErrorName.innerText = 'Surname must contain at least 4 characters';
+                labelErrorName.innerText = 'Name must contain at least 3 characters';
             }, 100);
             inputName.classList.add('error');
         } else if (test === false) {
@@ -56,6 +54,9 @@ export default class ErrorBoxViewSurname extends CommonView {
         } else {
             inputName.classList.remove('error');
             labelErrorName.innerText = '';
+            return true;
         }
+
+        return false;
     }
 }

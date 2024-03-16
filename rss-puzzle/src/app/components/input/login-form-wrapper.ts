@@ -1,12 +1,11 @@
+import './input.css';
 import { BaseElementCreator } from '../elements-creator';
 import { CommonView, CommonParams } from '../view';
-import './input.css';
-import FormDisplay from './login-form-wrapper/login-form-wrapper';
+import FormDisplay from './login-form/login-form';
 
 const styles = {
     FORM_WRAPPER: 'login-form__wrapper',
     TITLE: 'login-form__title',
-    FORM: 'login__form',
 };
 
 const text = {
@@ -14,7 +13,7 @@ const text = {
     P: 'LOGIN',
 };
 
-export default class InputDisplay extends CommonView {
+export default class LoginFormWrapperView extends CommonView {
     constructor() {
         const params: CommonParams = {
             HTMLtag: 'div',

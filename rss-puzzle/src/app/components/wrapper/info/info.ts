@@ -1,11 +1,11 @@
-import { CommonParams, CommonView } from '../../../../app/components/view';
-import { BaseElementCreator } from '../../../../app/components/elements-creator';
+import { CommonParams, CommonView } from '../../view';
+import { BaseElementCreator } from '../../elements-creator';
 import './info.css';
 
 const styles = {
     INFO: 'game__info',
     TITLE: 'game__title',
-    P: 'game__description',
+    DESCRIPTION: 'game__description',
 };
 
 const text = {
@@ -30,7 +30,6 @@ export default class InfoView extends CommonView {
         const h1Params: CommonParams = {
             HTMLtag: 'h1',
             classNames: [styles.TITLE],
-            // text: text.H1,
         };
         const h1Creator = new BaseElementCreator(h1Params);
         h1Creator.addTextContent(text.H1);
@@ -38,8 +37,7 @@ export default class InfoView extends CommonView {
 
         const paraParams: CommonParams = {
             HTMLtag: 'p',
-            classNames: [styles.P],
-            // text: text.P,
+            classNames: [styles.DESCRIPTION],
         };
         const paraCreator = new BaseElementCreator(paraParams);
         this.elementCreator.appendElement(paraCreator);

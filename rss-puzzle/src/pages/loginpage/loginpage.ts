@@ -2,6 +2,8 @@ import './loginpage.css';
 import { CommonParams, CommonView } from '../../app/components/view';
 /* eslint-disable */
 import FormWrapperView from '../../app/components/wrapper/wrapper-info-form';
+import InfoView from '../../app/components/wrapper/info/info';
+import InputDisplay from '../../app/components/input/login-form-wrapper';
 
 const styles = {
     WRAPPER: 'wrapper__login-page',
@@ -19,5 +21,7 @@ export default class LoginWrapperView extends CommonView {
     showChildren(): void {
         const formWrapper = new FormWrapperView();
         this.getHtmlElement().append(formWrapper.getHtmlElement());
+        const inputView = new InputDisplay();
+        formWrapper.elementCreator.appendElement(inputView.getHtmlElement());
     }
 }

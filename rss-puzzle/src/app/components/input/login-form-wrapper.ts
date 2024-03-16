@@ -1,6 +1,7 @@
 import './input.css';
 import { BaseElementCreator } from '../elements-creator';
 import { CommonView, CommonParams } from '../view';
+/* eslint-disable */
 import FormDisplay from './login-form/login-form';
 
 const styles = {

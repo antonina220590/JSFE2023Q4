@@ -1,5 +1,6 @@
 import './buttons.css';
 import { CommonParams, CommonView } from '../view';
+/* eslint-disable */
 import LocalStorage from '../../utils/local-storage';
 import LoginWrapperView from '../../../pages/loginpage/loginpage';
 
@@ -21,17 +22,18 @@ export default class ButtonLogoutView extends CommonView {
         };
         super(params);
         this.elementCreator.addTextContent('Log Out');
-        this.logout();
+        //this.logout();
     }
 
     logout(): void {
-        const logOut = (event: Event): void => {
-            event.preventDefault();
-            new LocalStorage().clearAll();
-            const main = new LoginWrapperView();
-            document.body.innerHTML = '';
-            document.body.append(main.getHtmlElement());
-        };
-        this.elementCreator.getElement().addEventListener('click', logOut);
+        //function logOut(): void {
+        const overlay = document.getElementById('overlay');
+        overlay?.classList.add('modal__logout_overlay_active');
+        const form = document.getElementById('form');
+        form?.classList.add('modal__logout__form_active');
+        console.log(form);
+        console.log(overlay);
+        //}
+        //this.elementCreator.getElement().addEventListener('click', logOut);
     }
 }

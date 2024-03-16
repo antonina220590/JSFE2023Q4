@@ -1,6 +1,8 @@
 import './startpage.css';
 import { CommonParams, CommonView } from '../../app/components/view';
+/* eslint-disable */
 import ButtonLogoutView from '../../app/components/buttons/button-logout';
+import ModalView from '../../app/components/modal-window/modal';
 
 const styles = {
     STARTWRAPPER: 'start-page__wrapper',
@@ -19,6 +21,12 @@ export default class StartView extends CommonView {
 
     showChildren(): void {
         const logoutBtn = new ButtonLogoutView();
-        this.getHtmlElement().append(logoutBtn.getHtmlElement());
+        const modalView = new ModalView();
+        this.getHtmlElement().append(logoutBtn.getHtmlElement(), modalView.getHtmlElement());
+
+        function logOutPlease(): void {
+            logoutBtn.logout();
+        }
+        logoutBtn.getHtmlElement().addEventListener('click', logOutPlease);
     }
 }

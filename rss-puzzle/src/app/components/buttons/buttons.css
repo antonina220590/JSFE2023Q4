@@ -29,3 +29,8 @@
     border: 1px solid #bb945f;
     transition: all 0.2s ease-in-out;
 }
+
+.modal_btn {
+    background-color: cornflowerblue;
+    cursor: pointer;
+}

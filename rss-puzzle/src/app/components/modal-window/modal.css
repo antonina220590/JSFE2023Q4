@@ -12,6 +12,7 @@
     width: 100wv;
     opacity: 0;
     visibility: hidden;
+    z-index: 1;
 }
 
 .modal__logout_overlay_active {

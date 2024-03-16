@@ -6,6 +6,8 @@ const styles = {
     INFO: 'game__info',
     TITLE: 'game__title',
     DESCRIPTION: 'game__description',
+    H3: 'h3',
+    DIVWELCOME: 'div_btn',
 };
 
 const text = {
@@ -24,9 +26,11 @@ export default class InfoView extends CommonView {
 
         super(params);
         this.descriptionView();
+        this.h3View();
+        this.pView();
     }
 
-    descriptionView(): void {
+    descriptionView(): HTMLElement {
         const h1Params: CommonParams = {
             HTMLtag: 'h1',
             classNames: [styles.TITLE],
@@ -34,12 +38,38 @@ export default class InfoView extends CommonView {
         const h1Creator = new BaseElementCreator(h1Params);
         h1Creator.addTextContent(text.H1);
         this.elementCreator.appendElement(h1Creator);
+        const h1Tag = h1Creator.getElement();
 
+        return h1Tag;
+    }
+
+    h3View(): HTMLElement {
+        const h3Params: CommonParams = {
+            HTMLtag: 'h3',
+            classNames: [styles.H3],
+        };
+        const h3Creator = new BaseElementCreator(h3Params);
+        const h3Tag = h3Creator.getElement();
+        return h3Tag;
+    }
+
+    pView(): HTMLElement {
         const paraParams: CommonParams = {
             HTMLtag: 'p',
             classNames: [styles.DESCRIPTION],
         };
         const paraCreator = new BaseElementCreator(paraParams);
-        this.elementCreator.appendElement(paraCreator);
+        const pTag = paraCreator.getElement();
+        return pTag;
+    }
+
+    divView(): HTMLElement {
+        const paraParams: CommonParams = {
+            HTMLtag: 'div',
+            classNames: [styles.DIVWELCOME],
+        };
+        const divCreator = new BaseElementCreator(paraParams);
+        const divTag = divCreator.getElement();
+        return divTag;
     }
 }

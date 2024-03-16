@@ -1,5 +1,6 @@
 import './login-form.css';
 import { CommonParams, CommonView } from '../../view';
+/* eslint-disable */
 import LabelNameDisplay from '../label/label-name';
 import LabelSurnameDisplay from '../label/label-surname';
 import ButtonView from '../../buttons/button';

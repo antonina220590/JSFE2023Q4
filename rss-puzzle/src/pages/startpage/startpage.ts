@@ -5,6 +5,7 @@ import ButtonLogoutView from '../../app/components/buttons/button-logout';
 import ModalView from '../../app/components/modal-window/modal';
 import FormWrapperView from '../../app/components/wrapper/wrapper-info-form';
 import InfoView from '../../app/components/wrapper/info/info';
+import LocalStorage from '../../app/utils/local-storage';
 
 const styles = {
     STARTWRAPPER: 'start-page__wrapper',
@@ -36,10 +37,11 @@ export default class StartView extends CommonView {
         }
         logoutBtn.getHtmlElement().addEventListener('click', logOutPlease);
 
+        const storage = new LocalStorage().getValues('userAT');
         const formWrapper = new FormWrapperView();
         this.getHtmlElement().append(formWrapper.getHtmlElement());
         const welcomeText = new InfoView().h3View();
-        welcomeText.textContent = 'welcome to the game';
+        welcomeText.textContent = `Dear ${storage[0]} ${storage[1]}, welcome to the game`;
         const descriptionText = new InfoView().pView();
         descriptionText.textContent =
             'Our game is an amazing opportunity to improve your English and plunge into the world of Art. Click on words, collect phrases. Words can be drag and drop. Select tooltips in the menu.';

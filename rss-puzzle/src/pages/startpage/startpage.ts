@@ -6,6 +6,8 @@ import ModalView from '../../app/components/modal-window/modal';
 import FormWrapperView from '../../app/components/wrapper/wrapper-info-form';
 import InfoView from '../../app/components/wrapper/info/info';
 import LocalStorage from '../../app/utils/local-storage';
+import ButtonStartView from '../../app/components/buttons/button-start';
+import GametView from '../gamepage/gamepage';
 
 const styles = {
     STARTWRAPPER: 'start-page__wrapper',
@@ -29,14 +31,15 @@ export default class StartView extends CommonView {
         const gameTitle = new InfoView().descriptionView();
         this.getHtmlElement().append(gameTitle);
         const logoutBtn = new ButtonLogoutView();
+        const startBtn = new ButtonStartView().getHtmlElement();
+
         const modalView = new ModalView();
         this.getHtmlElement().append(modalView.getHtmlElement());
 
-        function logOutPlease(): void {
+        function logOut(): void {
             logoutBtn.logout();
         }
-        logoutBtn.getHtmlElement().addEventListener('click', logOutPlease);
-
+        logoutBtn.getHtmlElement().addEventListener('click', logOut);
         const storage = new LocalStorage().getValues('userAT');
         const formWrapper = new FormWrapperView();
         this.getHtmlElement().append(formWrapper.getHtmlElement());
@@ -46,8 +49,15 @@ export default class StartView extends CommonView {
         descriptionText.textContent =
             'Our game is an amazing opportunity to improve your English and plunge into the world of Art. Click on words, collect phrases. Words can be drag and drop. Select tooltips in the menu.';
         const btnBox = new InfoView().divView();
-        btnBox.append(logoutBtn.getHtmlElement());
+        btnBox.append(logoutBtn.getHtmlElement(), startBtn);
 
         formWrapper.getHtmlElement().append(welcomeText, descriptionText, btnBox);
+        const wrapper = this.getHtmlElement();
+        function goPlay(): void {
+            document.body.innerHTML = '';
+            const game = new GametView();
+            document.body.append(game.getHtmlElement());
+        }
+        startBtn.addEventListener('click', goPlay);
     }
 }

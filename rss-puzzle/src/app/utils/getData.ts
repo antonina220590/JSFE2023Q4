@@ -55,11 +55,15 @@ function getWords(jsonObj: JSON, level: number, sentence: number) {
 export function changePosition(event: Event): void {
     const target = event.target as HTMLElement;
     const line1 = document.querySelector('.line1');
+    const sourceBox = document.getElementById('source');
+    assertValues(sourceBox);
     assertValues(line1);
 
     if (target) {
         if (target.classList.contains('word_div') && target.closest('.data-source')) {
             line1.append(target);
+        } else if (target.classList.contains('word_div') && target.closest('.result-block')) {
+            sourceBox.append(target);
         }
     }
 }

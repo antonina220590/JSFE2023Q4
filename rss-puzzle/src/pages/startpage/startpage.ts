@@ -60,6 +60,8 @@ export default class StartView extends CommonView {
             document.body.append(game.getHtmlElement());
             const box = document.getElementById('source');
             box?.addEventListener('click', changePosition);
+            const line = document.querySelector('.line1');
+            line?.addEventListener('click', changePosition);
         }
         startBtn.addEventListener('click', goPlay);
     }

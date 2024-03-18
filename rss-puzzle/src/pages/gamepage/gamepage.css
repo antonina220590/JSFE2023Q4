@@ -1,16 +1,9 @@
 .game-page__wrapper {
-    /* background: url('../../app//assets/puzzle1.jpg'); */
     background-color: brown;
     margin: auto;
     width: 100vw;
     height: 100vh;
     display: flex;
-    /* background-size: cover;
-  background-position: center center;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column; */
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -19,7 +12,7 @@
 
 .result-block {
     display: flex;
-    width: 60%;
+    width: 70%;
     height: fit-content;
     border: 2px solid black;
     flex-direction: column;
@@ -27,17 +20,17 @@
 
 .data-source {
     display: flex;
-    width: 60%;
-    height: 40px;
+    width: 70%;
+    min-height: 40px;
     border: 2px solid black;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .line {
     width: 100%;
     height: 40px;
-    /* border-bottom: 1px solid black; */
     display: flex;
 }
 
@@ -46,4 +39,6 @@
     padding: 8px;
     margin-right: 10px;
     cursor: pointer;
+    background-color: bisque;
+    font-size: 1rem;
 }

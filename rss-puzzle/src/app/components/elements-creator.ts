@@ -25,7 +25,6 @@ export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
         this.addClasses(node.classNames);
         this.toggleClasses(node.classNames);
         this.removeClasses(node.classNames);
-        // this.addTextContent(node.text);
     }
 
     public addClasses(classNames: string[]): void {

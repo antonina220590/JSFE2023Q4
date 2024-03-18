@@ -3,7 +3,7 @@ import { CommonParams, CommonView } from '../view';
 import ErrorBoxView from '../input/validation/error-box/error-box-name';
 import ErrorBoxViewSurname from '../input/validation/error-box/error-box-surname';
 import LocalStorage from '../../utils/local-storage';
-/* eslint-disable */
+
 import StartView from '../../../pages/startpage/startpage';
 
 const styles = {

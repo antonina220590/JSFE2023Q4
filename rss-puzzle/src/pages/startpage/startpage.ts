@@ -1,7 +1,7 @@
 import './startpage.css';
 import { CommonParams, CommonView } from '../../app/components/view';
-/* eslint-disable */
 import ButtonLogoutView from '../../app/components/buttons/button-logout';
+//
 import ModalView from '../../app/components/modal-window/modal';
 import FormWrapperView from '../../app/components/wrapper/wrapper-info-form';
 import InfoView from '../../app/components/wrapper/info/info';
@@ -53,7 +53,6 @@ export default class StartView extends CommonView {
         btnBox.append(logoutBtn.getHtmlElement(), startBtn);
 
         formWrapper.getHtmlElement().append(welcomeText, descriptionText, btnBox);
-        const wrapper = this.getHtmlElement();
         function goPlay(): void {
             document.body.innerHTML = '';
             const game = new GametView();

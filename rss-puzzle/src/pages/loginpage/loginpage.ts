@@ -1,8 +1,7 @@
 import './loginpage.css';
 import { CommonParams, CommonView } from '../../app/components/view';
-/* eslint-disable */
+//
 import FormWrapperView from '../../app/components/wrapper/wrapper-info-form';
-import InfoView from '../../app/components/wrapper/info/info';
 import InputDisplay from '../../app/components/input/login-form-wrapper';
 
 const styles = {

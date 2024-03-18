@@ -1,7 +1,7 @@
 import './modal.css';
 import { CommonView, CommonParams } from '../view';
 import { BaseElementCreator } from '../elements-creator';
-/* eslint-disable */
+//
 import ModalBtnBoxView from './modal-btn-box';
 
 const styles = {

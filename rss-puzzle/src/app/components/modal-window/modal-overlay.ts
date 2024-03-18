@@ -1,6 +1,6 @@
 import './modal.css';
 import { CommonView, CommonParams } from '../view';
-/* eslint-disable */
+//
 import ModalFormView from './modal-form';
 
 const styles = {

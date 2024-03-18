@@ -8,6 +8,7 @@ import InfoView from '../../app/components/wrapper/info/info';
 import LocalStorage from '../../app/utils/local-storage';
 import ButtonStartView from '../../app/components/buttons/button-start';
 import GametView from '../gamepage/gamepage';
+import { changePosition } from '../../app/utils/getData';
 
 const styles = {
     STARTWRAPPER: 'start-page__wrapper',
@@ -57,6 +58,8 @@ export default class StartView extends CommonView {
             document.body.innerHTML = '';
             const game = new GametView();
             document.body.append(game.getHtmlElement());
+            const box = document.getElementById('source');
+            box?.addEventListener('click', changePosition);
         }
         startBtn.addEventListener('click', goPlay);
     }

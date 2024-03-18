@@ -2,7 +2,7 @@ import './modal.css';
 import { CommonView, CommonParams } from '../view';
 import { BaseElementCreator } from '../elements-creator';
 import LocalStorage from '../../utils/local-storage';
-/* eslint-disable */
+//
 import LoginWrapperView from '../../../pages/loginpage/loginpage';
 
 const styles = {
@@ -40,6 +40,7 @@ export default class ModalBtnBoxView extends CommonView {
             const login = new LoginWrapperView();
             document.body.innerHTML = '';
             document.body.append(login.getHtmlElement());
+            window.location.href = 'http://localhost:8080/';
         }
 
         modalBTNYesCreator.getElement().addEventListener('click', logOut);

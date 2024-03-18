@@ -34,18 +34,4 @@ export default class MainView extends CommonView {
             this.getHtmlElement().append(startPageWrapperView.getHtmlElement());
         }
     }
-
-    // delete(): void {
-    //   const htmlElement = this.elementCreator.getElement();
-    //   if (htmlElement.firstElementChild) {
-    //     htmlElement.firstElementChild.remove()
-    //   }
-    // }
-    // setContent(content: CommonView): void {
-    //     const htmlElement = this.elementCreator.getElement();
-    //     while (htmlElement.firstElementChild) {
-    //         htmlElement.firstElementChild.remove();
-    //     }
-    //     this.elementCreator.appendElement(content.getHtmlElement());
-    // }
 }

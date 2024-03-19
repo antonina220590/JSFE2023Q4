@@ -1,8 +1,6 @@
 import './input.css';
 import { BaseElementCreator } from '../elements-creator';
 import { CommonView, CommonParams } from '../view';
-//
-import FormDisplay from './login-form/login-form';
 
 const styles = {
     FORM_WRAPPER: 'login-form__wrapper',
@@ -23,7 +21,7 @@ export default class LoginFormWrapperView extends CommonView {
         };
         super(params);
         this.inputView();
-        this.showChildren();
+        //  this.showChildren();
     }
 
     inputView(): void {
@@ -36,8 +34,8 @@ export default class LoginFormWrapperView extends CommonView {
         this.elementCreator.appendElement(loginTitleCreator);
     }
 
-    showChildren(): void {
-        const formCreator = new FormDisplay();
-        this.getHtmlElement().append(formCreator.getHtmlElement());
-    }
+    // showChildren(): void {
+    //     const formCreator = new FormDisplay();
+    //     this.getHtmlElement().append(formCreator.getHtmlElement());
+    // }
 }

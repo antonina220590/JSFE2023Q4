@@ -112,7 +112,7 @@ export function handleClickFunction(event: Event) {
         const start = new StartView();
         document.body.innerHTML = '';
         document.body.append(start.getHtmlElement());
-        window.location.href = 'http://localhost:8080/';
+        window.location.href = 'https://rolling-scopes-school.github.io/antonina220590-JSFE2023Q4/rss-puzzle/';
     }
     return localStorage.length;
 }

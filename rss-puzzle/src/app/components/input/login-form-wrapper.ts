@@ -1,8 +1,6 @@
 import './input.css';
 import { BaseElementCreator } from '../elements-creator';
 import { CommonView, CommonParams } from '../view';
-//
-// import FormDisplay from './login-form/login-form';
 
 const styles = {
     FORM_WRAPPER: 'login-form__wrapper',

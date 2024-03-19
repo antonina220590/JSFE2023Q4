@@ -1,9 +1,5 @@
 import './buttons.css';
 import { CommonParams, CommonView } from '../view';
-// import ErrorBoxViewSurname from '../input/validation/error-box/error-box-surname';
-// import LocalStorage from '../../utils/local-storage';
-
-// import StartView from '../../../pages/startpage/startpage';
 
 const styles = {
     BUTTON: 'button',

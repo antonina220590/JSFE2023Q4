@@ -3,7 +3,6 @@ import { CommonParams, CommonView } from '../view';
 import ErrorBoxView from '../input/validation/error-box/error-box-name';
 import ErrorBoxViewSurname from '../input/validation/error-box/error-box-surname';
 import LocalStorage from '../../utils/local-storage';
-
 import StartView from '../../../pages/startpage/startpage';
 
 const styles = {
@@ -56,8 +55,8 @@ export default class ButtonView extends CommonView {
                 const start = new StartView();
                 document.body.innerHTML = '';
                 document.body.append(start.getHtmlElement());
+                window.location.href = 'http://localhost:8080/';
             }
-            console.log(localStorage.length);
             return localStorage.length;
         };
 

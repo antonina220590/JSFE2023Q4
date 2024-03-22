@@ -1,5 +1,4 @@
-function helloWorld(): void {
-    console.log('hello world!');
-}
+import App from './app/app';
 
-helloWorld();
+const app = new App();
+console.log(app);

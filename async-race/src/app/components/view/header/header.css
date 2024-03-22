@@ -1,0 +1,48 @@
+.header {
+    padding: 0 5vh;
+    background: #a8dfea;
+    display: flex;
+    justify-content: space-between;
+    min-height: 10vh;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Londrina Shadow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 5rem;
+}
+
+.button-box {
+    display: flex;
+    gap: 20px;
+}
+
+.header__button {
+    border-radius: 100px;
+    border: 1px solid #e1d4c9;
+    background: #ffbe79;
+    cursor: pointer;
+    padding: 10px 50px;
+    display: flex;
+    gap: 8px;
+    text-align: center;
+    position: relative;
+    font-family: 'Londrina Shadow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.header__button:hover {
+    background: #333366;
+    color: white;
+    transition: 1s ease-in-out;
+}
+
+.header__button_active {
+    background: #c55501;
+    color: white;
+    cursor: auto;
+}

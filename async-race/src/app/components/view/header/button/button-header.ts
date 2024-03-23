@@ -6,18 +6,24 @@ const styles = {
     HEADER_BTN_ACTIVE: 'header__button_active',
 };
 
+interface InnerObj {
+    pageName: string;
+    callback: Function;
+}
+
 export default class ButtonView extends CommonView {
     buttonElements: ButtonView[];
 
-    constructor(name: string, buttonElements: ButtonView[]) {
+    constructor(page: InnerObj, buttonElements: ButtonView[]) {
         const params: CommonParams = {
             HTMLtag: 'button',
             classNames: [styles.HEADER_BTNS],
-            text: name,
+            text: page.pageName,
+            callback: null!,
         };
         super(params);
         this.buttonElements = buttonElements;
-        this.addAdditonalView();
+        this.addAdditonalView(page);
     }
 
     addActiveClass(): void {
@@ -33,7 +39,10 @@ export default class ButtonView extends CommonView {
         button.getElement().removeAttribute('disabled');
     }
 
-    addAdditonalView(): void {
+    addAdditonalView(page: InnerObj): void {
+        this.elementCreator.addTextContent(page.pageName);
+        this.elementCreator.addCallback(page.callback);
+
         this.elementCreator.getElement().addEventListener('click', this.addActiveClass.bind(this));
     }
 }

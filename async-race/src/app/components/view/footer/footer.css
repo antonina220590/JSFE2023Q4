@@ -1,0 +1,15 @@
+.footer {
+    padding: 0 5vh;
+    background: #a8dfea;
+    display: flex;
+    min-height: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.year {
+    font-family: 'Londrina Shadow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+}

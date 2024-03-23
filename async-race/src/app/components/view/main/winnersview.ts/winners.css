@@ -1,0 +1,17 @@
+.winners {
+    display: flex;
+    flex-direction: column;
+}
+
+.winners__settings {
+    display: flex;
+    display: flex;
+    justify-content: center;
+}
+
+.winners-title {
+    font-family: 'Londrina Shadow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+}

@@ -1,0 +1,5 @@
+.main {
+    flex: 1 0 auto;
+    min-height: 80vh;
+    background: #ece5d5;
+}

@@ -5,6 +5,7 @@ export interface CommonParams {
     classNames: string[];
     text: string;
     src?: string;
+    callback: Function;
 }
 export class CommonView {
     elementCreator: BaseElementCreator<HTMLElement>;
@@ -23,6 +24,7 @@ export class CommonView {
             classNames: params.classNames,
             text: params.text,
             src: '',
+            callback: undefined,
         };
         this.elementCreator = new BaseElementCreator(elementCreatorParams);
         return this.elementCreator;

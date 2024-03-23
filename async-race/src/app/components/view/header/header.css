@@ -35,14 +35,9 @@
     font-size: 2rem;
 }
 
-.header__button:hover {
-    background: #333366;
-    color: white;
-    transition: 1s ease-in-out;
-}
-
 .header__button_active {
     background: #c55501;
     color: white;
     cursor: auto;
+    transition: 0.3s ease-in-out;
 }

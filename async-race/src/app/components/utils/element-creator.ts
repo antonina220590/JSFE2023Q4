@@ -2,11 +2,11 @@ export interface Element {
     HTMLtag?: keyof HTMLElementTagNameMap;
 }
 
-export interface FullElementDescription<T extends HTMLElement = HTMLElement> extends Element {
+export interface FullElementDescription extends Element {
     classNames: string[];
     parent?: HTMLElement;
     text: string;
-    callback?: CallbackGen<T>;
+    callback?: Function;
 }
 
 export type CallbackGen<T> = (data: T) => void;
@@ -14,18 +14,21 @@ export type CallbackGen<T> = (data: T) => void;
 export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
     protected element: T;
 
-    constructor(node: FullElementDescription<T>) {
+    constructor(node: FullElementDescription) {
         const element = document.createElement(node.HTMLtag ?? 'div') as T;
         this.element = element;
         this.createNewElement(node);
     }
 
-    public createNewElement(node: FullElementDescription<T>): void {
+    public createNewElement(node: FullElementDescription): void {
         this.element = document.createElement(node.HTMLtag ?? 'div') as T;
         this.addClasses(node.classNames);
         this.toggleClasses(node.classNames);
         this.removeClasses(node.classNames);
         this.addTextContent(node.text);
+        if (typeof node.callback !== 'undefined' && typeof node.callback !== null) {
+            this.addCallback(node.callback);
+        }
     }
 
     public addClasses(classNames: string[]): void {
@@ -60,6 +63,12 @@ export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
 
     public setAttribute(attribute: string, value: string): void {
         this.element.setAttribute(attribute, value);
+    }
+
+    addCallback(callback: Function) {
+        if (typeof callback === 'function') {
+            this.element.addEventListener('click', (event) => callback(event));
+        }
     }
 
     public getElement(): HTMLElement {

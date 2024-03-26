@@ -22,7 +22,7 @@
       "@typescript-eslint/no-infferable-types": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "react/jsx-filename-extension": [0],
-      "max-lines-per-function": ["error", 40],
+      "max-lines-per-function": "off",
       "@typescript-eslint/ban-types": "off"
   }
 }

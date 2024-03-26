@@ -1,0 +1,40 @@
+.common-info {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.current-page {
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.6rem;
+}
+
+.all-cars {
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.6rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+.pagination_btn {
+    border-radius: 100px;
+    border: 1px solid #e1d4c9;
+    background-color: #ffbe79;
+    cursor: pointer;
+    padding: 5px 20px;
+    display: flex;
+    gap: 8px;
+    text-align: center;
+    position: relative;
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.1rem;
+}

@@ -2,4 +2,14 @@
     flex: 1 0 auto;
     min-height: 80vh;
     background: #ece5d5;
+    width: 80vw;
+    margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
 }

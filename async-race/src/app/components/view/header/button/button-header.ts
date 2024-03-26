@@ -6,31 +6,22 @@ const styles = {
     HEADER_BTN_ACTIVE: 'header__button_active',
 };
 
-interface InnerObj {
-    pageName: string;
-    callback: Function;
-}
-
 export default class ButtonView extends CommonView {
-    buttonElements: ButtonView[];
-
-    constructor(page: InnerObj, buttonElements: ButtonView[]) {
+    constructor() {
         const params: CommonParams = {
             HTMLtag: 'button',
             classNames: [styles.HEADER_BTNS],
-            text: page.pageName,
+            text: '',
             callback: null!,
         };
         super(params);
-        this.buttonElements = buttonElements;
-        this.addAdditonalView(page);
     }
 
     addActiveClass(): void {
-        this.buttonElements.forEach((buttonElement) => buttonElement.removeActiveClass());
         const button = this.elementCreator;
         button.addClasses([styles.HEADER_BTN_ACTIVE]);
         button.setAttribute('disabled', '');
+        button.setAttribute('id', 'current');
     }
 
     removeActiveClass(): void {
@@ -39,10 +30,10 @@ export default class ButtonView extends CommonView {
         button.getElement().removeAttribute('disabled');
     }
 
-    addAdditonalView(page: InnerObj): void {
-        this.elementCreator.addTextContent(page.pageName);
-        this.elementCreator.addCallback(page.callback);
+    // addAdditonalView(page: InnerObj): void {
+    //     this.elementCreator.addTextContent(page.pageName);
+    //     this.elementCreator.addCallback(page.callback);
 
-        this.elementCreator.getElement().addEventListener('click', this.addActiveClass.bind(this));
-    }
+    //     this.elementCreator.getElement().addEventListener('click', this.addActiveClass.bind(this));
+    // }
 }

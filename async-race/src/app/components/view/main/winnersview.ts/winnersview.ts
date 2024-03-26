@@ -1,6 +1,7 @@
 import './winners.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../../utils/element-creator';
+import InfoboxView from './infobox/infobox';
 
 const styles = {
     WINNERS: 'winners',
@@ -23,6 +24,7 @@ export default class WinnersView extends CommonView {
         };
         super(params);
         this.additionalView();
+        this.showChildren();
     }
 
     additionalView() {
@@ -44,5 +46,10 @@ export default class WinnersView extends CommonView {
         sectionCreator.getElement().append(h2Creator.getElement());
 
         this.elementCreator.getElement().append(sectionCreator.getElement());
+    }
+
+    showChildren() {
+        const infobox = new InfoboxView().getHtmlElement();
+        this.elementCreator.getElement().append(infobox);
     }
 }

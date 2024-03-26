@@ -29,9 +29,6 @@ interface InnerObj {
     pageName: string;
     callback: Function;
 }
-
-const currentPageIndex = 0;
-
 export default class HeaderView extends CommonView {
     buttonElements: ButtonView[];
 
@@ -67,10 +64,16 @@ export default class HeaderView extends CommonView {
             callback: null!,
         };
         const buttonBoxCreator = new BaseElementCreator(buttonBoxParams);
-
+        const garageBtn = new ButtonView().getHtmlElement();
+        buttonBoxCreator.appendElement(garageBtn);
+        garageBtn.textContent = 'Garage';
+        garageBtn.setAttribute('id', 'garage_btn');
+        const winnersBtn = new ButtonView().getHtmlElement();
+        buttonBoxCreator.appendElement(winnersBtn);
+        winnersBtn.textContent = 'Winners';
+        winnersBtn.setAttribute('id', 'winner_btn');
         const garageView = new GarageView();
         const winnersView = new WinnersView();
-
         const myPages: InnerObj[] = [
             {
                 pageName: pages.GARAGE_PAGE,
@@ -81,17 +84,25 @@ export default class HeaderView extends CommonView {
                 callback: () => main.showCurrentPage(winnersView),
             },
         ];
-
-        myPages.forEach((page, index) => {
-            const buttonElement = new ButtonView(page, this.buttonElements);
-            buttonBoxCreator.appendElement(buttonElement.getHtmlElement());
-
-            if (index === currentPageIndex) {
-                page.callback();
-                buttonElement.addActiveClass();
-            }
-            this.buttonElements.push(buttonElement);
+        winnersView.getHtmlElement().classList.add('hidden');
+        garageBtn.classList.add('header__button_active');
+        myPages.forEach((page) => {
+            page.callback();
         });
+        function showWinners() {
+            garageView.getHtmlElement().classList.add('hidden');
+            winnersView.getHtmlElement().classList.remove('hidden');
+            garageBtn.classList.remove('header__button_active');
+            winnersBtn.classList.toggle('header__button_active');
+        }
+        function showGarage() {
+            winnersView.getHtmlElement().classList.add('hidden');
+            garageView.getHtmlElement().classList.remove('hidden');
+            garageBtn.classList.toggle('header__button_active');
+            winnersBtn.classList.remove('header__button_active');
+        }
         this.elementCreator.getElement().append(buttonBoxCreator.getElement());
+        garageBtn.addEventListener('click', showGarage);
+        winnersBtn.addEventListener('click', showWinners);
     }
 }

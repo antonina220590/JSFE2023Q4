@@ -1,6 +1,7 @@
 import './garage.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../../utils/element-creator';
+import InfoboxView from './infobox/infobox';
 
 const styles = {
     GARAGE: 'garage',
@@ -23,6 +24,7 @@ export default class GarageView extends CommonView {
         };
         super(params);
         this.additionalView();
+        this.showChildren();
     }
 
     additionalView() {
@@ -42,7 +44,11 @@ export default class GarageView extends CommonView {
         };
         const h2Creator = new BaseElementCreator(h2Params);
         sectionCreator.getElement().append(h2Creator.getElement());
-
         this.elementCreator.getElement().append(sectionCreator.getElement());
+    }
+
+    showChildren() {
+        const infobox = new InfoboxView().getHtmlElement();
+        this.elementCreator.getElement().append(infobox);
     }
 }

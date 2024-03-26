@@ -1,6 +1,7 @@
 .garage {
     display: flex;
     flex-direction: column;
+    gap: 4vh;
 }
 
 .garage__settings {
@@ -14,4 +15,19 @@
     font-weight: 400;
     font-style: normal;
     font-size: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.car-settings {
+    display: flex;
+    width: 100%;
+}
+
+.change-color {
+    width: 100%;
+}
+
+.color-input {
+    width: 20%;
 }

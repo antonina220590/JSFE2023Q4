@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const EslingPlugin = require('eslint-webpack-plugin');
 
+
 const baseConfig = {
     entry: './src/index.ts',
     mode: 'development',
@@ -23,8 +24,12 @@ const baseConfig = {
                 loader: 'html-loader',
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                type: 'asset/source',
+            },
+            {
+              test: /\.svg$/,
+              type: "asset/resource",
             },
         ],
     },
@@ -34,7 +39,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
-        assetModuleFilename: 'images/[hash][ext][query]',
+        assetModuleFilename: 'images/[name][ext]',
     },
     plugins: [
         new DotenvWebpackPlugin(),

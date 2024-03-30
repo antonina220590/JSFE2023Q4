@@ -61,6 +61,7 @@ export default class InfoboxView extends CommonView {
         const buttonPrevCreator = new BaseElementCreator(buttonParams);
         buttonPrevCreator.setAttribute('id', 'prev');
         buttonPrevCreator.addTextContent('Prev');
+        buttonPrevCreator.setAttribute('disabled', '');
         const buttonNextCreator = new BaseElementCreator(buttonParams);
         buttonNextCreator.setAttribute('id', 'next');
         buttonNextCreator.addClasses([styles.NEXT]);

@@ -15,14 +15,11 @@ const generateString = (params: Params[] = []) =>
 export const getAllWinners = async (params: Params[]) => {
     const baseUrl: string = 'http://127.0.0.1:3000';
     const response = await fetch(`${baseUrl}${path.winners}${generateString(params)}`);
-    const data = await response.json();
     const totalNumber = response.headers.get('X-Total-Count');
 
     const winners = document.getElementById('total_winners');
     assertValues(winners);
     winners.innerHTML = `Winners(${totalNumber})`;
-    console.log(winners);
-    console.log(data);
 };
 
 let count = 1;
@@ -32,13 +29,11 @@ export function changePageWinners(event: Event) {
     if (clicked.classList.contains('next')) {
         count += 1;
         document.getElementById('prevWinners')?.removeAttribute('disabled');
-        console.log(count);
     } else {
         count -= 1;
         if (count === 1) {
             document.getElementById('prevWinners')?.setAttribute('disabled', '');
         }
-        console.log(count);
     }
     const page = document.getElementById('page_num_winners');
     assertValues(page);

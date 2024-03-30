@@ -29,11 +29,4 @@ export default class ButtonView extends CommonView {
         button.removeClasses([styles.HEADER_BTN_ACTIVE]);
         button.getElement().removeAttribute('disabled');
     }
-
-    // addAdditonalView(page: InnerObj): void {
-    //     this.elementCreator.addTextContent(page.pageName);
-    //     this.elementCreator.addCallback(page.callback);
-
-    //     this.elementCreator.getElement().addEventListener('click', this.addActiveClass.bind(this));
-    // }
 }

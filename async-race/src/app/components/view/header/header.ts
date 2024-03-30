@@ -93,6 +93,8 @@ export default class HeaderView extends CommonView {
             garageView.getHtmlElement().classList.add('hidden');
             winnersView.getHtmlElement().classList.remove('hidden');
             garageBtn.classList.remove('header__button_active');
+            winnersBtn.setAttribute('disabled', '');
+            garageBtn.removeAttribute('disabled');
             winnersBtn.classList.toggle('header__button_active');
         }
         function showGarage() {
@@ -100,6 +102,8 @@ export default class HeaderView extends CommonView {
             garageView.getHtmlElement().classList.remove('hidden');
             garageBtn.classList.toggle('header__button_active');
             winnersBtn.classList.remove('header__button_active');
+            garageBtn.setAttribute('disabled', '');
+            winnersBtn.removeAttribute('disabled');
         }
         this.elementCreator.getElement().append(buttonBoxCreator.getElement());
         garageBtn.addEventListener('click', showGarage);

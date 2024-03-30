@@ -5,6 +5,7 @@ import { BaseElementCreator } from '../../utils/element-creator';
 const styles = {
     FOOTER: 'footer',
     FOOTER_TEXT: 'year',
+    DIV: 'div',
 };
 
 const text = {

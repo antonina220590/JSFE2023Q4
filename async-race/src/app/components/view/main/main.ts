@@ -25,13 +25,6 @@ export default class MainView extends CommonView {
 
     showCurrentPage(view: CommonView) {
         const element = view.getHtmlElement();
-        // const activeElement = this.elementCreator.getElement();
-
-        // console.log(activeElement)
-        // while (activeElement.firstElementChild) {
-        //   activeElement.firstElementChild.remove()
-        // }
-
         this.elementCreator.appendElement(element);
     }
 }

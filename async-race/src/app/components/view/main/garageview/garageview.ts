@@ -2,6 +2,7 @@ import './garage.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../../utils/element-creator';
 import InfoboxView from './infobox/infobox';
+import CarRaceWrapperView from './race_box.ts/race_box_wrapper/race_box_wrapper';
 
 const styles = {
     GARAGE: 'garage',
@@ -48,7 +49,8 @@ export default class GarageView extends CommonView {
     }
 
     showChildren() {
-        const infobox = new InfoboxView().getHtmlElement();
-        this.elementCreator.getElement().append(infobox);
+        const infoBox = new InfoboxView().getHtmlElement();
+        const raceWrapper = new CarRaceWrapperView().getHtmlElement();
+        this.elementCreator.getElement().append(infoBox, raceWrapper);
     }
 }

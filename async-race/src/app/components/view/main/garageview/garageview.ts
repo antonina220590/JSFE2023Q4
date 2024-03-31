@@ -2,6 +2,7 @@ import './garage.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../../utils/element-creator';
 import InfoboxView from './infobox/infobox';
+import CarSettingsView from './car_settings/car_settings';
 import CarRaceWrapperView from './race_box.ts/race_box_wrapper/race_box_wrapper';
 
 const styles = {
@@ -24,6 +25,7 @@ export default class GarageView extends CommonView {
             callback: null!,
         };
         super(params);
+        this.elementCreator.setAttribute('id', 'section');
         this.additionalView();
         this.showChildren();
     }
@@ -44,13 +46,14 @@ export default class GarageView extends CommonView {
             callback: null!,
         };
         const h2Creator = new BaseElementCreator(h2Params);
-        sectionCreator.getElement().append(h2Creator.getElement());
+        const carSettings = new CarSettingsView().getHtmlElement();
+        sectionCreator.getElement().append(h2Creator.getElement(), carSettings);
         this.elementCreator.getElement().append(sectionCreator.getElement());
     }
 
     showChildren() {
         const infoBox = new InfoboxView().getHtmlElement();
-        const raceWrapper = new CarRaceWrapperView().getHtmlElement();
-        this.elementCreator.getElement().append(infoBox, raceWrapper);
+        const raceViewWrapper = new CarRaceWrapperView().getHtmlElement();
+        this.elementCreator.getElement().append(infoBox, raceViewWrapper);
     }
 }

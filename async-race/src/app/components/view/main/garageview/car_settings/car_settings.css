@@ -1,0 +1,39 @@
+.car-settings__box {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-right: 40px;
+}
+
+.input-name {
+  font-size: 20px;
+  width: 20%;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.buttons_set {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  padding: 5px;
+  outline: none;
+  border: 1px solid #E1D4C9;
+  background-color: #97D5EE;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.button_active {
+  background-color: #2979FF;
+}

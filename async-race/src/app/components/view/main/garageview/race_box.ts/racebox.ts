@@ -1,7 +1,7 @@
 import './racebox.css';
 import { CommonParams, CommonView } from '../../../view';
 import { BaseElementCreator } from '../../../../utils/element-creator';
-import { deleteCar } from '../../../../../api_interaction/api_garage/api_garage';
+// import { deleteCar } from '../../../../../api_interaction/api_garage/api_garage';
 
 const styles = {
     BUTTON_WRAPPER: 'car-buttons__wrapper',
@@ -26,8 +26,6 @@ const text = {
 };
 
 export default class CarRaceView extends CommonView {
-    colors: string[] = [];
-
     constructor() {
         const params: CommonParams = {
             HTMLtag: 'div',
@@ -77,7 +75,7 @@ export default class CarRaceView extends CommonView {
         const deleteBtn = new BaseElementCreator(buttonParams);
         deleteBtn.setAttribute('id', 'deleteBtn');
         deleteBtn.addTextContent(text.DELETE);
-        deleteBtn.getElement().addEventListener('click', deleteCar);
+        // deleteBtn.getElement().addEventListener('click', deleteCar);
 
         divBtnEditParamsCreator.getElement().append(editBtn.getElement(), deleteBtn.getElement());
 

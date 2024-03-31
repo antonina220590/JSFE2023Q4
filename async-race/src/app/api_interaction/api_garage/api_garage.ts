@@ -1,4 +1,5 @@
 import assertValues from '../../components/utils/assertion_function';
+import CarRaceView from '../../components/view/main/garageview/race_box.ts/racebox';
 
 export const path = {
     garage: '/garage',
@@ -19,9 +20,18 @@ export interface CarParams {
     id: number;
 }
 
-let data: CarParams[] = [];
-
 function getCarInfo(data: CarParams[]) {
+    const wrapper = document.getElementById('carWrapper');
+    if (wrapper) {
+        wrapper.innerHTML = '';
+    }
+
+    for (let i = 0; i < data.length; i += 1) {
+        const cars = new CarRaceView().getHtmlElement();
+        wrapper?.append(cars);
+        console.log(data.length);
+    }
+
     const colors: string[] = [];
     const marks: string[] = [];
     const ids: number[] = [];
@@ -34,10 +44,10 @@ function getCarInfo(data: CarParams[]) {
     for (let i = 0; i < carName.length; i += 1) {
         for (let j = 0; j < marks.length; j += 1) {
             carName[i].textContent = marks[i];
-            console.log(marks[i]);
         }
     }
     const carArray = Array.from(document.getElementsByClassName('car'));
+    console.log(carArray);
     for (let i = 0; i < carArray.length; i += 1) {
         for (let j = 0; j < colors.length; j += 1) {
             const result = carArray[i] as HTMLElement;
@@ -54,27 +64,13 @@ function getCarInfo(data: CarParams[]) {
     }
 }
 
-export const deleteCar = (event: Event) => {
-    const clicked = event.target as HTMLElement;
-    const parent = clicked.closest('.car-control__wrapper');
-    let parentId = Number(parent?.id);
-    parent?.remove();
-    const wrapperArray = Array.from(document.getElementsByClassName('car-control__wrapper'));
-    console.log(wrapperArray);
-    const index = data.findIndex(n => n.id === parentId);
-    if (index !== -1) {
-     data.splice(index, 1);
-    }
-    console.log(data)
-};
-
-
 let totalNumber: number = 0;
+const baseUrl: string = 'http://127.0.0.1:3000';
 export const generateString = (params: Params[] = []) =>
     params.length ? `?${params.map((x) => `${x.key}=${x.value}`).join('&')}` : '';
 
+let data: [] = [];
 export const getAllcars = async (params: Params[]) => {
-    const baseUrl: string = 'http://127.0.0.1:3000';
     const response = await fetch(`${baseUrl}${path.garage}${generateString(params)}`);
     data = await response.json();
     totalNumber = Number(response.headers.get('X-Total-Count'));
@@ -82,12 +78,20 @@ export const getAllcars = async (params: Params[]) => {
     assertValues(garage);
     garage.innerHTML = `Garage(${totalNumber})`;
     getCarInfo(data);
+};
 
-    if (totalNumber < 7) {
-        document.getElementById('next')?.setAttribute('disabled', '');
-    } else {
-        document.getElementById('next')?.removeAttribute('disabled');
-    }
+// export const myFun = async (event: Event) => {
+//     const response = await fetch(`${baseUrl}${path.garage}`, {
+//         method: 'GET',
+//     });
+// };
+
+const deleteCarFromBase = async (id: number) => {
+    const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
+        method: 'DELETE',
+    });
+    const car = await response.json();
+    return car;
 };
 
 let count = 1;
@@ -110,4 +114,13 @@ export const changePage = (event: Event) => {
         { key: '_page', value: `${count}` },
         { key: '_limit', value: 7 },
     ]);
+};
+
+export const deleteCar = async (event: Event) => {
+    const clicked = event.target as HTMLElement;
+    const parent = clicked.closest('.car-control__wrapper');
+    const parentId = Number(parent?.id);
+    parent?.remove();
+    Array.from(document.getElementsByClassName('car-control__wrapper'));
+    await deleteCarFromBase(parentId);
 };

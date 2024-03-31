@@ -6,8 +6,9 @@
 
 .garage__settings {
     display: flex;
-    display: flex;
     justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .garage-title {

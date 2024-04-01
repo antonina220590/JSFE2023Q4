@@ -2,6 +2,7 @@ import assertValues from '../../components/utils/assertion_function';
 
 const path = {
     winners: '/winners',
+    winner: './winner/:id',
 };
 
 interface Params {

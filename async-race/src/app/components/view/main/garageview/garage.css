@@ -32,3 +32,9 @@
 .color-input {
     width: 20%;
 }
+
+@media screen and (max-width: 620px) {
+    .garage-title {
+        font-size: 3rem;
+    }
+}

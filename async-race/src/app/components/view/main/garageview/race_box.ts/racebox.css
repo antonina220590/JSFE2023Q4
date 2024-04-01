@@ -1,70 +1,70 @@
 .car-buttons__wrapper {
-  display: flex;
+    display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
 .button {
-  padding: 5px;
-  outline: none;
-  border: 1px solid #E1D4C9;
-  background-color: #97D5EE;
-  cursor: pointer;
-  border-radius: 10px;
-  font-family: "Londrina Solid", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 1rem;
+    padding: 5px;
+    outline: none;
+    border: 1px solid #e1d4c9;
+    background-color: #97d5ee;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1rem;
 }
 
 .button_active {
-  background-color: #2979FF;
+    background-color: #2979ff;
 }
 
 .car-name {
-  font-family: "Londrina Solid", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 1rem;
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1rem;
 }
 
 .car-control__wrapper {
-  position: relative;
-  border-bottom: 0.29rem dashed #C28A38;
-  min-height: 4rem;
-  padding-top: 10px;
+    position: relative;
+    border-bottom: 0.29rem dashed #c28a38;
+    min-height: 4rem;
+    padding-top: 10px;
 }
 
 .car {
-  position: absolute;
-  transform: translateY(0.6rem);
-  height: 75px;
-  width: 70px;
+    position: absolute;
+    transform: translateY(0.6rem);
+    height: 75px;
+    width: 70px;
 }
 
 .car-control__wrapper::after {
-content: "";
-position: absolute;
-right: 6rem;
-bottom: 0;
-transform: scaleX(-1);
-width: 6rem;
-height: 1.5rem;
-background-image: url('../../../../../../images/flag.svg');
-background-repeat: no-repeat;
-background-size: contain;
+    content: '';
+    position: absolute;
+    right: 6rem;
+    bottom: 0;
+    transform: scaleX(-1);
+    width: 6rem;
+    height: 1.5rem;
+    background-image: url('../../../../../../images/flag.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .svg_wrapper {
-  min-height: 3.8rem;
+    min-height: 3.8rem;
 }
 
 .edit-delete-wrap {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .race-stop-btn {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }

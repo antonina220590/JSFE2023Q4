@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const EslingPlugin = require('eslint-webpack-plugin');
 
-
 const baseConfig = {
     entry: './src/index.ts',
     mode: 'development',
@@ -28,8 +27,8 @@ const baseConfig = {
                 type: 'asset/source',
             },
             {
-              test: /\.svg$/,
-              type: "asset/resource",
+                test: /\.svg$/,
+                type: 'asset/resource',
             },
         ],
     },

@@ -14,13 +14,10 @@
     font-size: 3rem;
 }
 
-
 .div {
-  display: flex;
-
+    display: flex;
 }
 
 .car {
-
-  fill: red;
+    fill: red;
 }

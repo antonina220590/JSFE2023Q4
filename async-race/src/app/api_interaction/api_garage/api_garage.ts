@@ -26,6 +26,80 @@ interface Body {
 }
 
 const baseUrl: string = 'http://127.0.0.1:3000';
+let totalNumber: number = 0;
+let count = 1;
+let numberOfCars = 7;
+let parentId: number = 0;
+let data: [] = [];
+
+export const generateString = (params: Params[] = []) =>
+    params.length ? `?${params.map((x) => `${x.key}=${x.value}`).join('&')}` : '';
+export const getAllcars = async (params: Params[]) => {
+    const response = await fetch(`${baseUrl}${path.garage}${generateString(params)}`);
+    data = await response.json();
+    totalNumber = Number(response.headers.get('X-Total-Count'));
+    const garage = document.getElementById('total_cars');
+    assertValues(garage);
+    garage.innerHTML = `Garage(${totalNumber})`;
+    getCarInfo(data);
+    if (totalNumber <= 7) {
+        document.getElementById('next')?.setAttribute('disabled', '');
+    }
+};
+
+const updateCar = async (id: number, body: Body) => {
+    const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+    });
+    const car = await response.json();
+    return car;
+};
+
+const updateCarFromList = async () => {
+    const inputName = document.getElementById('carName') as HTMLInputElement;
+    const inputColor = document.getElementById('carColor') as HTMLInputElement;
+    let newName = inputName.value;
+    let newColor = inputColor.value;
+    data.forEach((el: CarParams) => {
+        if (el.id === parentId) {
+            newName = el.name;
+            newColor = el.color;
+        }
+    });
+
+    await updateCar(parentId, {
+        name: `${inputName.value}`,
+        color: `${inputColor.value}`,
+    });
+
+    getAllcars([
+        { key: '_page', value: `${count}` },
+        { key: '_limit', value: 7 },
+    ]);
+};
+
+const getInfo = (event: Event) => {
+    const clicked = event.target as HTMLElement;
+    const parent = clicked.closest('.car-control__wrapper');
+    parentId = Number(parent?.id);
+    const inputName = document.getElementById('carName') as HTMLInputElement;
+    const inputColor = document.getElementById('carColor') as HTMLInputElement;
+    const btn = document.querySelector('.update-btn');
+    if (btn) {
+        btn.classList.add('button_active');
+    }
+    data.forEach((el: CarParams) => {
+        if (el.id === parentId) {
+            inputName.value = el.name;
+            inputColor.value = el.color;
+        }
+    });
+    return { parentId };
+};
 
 const deleteCarFromBase = async (id: number) => {
     const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
@@ -34,17 +108,16 @@ const deleteCarFromBase = async (id: number) => {
     const car = await response.json();
     return car;
 };
-
 export const deleteCar = async (event: Event) => {
     const clicked = event.target as HTMLElement;
     const parent = clicked.closest('.car-control__wrapper');
-    const parentId = Number(parent?.id);
+    parentId = Number(parent?.id);
     parent?.remove();
     Array.from(document.getElementsByClassName('car-control__wrapper'));
     await deleteCarFromBase(parentId);
 };
 
-function getCarInfo(data: CarParams[]) {
+export function getCarInfo(data: CarParams[]) {
     const wrapper = document.getElementById('carWrapper');
     if (wrapper) {
         wrapper.innerHTML = '';
@@ -88,30 +161,16 @@ function getCarInfo(data: CarParams[]) {
     deleteBtns.forEach((btn) => {
         btn.addEventListener('click', deleteCar);
     });
+
+    const editBtn = Array.from(document.getElementsByClassName('editBtn'));
+    editBtn.forEach((btn) => {
+        btn.addEventListener('click', getInfo);
+    });
+
+    const btn = document.querySelector('.update-btn');
+    btn?.addEventListener('click', updateCarFromList);
 }
 
-let totalNumber: number = 0;
-
-export const generateString = (params: Params[] = []) =>
-    params.length ? `?${params.map((x) => `${x.key}=${x.value}`).join('&')}` : '';
-
-let data: [] = [];
-
-export const getAllcars = async (params: Params[]) => {
-    const response = await fetch(`${baseUrl}${path.garage}${generateString(params)}`);
-    data = await response.json();
-    totalNumber = Number(response.headers.get('X-Total-Count'));
-    const garage = document.getElementById('total_cars');
-    assertValues(garage);
-    garage.innerHTML = `Garage(${totalNumber})`;
-    getCarInfo(data);
-    if (totalNumber <= 7) {
-        document.getElementById('next')?.setAttribute('disabled', '');
-    }
-};
-
-let count = 1;
-let numberOfCars = 7;
 export const changePage = (event: Event) => {
     const clicked = event.target as HTMLElement;
     if (clicked.classList.contains('next')) {
@@ -159,12 +218,11 @@ const createCar = async (body: Body) => {
         body: JSON.stringify(body),
     });
     const car = await response.json();
-    console.log(car);
     return car;
 };
 
 export const createNewCar = async () => {
-     await createCar({
+    await createCar({
         name: `${name}`,
         color: `${color}`,
     });

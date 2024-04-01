@@ -15,13 +15,15 @@ const styles = {
     CREATEBTN: 'create-btn',
     GENERATEBTN: 'generate-btn',
     BUTTON: 'button',
+    UPDATEBTN: 'update-btn',
 };
 
 const text = {
     NAME: 'Name:',
     COLOR: 'Color:',
-    CREATE: 'Create Car',
-    GENERATE: 'Generate Cars',
+    CREATE: 'Create',
+    GENERATE: 'Generate',
+    UPDATE: 'Update',
     EMPTY: '',
 };
 
@@ -90,6 +92,10 @@ export default class CarSettingsView extends CommonView {
         btnCreateCreator.addClasses([styles.CREATEBTN]);
         btnCreateCreator.addTextContent(text.CREATE);
 
+        const btnUpdateCreator = new BaseElementCreator(buttonParams);
+        btnUpdateCreator.addClasses([styles.UPDATEBTN]);
+        btnUpdateCreator.addTextContent(text.UPDATE);
+
         btnCreateCreator.getElement().addEventListener('click', getInputValue);
         btnCreateCreator.getElement().addEventListener('click', createNewCar);
 
@@ -97,7 +103,9 @@ export default class CarSettingsView extends CommonView {
         btnGenerateCreator.addClasses([styles.GENERATEBTN]);
         btnGenerateCreator.addTextContent(text.GENERATE);
 
-        divCreator.getElement().append(btnCreateCreator.getElement(), btnGenerateCreator.getElement());
+        divCreator
+            .getElement()
+            .append(btnCreateCreator.getElement(), btnUpdateCreator.getElement(), btnGenerateCreator.getElement());
 
         this.elementCreator
             .getElement()

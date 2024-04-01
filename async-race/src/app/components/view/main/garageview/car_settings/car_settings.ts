@@ -1,6 +1,7 @@
 import './car_settings.css';
 import { CommonParams, CommonView } from '../../../view';
 import { BaseElementCreator } from '../../../../utils/element-creator';
+import { getInputValue, createNewCar } from '../../../../../api_interaction/api_garage/api_garage';
 
 const styles = {
     SETTINGS: 'car-settings__box',
@@ -81,7 +82,7 @@ export default class CarSettingsView extends CommonView {
         const inputColorCreator = new BaseElementCreator(inputParams);
         inputColorCreator.addClasses([styles.INPUTCOLOR]);
         inputColorCreator.setAttribute('type', 'color');
-        const inputColor = inputColorCreator.getElement() as HTMLInputElement;
+        inputColorCreator.setAttribute('id', 'carColor');
 
         const divCreator = new BaseElementCreator(divParams);
 
@@ -89,12 +90,9 @@ export default class CarSettingsView extends CommonView {
         btnCreateCreator.addClasses([styles.CREATEBTN]);
         btnCreateCreator.addTextContent(text.CREATE);
 
-        function getInputValue() {
-            console.log(inputName.value);
-            console.log(inputColor.value);
-        }
-
         btnCreateCreator.getElement().addEventListener('click', getInputValue);
+        btnCreateCreator.getElement().addEventListener('click', createNewCar);
+
         const btnGenerateCreator = new BaseElementCreator(buttonParams);
         btnGenerateCreator.addClasses([styles.GENERATEBTN]);
         btnGenerateCreator.addTextContent(text.GENERATE);

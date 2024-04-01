@@ -20,6 +20,30 @@ export interface CarParams {
     id: number;
 }
 
+interface Body {
+    name: string;
+    color: string;
+}
+
+const baseUrl: string = 'http://127.0.0.1:3000';
+
+const deleteCarFromBase = async (id: number) => {
+    const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
+        method: 'DELETE',
+    });
+    const car = await response.json();
+    return car;
+};
+
+export const deleteCar = async (event: Event) => {
+    const clicked = event.target as HTMLElement;
+    const parent = clicked.closest('.car-control__wrapper');
+    const parentId = Number(parent?.id);
+    parent?.remove();
+    Array.from(document.getElementsByClassName('car-control__wrapper'));
+    await deleteCarFromBase(parentId);
+};
+
 function getCarInfo(data: CarParams[]) {
     const wrapper = document.getElementById('carWrapper');
     if (wrapper) {
@@ -67,11 +91,12 @@ function getCarInfo(data: CarParams[]) {
 }
 
 let totalNumber: number = 0;
-const baseUrl: string = 'http://127.0.0.1:3000';
+
 export const generateString = (params: Params[] = []) =>
     params.length ? `?${params.map((x) => `${x.key}=${x.value}`).join('&')}` : '';
 
 let data: [] = [];
+
 export const getAllcars = async (params: Params[]) => {
     const response = await fetch(`${baseUrl}${path.garage}${generateString(params)}`);
     data = await response.json();
@@ -83,14 +108,6 @@ export const getAllcars = async (params: Params[]) => {
     if (totalNumber <= 7) {
         document.getElementById('next')?.setAttribute('disabled', '');
     }
-};
-
-const deleteCarFromBase = async (id: number) => {
-    const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
-        method: 'DELETE',
-    });
-    const car = await response.json();
-    return car;
 };
 
 let count = 1;
@@ -123,11 +140,39 @@ export const changePage = (event: Event) => {
     ]);
 };
 
-export const deleteCar = async (event: Event) => {
-    const clicked = event.target as HTMLElement;
-    const parent = clicked.closest('.car-control__wrapper');
-    const parentId = Number(parent?.id);
-    parent?.remove();
-    Array.from(document.getElementsByClassName('car-control__wrapper'));
-    await deleteCarFromBase(parentId);
+let name: string = '';
+let color: string = '';
+export const getInputValue = () => {
+    const inputName = document.getElementById('carName') as HTMLInputElement;
+    const inputColor = document.getElementById('carColor') as HTMLInputElement;
+    name = inputName.value;
+    color = inputColor.value;
+    return { name, color };
+};
+
+const createCar = async (body: Body) => {
+    const response = await fetch(`${baseUrl}${path.garage}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+    });
+    const car = await response.json();
+    console.log(car);
+    return car;
+};
+
+export const createNewCar = async () => {
+     await createCar({
+        name: `${name}`,
+        color: `${color}`,
+    });
+    getAllcars([
+        { key: '_page', value: `${count}` },
+        { key: '_limit', value: 7 },
+    ]);
+    if (data.length >= 7) {
+        document.getElementById('next')?.removeAttribute('disabled');
+    }
 };

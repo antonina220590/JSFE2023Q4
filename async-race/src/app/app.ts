@@ -21,6 +21,7 @@ export default class App {
     showGarage() {
         const buttonNext = document.getElementById('next');
         const buttonPrev = document.getElementById('prev');
+
         getAllcars([
             { key: '_page', value: 1 },
             { key: '_limit', value: 7 },

@@ -29,7 +29,6 @@ function getCarInfo(data: CarParams[]) {
     for (let i = 0; i < data.length; i += 1) {
         const cars = new CarRaceView().getHtmlElement();
         wrapper?.append(cars);
-        console.log(data.length);
     }
 
     const colors: string[] = [];
@@ -47,7 +46,6 @@ function getCarInfo(data: CarParams[]) {
         }
     }
     const carArray = Array.from(document.getElementsByClassName('car'));
-    console.log(carArray);
     for (let i = 0; i < carArray.length; i += 1) {
         for (let j = 0; j < colors.length; j += 1) {
             const result = carArray[i] as HTMLElement;
@@ -62,6 +60,10 @@ function getCarInfo(data: CarParams[]) {
             resultWrapper.setAttribute('id', `${ids[i]}`);
         }
     }
+    const deleteBtns = Array.from(document.getElementsByClassName('delete_button'));
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener('click', deleteCar);
+    });
 }
 
 let totalNumber: number = 0;
@@ -78,13 +80,10 @@ export const getAllcars = async (params: Params[]) => {
     assertValues(garage);
     garage.innerHTML = `Garage(${totalNumber})`;
     getCarInfo(data);
+    if (totalNumber <= 7) {
+        document.getElementById('next')?.setAttribute('disabled', '');
+    }
 };
-
-// export const myFun = async (event: Event) => {
-//     const response = await fetch(`${baseUrl}${path.garage}`, {
-//         method: 'GET',
-//     });
-// };
 
 const deleteCarFromBase = async (id: number) => {
     const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
@@ -95,18 +94,26 @@ const deleteCarFromBase = async (id: number) => {
 };
 
 let count = 1;
+let numberOfCars = 7;
 export const changePage = (event: Event) => {
     const clicked = event.target as HTMLElement;
     if (clicked.classList.contains('next')) {
         count += 1;
+        numberOfCars += 7;
         document.getElementById('prev')?.removeAttribute('disabled');
+        if (numberOfCars >= totalNumber) {
+            document.getElementById('next')?.setAttribute('disabled', '');
+        } else {
+            document.getElementById('next')?.removeAttribute('disabled');
+        }
     } else {
+        document.getElementById('next')?.removeAttribute('disabled');
+        numberOfCars -= 7;
         count -= 1;
         if (count === 1) {
             document.getElementById('prev')?.setAttribute('disabled', '');
         }
     }
-
     const page = document.getElementById('page_num');
     assertValues(page);
     page.textContent = `Page ${count}`;

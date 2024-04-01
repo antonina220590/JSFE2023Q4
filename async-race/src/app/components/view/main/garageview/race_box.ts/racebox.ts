@@ -14,6 +14,7 @@ const styles = {
     EDIT_WRAPPER: 'edit-delete-wrap',
     RACE_BTN_WRAPPER: 'race-stop-btn',
     CAR_WRAPPER: 'svg_wrapper',
+    DELETEBTN: 'delete_button',
 };
 
 const text = {
@@ -73,6 +74,7 @@ export default class CarRaceView extends CommonView {
         editBtn.addTextContent(text.EDIT);
 
         const deleteBtn = new BaseElementCreator(buttonParams);
+        deleteBtn.addClasses([styles.DELETEBTN]);
         deleteBtn.setAttribute('id', 'deleteBtn');
         deleteBtn.addTextContent(text.DELETE);
         // deleteBtn.getElement().addEventListener('click', deleteCar);

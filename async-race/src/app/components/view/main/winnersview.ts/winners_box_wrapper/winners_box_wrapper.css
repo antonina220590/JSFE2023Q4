@@ -1,0 +1,20 @@
+.winners-table_wrapper {
+    min-height: 50vh;
+    padding-bottom: 10px;
+    background-color: #575c5f;
+}
+
+.table__header {
+    display: flex;
+    justify-content: space-around;
+    background: #bdbfde;
+    min-height: 5vh;
+    align-items: center;
+}
+
+.table_info {
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.1rem;
+}

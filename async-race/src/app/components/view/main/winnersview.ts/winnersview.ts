@@ -2,6 +2,7 @@ import './winners.css';
 import { CommonParams, CommonView } from '../../view';
 import { BaseElementCreator } from '../../../utils/element-creator';
 import InfoboxView from './infobox/infobox';
+import WinnersWrapperView from './winners_box_wrapper/winners_box_wrapper';
 
 const styles = {
     WINNERS: 'winners',
@@ -44,12 +45,12 @@ export default class WinnersView extends CommonView {
         };
         const h2Creator = new BaseElementCreator(h2Params);
         sectionCreator.getElement().append(h2Creator.getElement());
-
         this.elementCreator.getElement().append(sectionCreator.getElement());
     }
 
     showChildren() {
         const infobox = new InfoboxView().getHtmlElement();
-        this.elementCreator.getElement().append(infobox);
+        const winnersWrapper = new WinnersWrapperView().getHtmlElement();
+        this.elementCreator.getElement().append(infobox, winnersWrapper);
     }
 }

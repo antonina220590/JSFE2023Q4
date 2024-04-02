@@ -51,6 +51,7 @@ export default class WinnersView extends CommonView {
     showChildren() {
         const infobox = new InfoboxView().getHtmlElement();
         const winnersWrapper = new WinnersWrapperView().getHtmlElement();
+        // const winnersHeader = new WinnersHeaderView().getHtmlElement();
         this.elementCreator.getElement().append(infobox, winnersWrapper);
     }
 }

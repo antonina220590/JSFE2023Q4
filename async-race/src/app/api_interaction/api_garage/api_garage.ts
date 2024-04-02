@@ -1,5 +1,6 @@
 import assertValues from '../../components/utils/assertion_function';
 import CarRaceView from '../../components/view/main/garageview/race_box.ts/racebox';
+import { getAllWinners } from '../api_winners/api_winners';
 
 export const path = {
     garage: '/garage',
@@ -80,6 +81,10 @@ const updateCarFromList = async () => {
         { key: '_page', value: `${count}` },
         { key: '_limit', value: 7 },
     ]);
+    getAllWinners([
+        { key: '_page', value: `${count}` },
+        { key: '_limit', value: 30 },
+    ]);
 };
 
 const getInfo = (event: Event) => {
@@ -105,16 +110,31 @@ const deleteCarFromBase = async (id: number) => {
     const response = await fetch(`${baseUrl}${path.garage}/${id}`, {
         method: 'DELETE',
     });
+    const responseWinner = await fetch(`${baseUrl}${path.winners}/${id}`, {
+        method: 'DELETE',
+    });
     const car = await response.json();
-    return car;
+    const winner = await responseWinner.json();
+    return { car, winner };
 };
 export const deleteCar = async (event: Event) => {
     const clicked = event.target as HTMLElement;
     const parent = clicked.closest('.car-control__wrapper');
+    const winnersWrap = Array.from(document.getElementsByClassName('common_wrapper'));
     parentId = Number(parent?.id);
+    winnersWrap.forEach((wrap) => {
+        const winnersId = Number(wrap.id);
+        if (parentId === winnersId) {
+            wrap.remove();
+        }
+    });
     parent?.remove();
     Array.from(document.getElementsByClassName('car-control__wrapper'));
     await deleteCarFromBase(parentId);
+    getAllWinners([
+        { key: '_page', value: `${count}` },
+        { key: '_limit', value: 30 },
+    ]);
 };
 
 export function getCarInfo(data: CarParams[]) {

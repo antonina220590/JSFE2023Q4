@@ -36,7 +36,7 @@ export default class App {
 
         getAllWinners([
             { key: '_page', value: 1 },
-            { key: '_limit', value: 7 },
+            { key: '_limit', value: 30 },
         ]);
         buttonNext?.addEventListener('click', changePageWinners);
         buttonPrev?.addEventListener('click', changePageWinners);

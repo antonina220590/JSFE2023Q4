@@ -1,17 +1,18 @@
 import './winners_box_wrapper.css';
 import { CommonParams, CommonView } from '../../../view';
 import { BaseElementCreator } from '../../../../utils/element-creator';
+import WinnerBoxView from '../winnersbox/winnersbox';
 
 const styles = {
     WRAPPER: 'winners-table_wrapper',
     HEADER: 'table__header',
     TABLEINFO: 'table_info',
     DIV: 'div',
-    NUMBER: 'car_number',
-    IMAGE: 'car_image',
-    NAME: 'car_title',
-    WINS: 'car_wins',
-    TIME: 'car_time',
+    NUMBER: 'header_number',
+    IMAGE: 'header_image',
+    NAME: 'header_title',
+    WINS: 'header_wins',
+    TIME: 'header_time',
 };
 
 const text = {
@@ -32,8 +33,8 @@ export default class WinnersWrapperView extends CommonView {
             callback: null!,
         };
         super(params);
-        this.elementCreator.setAttribute('id', 'winnersWrapper');
         this.additionalView();
+        this.showChildren();
     }
 
     additionalView() {
@@ -90,5 +91,10 @@ export default class WinnersWrapperView extends CommonView {
                 timeDiv.getElement()
             );
         this.elementCreator.appendElement(mainDivCreator.getElement());
+    }
+
+    showChildren() {
+        const winnersTable = new WinnerBoxView();
+        this.elementCreator.appendElement(winnersTable.getHtmlElement());
     }
 }

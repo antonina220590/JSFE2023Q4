@@ -1,0 +1,35 @@
+.winners_info__wrapper {
+    position: relative;
+    border-bottom: 0.29rem dashed #c28a38;
+    min-height: 4rem;
+    padding-top: 10px;
+    display: flex;
+    height: 6vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.car_img {
+    min-height: 3.8rem;
+}
+
+.winner_car {
+    position: absolute;
+    height: 75px;
+    width: 70px;
+    transform: translateX(-2rem);
+}
+
+.winner_data {
+    font-family: 'Londrina Solid', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.car_name {
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+}

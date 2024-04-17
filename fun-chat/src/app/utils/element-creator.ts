@@ -3,10 +3,15 @@ export interface Element {
 }
 
 export interface FullElementDescription extends Element {
-    classNames: string[];
+    classNames?: string[];
     parent?: HTMLElement;
     text: string;
     callback?: Function;
+}
+
+interface IATTRIBUTES {
+    attribute: string;
+    value: string;
 }
 
 export type CallbackGen<T> = (data: T) => void;
@@ -17,14 +22,16 @@ export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
     constructor(node: FullElementDescription) {
         const element = document.createElement(node.HTMLtag ?? 'div') as T;
         this.element = element;
+        if (node.classNames) {
+            this.addClasses(node.classNames);
+            this.toggleClasses(node.classNames);
+            this.removeClasses(node.classNames);
+        }
         this.createNewElement(node);
     }
 
     public createNewElement(node: FullElementDescription): void {
         this.element = document.createElement(node.HTMLtag ?? 'div') as T;
-        this.addClasses(node.classNames);
-        this.toggleClasses(node.classNames);
-        this.removeClasses(node.classNames);
         this.addTextContent(node.text);
         if (typeof node.callback !== 'undefined' && typeof node.callback !== null) {
             this.addCallback(node.callback);
@@ -61,8 +68,8 @@ export class BaseElementCreator<T extends HTMLElement = HTMLElement> {
         }
     }
 
-    public setAttribute(attribute: string, value: string): void {
-        this.element.setAttribute(attribute, value);
+    public setAttribute(attr: string, value: string): void {
+        this.element.setAttribute(attr, value);
     }
 
     addCallback(callback: Function) {

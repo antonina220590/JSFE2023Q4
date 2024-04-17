@@ -2,10 +2,11 @@ import { BaseElementCreator } from '../utils/element-creator';
 
 export interface CommonParams {
     HTMLtag: keyof HTMLElementTagNameMap;
-    classNames: string[];
+    classNames?: string[];
     text: string;
     src?: string;
     callback: Function;
+    attributes?: string[];
 }
 export class CommonView {
     elementCreator: BaseElementCreator<HTMLElement>;

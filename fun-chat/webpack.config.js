@@ -24,7 +24,7 @@ const baseConfig = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/i,
-                type: 'asset/source',
+                type: 'asset/resource',
             },
             {
                 test: /\.svg$/,

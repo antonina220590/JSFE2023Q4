@@ -1,0 +1,42 @@
+.info_wrapper {
+    border: 1px solid black;
+    width: 30vw;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    transform: translate(100%, 30%);
+    gap: 20px;
+}
+
+.chat_info {
+    display: flex;
+    text-align: center;
+    font-size: 25px;
+}
+
+.github__link {
+    font-size: 20px;
+}
+
+.button {
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #bb945f;
+    border-radius: 2px;
+    border: 1px solid #bb945f;
+    transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,51 @@
+.header {
+    min-height: 8vh;
+    display: flex;
+    padding: 0 5vh;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+}
+
+.user_name_container {
+    width: 40%;
+}
+
+.header_text {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.btns_box {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #0c0c0e;
+    cursor: pointer;
+    padding-bottom: 8px;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    width: 4rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #bb945f;
+    border-radius: 2px;
+    border: 1px solid #bb945f;
+    transition: all 0.2s ease-in-out;
+}

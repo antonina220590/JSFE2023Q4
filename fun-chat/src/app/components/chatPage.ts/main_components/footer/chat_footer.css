@@ -1,0 +1,15 @@
+.footer {
+    min-height: 8vh;
+    display: flex;
+    padding: 0 5vh;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 2vh;
+}
+
+.github_link {
+    text-decoration: none;
+    color: black;
+}

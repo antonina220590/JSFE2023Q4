@@ -17,6 +17,7 @@ const styles = {
     LOGININPUT: 'login__form_input',
     LOGIN_NAME_INPUT: 'login__form__input_name',
     LOGIN_PASSWORD_INPUT: 'login__form__input_name',
+    ERROR_LABEL: 'error_label',
 };
 
 const text = {
@@ -97,6 +98,8 @@ export default class LoginPageView extends CommonView {
         const loginBtn = new BaseElementCreator(paramsBtn);
         loginBtn.setAttribute('id', 'logBtn');
         loginBtn.addClasses([styles.BUTTON]);
+        loginBtn.setAttribute('type', 'button');
+        loginBtn.setAttribute('disabled', '');
 
         const paramsInfoBtn: CommonParams = {
             HTMLtag: 'button',
@@ -106,6 +109,7 @@ export default class LoginPageView extends CommonView {
         const loginInfoBtn = new BaseElementCreator(paramsInfoBtn);
         loginInfoBtn.setAttribute('id', 'logInfoBtn');
         loginInfoBtn.addClasses([styles.BUTTON]);
+        //loginBtn.setAttribute('disabled', '');
 
         const inputName = new BaseElementCreator(inputParams);
         inputName.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);
@@ -113,15 +117,25 @@ export default class LoginPageView extends CommonView {
         inputName.setAttribute('name', 'logename');
         inputName.setAttribute('data-register', 'name');
         inputName.setAttribute('id', 'logename');
+        inputName.setAttribute('required', '');
+
+        const errorLabelName = new BaseElementCreator(LabelParams);
+        errorLabelName.addClasses([styles.ERROR_LABEL]);
+        errorLabelName.setAttribute('id', 'errorName');
 
         const inputPassword = new BaseElementCreator(inputParams);
         inputPassword.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);
         inputPassword.setAttribute('type', 'password');
         inputPassword.setAttribute('name', 'logpassword');
         inputPassword.setAttribute('id', 'logpassword');
+        inputPassword.setAttribute('required', '');
 
-        errorNameCreator.getElement().append(inputName.getElement());
-        errorPasswordCreator.getElement().append(inputPassword.getElement());
+        const errorLabelPassword = new BaseElementCreator(LabelParams);
+        errorLabelPassword.addClasses([styles.ERROR_LABEL]);
+        errorLabelPassword.setAttribute('id', 'errorPassword');
+
+        errorNameCreator.getElement().append(inputName.getElement(), errorLabelName.getElement());
+        errorPasswordCreator.getElement().append(inputPassword.getElement(), errorLabelPassword.getElement());
 
         const nameParaCreator = new BaseElementCreator(ParaPParams);
         nameParaCreator.addTextContent(text.NAME);

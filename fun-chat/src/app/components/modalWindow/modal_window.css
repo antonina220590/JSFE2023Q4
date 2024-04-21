@@ -1,0 +1,98 @@
+.modal__logout_overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(41, 41, 41, 0.6);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100wv;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.modal__logout_overlay_active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__logout__form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: auto;
+    max-width: 250px;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__logout__form_active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-window__inside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.modal-window__btns-box {
+    display: flex;
+    gap: 40px;
+}
+
+.modal-window__title {
+    color: black;
+    text-align: center;
+    font-family: Pacifico;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: 0.4px;
+}
+
+.button_log-in {
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+}
+
+.button_log-in:hover {
+    background-color: #bb945f;
+    border-radius: 2px;
+    border: 1px solid #bb945f;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-window__btns-box {
+    display: flex;
+    gap: 40px;
+}
+
+.modal_btn {
+    background-color: cornflowerblue;
+    cursor: pointer;
+    padding: 5px 10px;
+}

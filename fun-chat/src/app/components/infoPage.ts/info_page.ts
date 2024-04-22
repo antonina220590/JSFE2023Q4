@@ -18,7 +18,7 @@ const text = {
 };
 
 export default class InfoChatView extends CommonView {
-    constructor() {
+    constructor(id: string) {
         const params: CommonParams = {
             HTMLtag: 'div',
             text: text.EMPTY,
@@ -26,6 +26,7 @@ export default class InfoChatView extends CommonView {
         };
         super(params);
         this.elementCreator.addClasses([styles.WRAPPER]);
+        this.elementCreator.setAttribute('id', id);
         this.additionalView();
     }
 

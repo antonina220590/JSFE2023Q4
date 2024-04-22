@@ -1,6 +1,19 @@
 import './chat_header.css';
 import { CommonParams, CommonView } from '../../../../view/view';
 import { BaseElementCreator } from '../../../../utils/element-creator';
+import { PageIds } from '../../../../enum';
+
+export const Button = [
+    {
+        id: PageIds.MessagePage,
+    },
+    {
+        id: PageIds.InfoPage,
+    },
+    {
+        id: PageIds.LoginPage,
+    },
+];
 
 const styles = {
     HEADER: 'header',
@@ -13,6 +26,7 @@ const styles = {
     BUTTON: 'button',
     BTN_INFO: 'info_button',
     BTN_LOGOUT: 'logout_button',
+    LOGGED_USER: 'logged_user',
 };
 
 const text = {
@@ -62,7 +76,7 @@ export default class HeaderChatView extends CommonView {
         userContainer.addTextContent(text.USER);
 
         const userNameContainer = new BaseElementCreator(SpanParams);
-        userNameContainer.addClasses([styles.USERNAME, styles.HEADER_TEXT]);
+        userNameContainer.addClasses([styles.USERNAME, styles.HEADER_TEXT, styles.LOGGED_USER]);
         userNameContainer.addTextContent(text.USERNAME);
 
         const appName = new BaseElementCreator(SpanParams);
@@ -79,11 +93,13 @@ export default class HeaderChatView extends CommonView {
         infoBtn.addClasses([styles.BUTTON, styles.BTN_INFO]);
         infoBtn.setAttribute('id', 'infoBTN');
         infoBtn.addTextContent(text.INFO);
+        infoBtn.setAttribute('href', `#${PageIds.InfoPage}`);
 
         const logoutBtn = new BaseElementCreator(paramsBtn);
         logoutBtn.addClasses([styles.BUTTON, styles.BTN_INFO]);
         logoutBtn.setAttribute('id', 'logoutBtn');
         logoutBtn.addTextContent(text.LOGOUT);
+        logoutBtn.setAttribute('href', `#${PageIds.LoginPage}`);
 
         buttonsBox.getElement().append(infoBtn.getElement(), logoutBtn.getElement());
         this.getHtmlElement().append(userNameContainerView.getElement(), appName.getElement(), buttonsBox.getElement());

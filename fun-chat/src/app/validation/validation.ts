@@ -20,6 +20,12 @@ export function validateServer() {
         socket.send(res);
     });
 
+    const user = {
+        username: `${nameInput.value}`,
+        password: `${passwordInput.value}`,
+        isLogined: true,
+    };
+
     socket.addEventListener('message', (event) => {
         const error = JSON.parse(event.data);
         const errorPara = document.getElementById('serverErr');
@@ -28,6 +34,8 @@ export function validateServer() {
             if (errorPara) {
                 errorPara.innerHTML = `${error.payload.error}`;
             }
+        } else {
+            sessionStorage.setItem('userAt', JSON.stringify(user));
         }
     });
 }
@@ -67,6 +75,7 @@ export function checkNameInput(): string {
     checkBoth(flag, flag1);
     return flag;
 }
+
 export function checkPasswordInput(): string {
     const passwordInput = document.getElementById('logpassword') as HTMLInputElement;
     const errorLabelPassword = document.getElementById('errorPassword');
@@ -97,5 +106,16 @@ function checkBoth(flag: string, flag1: string) {
         btn?.removeAttribute('disabled');
     } else {
         btn?.setAttribute('disabled', '');
+    }
+}
+
+export function cleanInputs() {
+    const passwordInput = document.getElementById('logpassword') as HTMLInputElement;
+    const nameInput = document.getElementById('logename') as HTMLInputElement;
+    if (nameInput) {
+        nameInput.value = '';
+    }
+    if (passwordInput) {
+        passwordInput.value = '';
     }
 }

@@ -1,6 +1,19 @@
 import './login.css';
 import { CommonParams, CommonView } from '../../view/view';
 import { BaseElementCreator } from '../../utils/element-creator';
+import { PageIds } from '../../enum';
+
+export const Button = [
+    {
+        id: PageIds.MessagePage,
+    },
+    {
+        id: PageIds.InfoPage,
+    },
+    {
+        id: PageIds.LoginPage,
+    },
+];
 
 const styles = {
     WRAPPER: 'login-form__wrapper',
@@ -13,7 +26,7 @@ const styles = {
     ERROR_BOX_NAME: 'error_box_name',
     ERROR_BOX_PASSWORD: 'error_box_name',
     INPUT_FORM: 'login__form_input',
-    BUTTON: 'button',
+    BUTTON: 'button_login',
     LOGININPUT: 'login__form_input',
     LOGIN_NAME_INPUT: 'login__form__input_name',
     LOGIN_PASSWORD_INPUT: 'login__form__input_name',
@@ -30,7 +43,7 @@ const text = {
 };
 
 export default class LoginPageView extends CommonView {
-    constructor() {
+    constructor(id: string) {
         const params: CommonParams = {
             HTMLtag: 'div',
             text: text.EMPTY,
@@ -38,6 +51,7 @@ export default class LoginPageView extends CommonView {
         };
         super(params);
         this.elementCreator.addClasses([styles.WRAPPER]);
+        this.elementCreator.setAttribute('id', id);
         this.additionalView();
     }
 
@@ -100,6 +114,7 @@ export default class LoginPageView extends CommonView {
         loginBtn.addClasses([styles.BUTTON]);
         loginBtn.setAttribute('type', 'button');
         loginBtn.setAttribute('disabled', '');
+        loginBtn.setAttribute('href', `#${PageIds.MessagePage}`);
 
         const paramsInfoBtn: CommonParams = {
             HTMLtag: 'button',
@@ -109,7 +124,6 @@ export default class LoginPageView extends CommonView {
         const loginInfoBtn = new BaseElementCreator(paramsInfoBtn);
         loginInfoBtn.setAttribute('id', 'logInfoBtn');
         loginInfoBtn.addClasses([styles.BUTTON]);
-        //loginBtn.setAttribute('disabled', '');
 
         const inputName = new BaseElementCreator(inputParams);
         inputName.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);

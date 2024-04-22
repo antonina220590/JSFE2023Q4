@@ -22,6 +22,7 @@ const styles = {
     MESSAGE_TEXT: 'message_text',
     MESSAGE_FOOTER: 'message_footer',
     DELIVERY_STATUS: 'delivary_status',
+    LOGGED_USER: 'logged_user',
 };
 
 const text = {
@@ -89,8 +90,8 @@ export default class MainChatView extends CommonView {
         userStatus.addClasses([styles.USER_STATUS]);
 
         const userLabel = new BaseElementCreator(LabelParams);
-        userLabel.addClasses([styles.LOGIN_NAME]);
-        userLabel.addTextContent('Vasya');
+        userLabel.addClasses([styles.LOGIN_NAME, styles.LOGGED_USER]);
+        userLabel.addTextContent('Halina');
 
         liList.getElement().append(userStatus.getElement(), userLabel.getElement());
         usersList.getElement().append(liList.getElement());
@@ -118,7 +119,7 @@ export default class MainChatView extends CommonView {
         statusContainer.addClasses([styles.STATUS_CONTAINER]);
 
         const nameLabel = new BaseElementCreator(LabelParams);
-        nameLabel.addClasses([styles.LOGIN_NAME]);
+        nameLabel.addClasses([styles.LOGIN_NAME, styles.LOGGED_USER]);
         nameLabel.addTextContent('halina');
 
         const statusLabel = new BaseElementCreator(LabelParams);
@@ -140,7 +141,7 @@ export default class MainChatView extends CommonView {
         messageHeader.addClasses([styles.MESSAGE_HEADER]);
 
         const labelNameMsg = new BaseElementCreator(LabelParams);
-        labelNameMsg.addClasses([styles.LABEL_NAME]);
+        labelNameMsg.addClasses([styles.LABEL_NAME, styles.LOGGED_USER]);
         labelNameMsg.addTextContent('halina');
 
         const labelInfoMsg = new BaseElementCreator(LabelParams);

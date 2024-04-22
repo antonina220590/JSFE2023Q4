@@ -23,7 +23,7 @@ const styles = {
     HEADER_TEXT: 'header_text',
     APP_NAME: 'app_name',
     BTN_BOX: 'btns_box',
-    BUTTON: 'button',
+    BUTTON: 'button_btn',
     BTN_INFO: 'info_button',
     BTN_LOGOUT: 'logout_button',
     LOGGED_USER: 'logged_user',
@@ -32,7 +32,7 @@ const styles = {
 const text = {
     EMPTY: '',
     USER: 'User: ',
-    USERNAME: 'Antonina',
+    USERNAME: 'User',
     APPNAME: 'Fun Chat',
     INFO: 'Info',
     LOGOUT: 'Log Out',
@@ -96,7 +96,7 @@ export default class HeaderChatView extends CommonView {
         infoBtn.setAttribute('href', `#${PageIds.InfoPage}`);
 
         const logoutBtn = new BaseElementCreator(paramsBtn);
-        logoutBtn.addClasses([styles.BUTTON, styles.BTN_INFO]);
+        logoutBtn.addClasses([styles.BUTTON]);
         logoutBtn.setAttribute('id', 'logoutBtn');
         logoutBtn.addTextContent(text.LOGOUT);
         logoutBtn.setAttribute('href', `#${PageIds.LoginPage}`);

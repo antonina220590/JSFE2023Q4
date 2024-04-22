@@ -31,6 +31,7 @@ const styles = {
     LOGIN_NAME_INPUT: 'login__form__input_name',
     LOGIN_PASSWORD_INPUT: 'login__form__input_name',
     ERROR_LABEL: 'error_label',
+    BTN_INFO: 'info_button',
 };
 
 const text = {
@@ -123,7 +124,7 @@ export default class LoginPageView extends CommonView {
         };
         const loginInfoBtn = new BaseElementCreator(paramsInfoBtn);
         loginInfoBtn.setAttribute('id', 'logInfoBtn');
-        loginInfoBtn.addClasses([styles.BUTTON]);
+        loginInfoBtn.addClasses([styles.BUTTON, styles.BTN_INFO]);
 
         const inputName = new BaseElementCreator(inputParams);
         inputName.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);

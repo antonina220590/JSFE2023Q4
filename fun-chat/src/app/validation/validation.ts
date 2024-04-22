@@ -1,8 +1,17 @@
 import assertValues from '../utils/assertion_function';
 
+interface SessionObject {
+    username: string;
+    password: string;
+
+    isLogined: boolean;
+}
+
 export function validateServer() {
     const nameInput = document.getElementById('logename') as HTMLInputElement;
     const passwordInput = document.getElementById('logpassword') as HTMLInputElement;
+    assertValues(nameInput);
+    assertValues(passwordInput);
     const socket = new WebSocket('ws://localhost:4000');
     const uniqueId = crypto.randomUUID();
     const reg = {
@@ -20,12 +29,15 @@ export function validateServer() {
         socket.send(res);
     });
 
-    const user = {
-        username: `${nameInput.value}`,
-        password: `${passwordInput.value}`,
-        isLogined: true,
-    };
+    let user: SessionObject = { username: '', password: '', isLogined: false };
 
+    if (nameInput && passwordInput) {
+        user = {
+            username: `${nameInput.value}`,
+            password: `${passwordInput.value}`,
+            isLogined: true,
+        };
+    }
     socket.addEventListener('message', (event) => {
         const error = JSON.parse(event.data);
         const errorPara = document.getElementById('serverErr');

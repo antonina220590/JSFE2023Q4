@@ -63,6 +63,7 @@ export default class InfoChatView extends CommonView {
 
         const closeBtn = new BaseElementCreator(buttonParams);
         closeBtn.addClasses([styles.BUTTON]);
+        closeBtn.setAttribute('id', 'closeBtn');
         closeBtn.addTextContent(text.CLOSE);
 
         const title = new BaseElementCreator(H1Params);

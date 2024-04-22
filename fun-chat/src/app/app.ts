@@ -9,6 +9,7 @@ import updateNames from './components/chatPage.ts/main_components/main/message_c
 
 const logPage = new LoginPageView('login-page').getHtmlElement();
 const ChatPage = new ChatPageView('chat-page').getHtmlElement();
+const InfoPage = new InfoChatView('info-page').getHtmlElement();
 
 interface SessionObject {
     username: string;
@@ -23,6 +24,7 @@ export default class App {
         App.goToLoginPage();
         App.goToChatPage();
         App.validation();
+        App.goToInfoPage();
     }
 
     createView(): void {
@@ -56,16 +58,13 @@ export default class App {
         if (passwordInput) {
             passwordInput.addEventListener('input', checkPasswordInput);
         }
-        document.addEventListener('keydown', (e) => {
-            if (e.keyCode === 13) {
-                validateServer();
-            }
-        });
     }
 
     static goToChatPage() {
         const loginBtn = document.getElementById('logBtn');
         const storageObj = Object.values(sessionStorage);
+        const nameInput = document.getElementById('logename') as HTMLInputElement;
+        const passwordInput = document.getElementById('logpassword') as HTMLInputElement;
         let keys: SessionObject = { username: '', password: '', isLogined: false };
         storageObj.forEach((item) => {
             keys = JSON.parse(item);
@@ -73,30 +72,74 @@ export default class App {
         const name = keys.username;
 
         function changePage() {
-            if (sessionStorage.length > 0) {
+            if (sessionStorage.length > 0 || name.length > 0) {
                 document.body.innerHTML = '';
                 document.body.append(ChatPage);
+                const infoChatBtn = document.getElementById('infoBTN');
+                infoChatBtn?.addEventListener('click', App.goToInfoPage);
                 App.goToLoginPage();
                 updateNames();
             }
         }
         loginBtn?.addEventListener('click', validateServer);
         loginBtn?.addEventListener('click', changePage);
+
+        function enter(e: KeyboardEvent) {
+            try {
+                if (nameInput.value && passwordInput.value && e.keyCode === 13) {
+                    App.validation();
+                    validateServer();
+                    changePage();
+                }
+            } catch (err) {
+                Error('error');
+            }
+        }
+        document.addEventListener('keydown', enter);
     }
 
     static goToLoginPage() {
         const logOutBtn = document.getElementById('logoutBtn');
-        const loginBtn = document.getElementById('logBtn');
         function checkOut() {
             sessionStorage.clear();
             document.body.innerHTML = '';
             document.body.append(logPage);
-            validateServer();
-            App.validation();
             cleanInputs();
-            App.goToChatPage();
-            updateNames();
         }
         logOutBtn?.addEventListener('click', checkOut);
+    }
+
+    static goToInfoPage() {
+        const logInfoBtn = Array.from(document.getElementsByClassName('info_button'));
+
+        const storageObj = Object.values(sessionStorage);
+        let keys: SessionObject = { username: '', password: '', isLogined: false };
+        storageObj.forEach((item) => {
+            keys = JSON.parse(item);
+        });
+        const name = keys.username;
+
+        function closeInfoPage() {
+            if (sessionStorage.length <= 0 || name.length <= 0) {
+                document.body.innerHTML = '';
+                document.body.append(logPage);
+            } else if (sessionStorage.length > 0 || name.length > 0) {
+                document.body.innerHTML = '';
+                document.body.append(ChatPage);
+            }
+        }
+
+        function visitInfoPage() {
+            document.body.innerHTML = '';
+            document.body.append(InfoPage);
+            const closeInfoBtn = document.getElementById('closeBtn');
+            if (closeInfoBtn) {
+                closeInfoBtn.addEventListener('click', closeInfoPage);
+            }
+        }
+
+        logInfoBtn.forEach((btn) => {
+            btn.addEventListener('click', visitInfoPage);
+        });
     }
 }

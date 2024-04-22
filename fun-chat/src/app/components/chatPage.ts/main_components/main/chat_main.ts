@@ -91,7 +91,7 @@ export default class MainChatView extends CommonView {
 
         const userLabel = new BaseElementCreator(LabelParams);
         userLabel.addClasses([styles.LOGIN_NAME, styles.LOGGED_USER]);
-        userLabel.addTextContent('Halina');
+        userLabel.addTextContent('User');
 
         liList.getElement().append(userStatus.getElement(), userLabel.getElement());
         usersList.getElement().append(liList.getElement());
@@ -120,7 +120,7 @@ export default class MainChatView extends CommonView {
 
         const nameLabel = new BaseElementCreator(LabelParams);
         nameLabel.addClasses([styles.LOGIN_NAME, styles.LOGGED_USER]);
-        nameLabel.addTextContent('halina');
+        nameLabel.addTextContent('user');
 
         const statusLabel = new BaseElementCreator(LabelParams);
         statusLabel.addClasses([styles.LABEL_STATUS]);
@@ -142,7 +142,7 @@ export default class MainChatView extends CommonView {
 
         const labelNameMsg = new BaseElementCreator(LabelParams);
         labelNameMsg.addClasses([styles.LABEL_NAME, styles.LOGGED_USER]);
-        labelNameMsg.addTextContent('halina');
+        labelNameMsg.addTextContent('user');
 
         const labelInfoMsg = new BaseElementCreator(LabelParams);
         labelInfoMsg.addClasses([styles.MESSAGE_INFO]);

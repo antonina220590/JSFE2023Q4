@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
@@ -43,6 +44,7 @@ const baseConfig = {
     plugins: [
         new DotenvWebpackPlugin(),
         new EslingPlugin({ extensions: 'ts' }),
+        new FaviconsWebpackPlugin('./src/images/chat_favicon.png'),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',

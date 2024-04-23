@@ -1,6 +1,5 @@
 import '../style.css';
 import LoginPageView from './components/authorizationPage.ts/login';
-import { CommonView } from './view/view';
 import ChatPageView from './components/chatPage.ts/main_container/chat_container';
 import InfoChatView from './components/infoPage.ts/info_page';
 import { validateServer, checkNameInput, checkPasswordInput, cleanInputs } from './validation/validation';

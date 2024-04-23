@@ -1,19 +1,6 @@
 import './login.css';
 import { CommonParams, CommonView } from '../../view/view';
 import { BaseElementCreator } from '../../utils/element-creator';
-import { PageIds } from '../../enum';
-
-export const Button = [
-    {
-        id: PageIds.MessagePage,
-    },
-    {
-        id: PageIds.InfoPage,
-    },
-    {
-        id: PageIds.LoginPage,
-    },
-];
 
 const styles = {
     WRAPPER: 'login-form__wrapper',
@@ -32,7 +19,7 @@ const styles = {
     LOGIN_PASSWORD_INPUT: 'login__form__input_name',
     ERROR_LABEL: 'error_label',
     BTN_INFO: 'info_button',
-    INPUT: 'input'
+    INPUT: 'input',
 };
 
 const text = {
@@ -116,7 +103,6 @@ export default class LoginPageView extends CommonView {
         loginBtn.addClasses([styles.BUTTON]);
         loginBtn.setAttribute('type', 'button');
         loginBtn.setAttribute('disabled', '');
-        loginBtn.setAttribute('href', `#${PageIds.MessagePage}`);
 
         const paramsInfoBtn: CommonParams = {
             HTMLtag: 'button',

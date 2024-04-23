@@ -1,5 +1,5 @@
 .info_wrapper {
-  position: absolute;
+    position: absolute;
     border: 1px solid black;
     width: 30vw;
     padding: 30px;
@@ -45,20 +45,20 @@
 }
 
 @media screen and (max-width: 500px) {
-  .title {
-    font-size: 20px;
-  }
+    .title {
+        font-size: 20px;
+    }
 
-  .chat_info {
-    font-size: 15px;
-  }
+    .chat_info {
+        font-size: 15px;
+    }
 
-  .github_link {
-    font-size: 13px;
-  }
+    .github_link {
+        font-size: 13px;
+    }
 
-  .button_close_info {
-    font-size: 10px;
-    padding: 3px;
-  }
+    .button_close_info {
+        font-size: 10px;
+        padding: 3px;
+    }
 }

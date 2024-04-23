@@ -49,3 +49,42 @@
     border: 1px solid #bb945f;
     transition: all 0.2s ease-in-out;
 }
+
+@media screen and (max-width: 600px) {
+  .user_name_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .header_text {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .user_name_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .header_text {
+    font-size: 10px;
+  }
+
+  .header {
+    padding: 0 2vh;
+  }
+
+  .btns_box {
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+  }
+
+  .button_btn {
+    width: 3rem;
+    font-size: 8px;
+  }
+
+
+}

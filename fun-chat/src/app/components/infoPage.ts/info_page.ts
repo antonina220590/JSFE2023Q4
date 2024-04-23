@@ -6,7 +6,8 @@ const styles = {
     WRAPPER: 'info_wrapper',
     INFO: 'chat_info',
     LINK: 'github_link',
-    BUTTON: 'button',
+    BUTTON: 'button_close_info',
+    H1: 'title'
 };
 
 const text = {
@@ -67,6 +68,7 @@ export default class InfoChatView extends CommonView {
         closeBtn.addTextContent(text.CLOSE);
 
         const title = new BaseElementCreator(H1Params);
+        title.addClasses([styles.H1])
         title.addTextContent('Fun Chat');
 
         const description = new BaseElementCreator(spanParams);

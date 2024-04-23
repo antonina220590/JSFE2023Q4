@@ -1,4 +1,5 @@
 .info_wrapper {
+  position: absolute;
     border: 1px solid black;
     width: 30vw;
     padding: 30px;
@@ -6,7 +7,9 @@
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
-    transform: translate(100%, 30%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     gap: 20px;
 }
 
@@ -20,7 +23,7 @@
     font-size: 20px;
 }
 
-.button {
+.button_close_info {
     color: #0c0c0e;
     text-align: center;
     font-family: Inter;
@@ -39,4 +42,23 @@
     border-radius: 2px;
     border: 1px solid #bb945f;
     transition: all 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .chat_info {
+    font-size: 15px;
+  }
+
+  .github_link {
+    font-size: 13px;
+  }
+
+  .button_close_info {
+    font-size: 10px;
+    padding: 3px;
+  }
 }

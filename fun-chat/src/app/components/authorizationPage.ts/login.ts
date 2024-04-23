@@ -32,6 +32,7 @@ const styles = {
     LOGIN_PASSWORD_INPUT: 'login__form__input_name',
     ERROR_LABEL: 'error_label',
     BTN_INFO: 'info_button',
+    INPUT: 'input'
 };
 
 const text = {
@@ -127,7 +128,7 @@ export default class LoginPageView extends CommonView {
         loginInfoBtn.addClasses([styles.BUTTON, styles.BTN_INFO]);
 
         const inputName = new BaseElementCreator(inputParams);
-        inputName.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);
+        inputName.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT, styles.INPUT]);
         inputName.setAttribute('type', 'text');
         inputName.setAttribute('name', 'logename');
         inputName.setAttribute('data-register', 'name');
@@ -139,7 +140,7 @@ export default class LoginPageView extends CommonView {
         errorLabelName.setAttribute('id', 'errorName');
 
         const inputPassword = new BaseElementCreator(inputParams);
-        inputPassword.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT]);
+        inputPassword.addClasses([styles.ERROR_BOX_NAME, styles.LOGIN_PASSWORD_INPUT, styles.INPUT]);
         inputPassword.setAttribute('type', 'password');
         inputPassword.setAttribute('name', 'logpassword');
         inputPassword.setAttribute('id', 'logpassword');

@@ -3,6 +3,7 @@ import LoginPageView from './components/authorizationPage.ts/login';
 import ChatPageView from './components/chatPage.ts/main_container/chat_container';
 import InfoChatView from './components/infoPage.ts/info_page';
 import { validateServer, checkNameInput, checkPasswordInput, cleanInputs } from './validation/validation';
+import getOfflineUsers from './components/chatPage.ts/main_components/main/userslist';
 import ModalView from './components/modalWindow/modal_window';
 import updateNames from './components/chatPage.ts/main_components/main/message_container';
 
@@ -38,6 +39,7 @@ export default class App {
             document.body.innerHTML = '';
             document.body.append(logPage);
             App.goToLoginPage();
+            App.validation();
         } else if (sessionStorage.length > 0) {
             document.body.innerHTML = '';
             document.body.append(ChatPage);
@@ -78,6 +80,7 @@ export default class App {
                 infoChatBtn?.addEventListener('click', App.goToInfoPage);
                 App.goToLoginPage();
                 updateNames();
+                getOfflineUsers();
             }
         }
         loginBtn?.addEventListener('click', validateServer);

@@ -7,6 +7,13 @@ interface SessionObject {
     isLogined: boolean;
 }
 
+// interface UsersObj1 {
+//   login: string,
+//   isLogined: boolean,
+// }
+
+export const allInactiveUsers: {}[] = [];
+
 export function validateServer() {
     const nameInput = document.getElementById('logename') as HTMLInputElement;
     const passwordInput = document.getElementById('logpassword') as HTMLInputElement;
@@ -24,9 +31,26 @@ export function validateServer() {
             },
         },
     };
+
+    const allUsersOnline = {
+        id: '',
+        type: 'USER_ACTIVE',
+        payload: null,
+    };
+
+    const allUsersOffline = {
+        id: '',
+        type: 'USER_INACTIVE',
+        payload: null,
+    };
+
+    const allUsersOnlineRes = JSON.stringify(allUsersOnline);
+    const allUsersOfflineRes = JSON.stringify(allUsersOffline);
     const res = JSON.stringify(reg);
     socket.addEventListener('open', (event) => {
         socket.send(res);
+        socket.send(allUsersOnlineRes);
+        socket.send(allUsersOfflineRes);
     });
 
     let user: SessionObject = { username: '', password: '', isLogined: false };
@@ -41,6 +65,7 @@ export function validateServer() {
     socket.addEventListener('message', (event) => {
         const error = JSON.parse(event.data);
         const errorPara = document.getElementById('serverErr');
+        allInactiveUsers.push(error.payload.users);
         if (error.type === 'ERROR') {
             openModal();
             if (errorPara) {

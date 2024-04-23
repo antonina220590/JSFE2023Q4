@@ -82,6 +82,7 @@ export default class MainChatView extends CommonView {
 
         const usersList = new BaseElementCreator(UlParams);
         usersList.addClasses([styles.USER_LIST]);
+        usersList.setAttribute('id', 'userUl');
 
         const liList = new BaseElementCreator(LiParams);
         liList.addClasses([styles.USER_CONTAINER]);
@@ -93,7 +94,6 @@ export default class MainChatView extends CommonView {
         userLabel.addClasses([styles.LOGIN_NAME, styles.LOGGED_USER]);
         userLabel.addTextContent('User');
 
-        liList.getElement().append(userStatus.getElement(), userLabel.getElement());
         usersList.getElement().append(liList.getElement());
         leftSideContainer.getElement().append(searchInput.getElement(), usersList.getElement());
         this.elementCreator.getElement().append(leftSideContainer.getElement());

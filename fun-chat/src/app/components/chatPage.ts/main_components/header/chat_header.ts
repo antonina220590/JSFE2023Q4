@@ -65,6 +65,7 @@ export default class HeaderChatView extends CommonView {
         const userNameContainer = new BaseElementCreator(SpanParams);
         userNameContainer.addClasses([styles.USERNAME, styles.HEADER_TEXT, styles.LOGGED_USER]);
         userNameContainer.addTextContent(text.USERNAME);
+        userNameContainer.setAttribute('id', 'currentUser');
 
         const appName = new BaseElementCreator(SpanParams);
         appName.addClasses([styles.APP_NAME, styles.HEADER_TEXT]);

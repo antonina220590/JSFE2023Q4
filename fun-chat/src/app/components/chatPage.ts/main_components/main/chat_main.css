@@ -95,6 +95,10 @@
     width: 80%;
 }
 
+.invisible {
+    display: none;
+}
+
 .message_text {
     background: #fdfdfd;
     border-radius: 5px;

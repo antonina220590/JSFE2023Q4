@@ -3,7 +3,7 @@ import LoginPageView from './components/authorizationPage.ts/login';
 import ChatPageView from './components/chatPage.ts/main_container/chat_container';
 import InfoChatView from './components/infoPage.ts/info_page';
 import { validateServer, checkNameInput, checkPasswordInput, cleanInputs } from './validation/validation';
-import getOfflineUsers from './components/chatPage.ts/main_components/main/userslist';
+import getOfflineUsers, { search } from './components/chatPage.ts/main_components/main/userslist';
 import ModalView from './components/modalWindow/modal_window';
 import updateNames from './components/chatPage.ts/main_components/main/message_container';
 
@@ -25,6 +25,7 @@ export default class App {
         App.goToChatPage();
         App.validation();
         App.goToInfoPage();
+        App.searchUser();
     }
 
     createView(): void {
@@ -81,6 +82,7 @@ export default class App {
                 App.goToLoginPage();
                 updateNames();
                 getOfflineUsers();
+                App.searchUser();
             }
         }
         loginBtn?.addEventListener('click', validateServer);
@@ -144,5 +146,12 @@ export default class App {
         logInfoBtn.forEach((btn) => {
             btn.addEventListener('click', visitInfoPage);
         });
+    }
+
+    static searchUser(): void {
+        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+        if (searchInput) {
+            searchInput.addEventListener('input', search);
+        }
     }
 }

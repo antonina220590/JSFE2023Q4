@@ -7,6 +7,7 @@ const styles = {
     status_inactive: 'user_status_inactive',
     label: 'logged_user',
     lable_name: 'user_login_name',
+    hidden: 'invisible',
 };
 interface Item {
     login: '';
@@ -38,4 +39,17 @@ export default function getOfflineUsers() {
             }
         });
     }
+}
+
+export function search() {
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+    const searchValue = searchInput.value;
+    const userName = Array.from(document.getElementsByClassName('user_login_name'));
+    userName.forEach((name) => {
+        if (!name.textContent?.includes(searchValue)) {
+            name.closest('.user_container')?.classList.add(styles.hidden);
+        } else {
+            name.closest('.user_container')?.classList.remove(styles.hidden);
+        }
+    });
 }

@@ -136,6 +136,7 @@
 @media screen and (max-width: 530px) {
     .left-side__wrapper {
         padding: 20px 5px;
+        width: 50vw;
     }
 
     .user_login_name {

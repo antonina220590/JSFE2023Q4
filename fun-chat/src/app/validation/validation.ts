@@ -7,11 +7,6 @@ interface SessionObject {
     isLogined: boolean;
 }
 
-// interface UsersObj1 {
-//   login: string,
-//   isLogined: boolean,
-// }
-
 export const allInactiveUsers: {}[] = [];
 
 export function validateServer() {
@@ -71,7 +66,7 @@ export function validateServer() {
             if (errorPara) {
                 errorPara.innerHTML = `${error.payload.error}`;
             }
-        } else {
+        } else if (error.type !== 'ERROR') {
             sessionStorage.setItem('userAt', JSON.stringify(user));
         }
     });

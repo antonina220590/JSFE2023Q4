@@ -1,4 +1,3 @@
-import assertValues from '../../../../utils/assertion_function';
 import { allInactiveUsers } from '../../../../validation/validation';
 import './chat_main.css';
 
@@ -7,6 +6,7 @@ const styles = {
     status: 'user_status',
     status_inactive: 'user_status_inactive',
     label: 'logged_user',
+    lable_name: 'user_login_name',
 };
 interface Item {
     login: '';
@@ -30,8 +30,7 @@ export default function getOfflineUsers() {
                 newDiv.classList.add(styles.status);
             }
             const newLabel = document.createElement('label');
-            newLabel.classList.add(styles.label);
-            newLabel.classList.add(styles.label);
+            newLabel.classList.add(styles.lable_name);
             newLabel.textContent = `${item.login}`;
             newLi.append(newDiv, newLabel);
             for (let i = 0; i < allInactiveUsers.length; i += 1) {

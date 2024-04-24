@@ -107,6 +107,7 @@ export default class App {
             document.body.innerHTML = '';
             document.body.append(logPage);
             cleanInputs();
+            App.goToChatPage();
         }
         logOutBtn?.addEventListener('click', checkOut);
     }

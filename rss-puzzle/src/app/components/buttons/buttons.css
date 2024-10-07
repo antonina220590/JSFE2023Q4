@@ -1,0 +1,31 @@
+.button {
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #0c0c0e;
+    cursor: pointer;
+    margin-top: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    width: 7.5rem;
+    cursor: pointer;
+}
+
+.button_log-in {
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+}
+
+.button_log-in:hover {
+    background-color: #bb945f;
+    border-radius: 2px;
+    border: 1px solid #bb945f;
+    transition: all 0.2s ease-in-out;
+}
